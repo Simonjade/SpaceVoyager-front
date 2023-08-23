@@ -1,14 +1,28 @@
 import { useState } from "react";
 import "./App.css";
 import "daisyui/dist/full.css";
+import { Routes, Route } from "react-router-dom";
+
 import Home from "./components/Home/Home";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import Destinations from "./components/Destinations/Destinations";
+import About from "./components/About/About";
+import NotFound from "./components/NotFound/NotFound";
+import Profil from "./components/Profil/Profil";
 
 function App() {
   return (
     <>
       <Header />
-      <Home />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Profil" element={<Profil />} />
+        <Route path="/destinations" element={<Destinations />} />
+        <Route path="/about" element={<About />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
     </>
   );
 }
