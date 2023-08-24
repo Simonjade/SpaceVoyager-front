@@ -12,6 +12,7 @@ import About from "./components/About/About";
 import NotFound from "./components/NotFound/NotFound";
 import Profil from "./components/Profil/Profil";
 import Login from "./components/Login/Login";
+import Search from "./components/Search/Search";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/search" element={<SearchPlanet />} />
+        <Route path="/search" element={<Search />} />
         <Route path="/Profil" element={<Profil />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/destinations" element={<Destinations />} />

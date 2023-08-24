@@ -18,7 +18,7 @@ export default function SearchForm() {
   const [passengers, setPassengers] = useState(0);
 
   useEffect(() => {
-    console.log("La valeur de startDate :", format(startDate, "ddMMyyyy"));
+    console.log("La valeur de startDate :", format(startDate, "yyyy-MM-dd"));
     console.log("La valeur de endtDate :", endDate);
     console.log("La valeur de startDate :", passengers);
   }, [startDate, endDate, passengers]);
@@ -37,11 +37,11 @@ export default function SearchForm() {
 
   const navigate = useNavigate();
   const handleClick = (start, end, passengers) => {
-    start = format(start, "ddMMyyyy");
-    end = format(end, "ddMMyyyy");
+    start = format(start, "yyyy-MM-dd");
+    end = format(end, "yyyy-MM-dd");
 
     navigate(
-      `/search?datealler=${start}&dateretour=${end}&person=${passengers}`
+      `/search?departureDate=${start}&comebackDate=${end}&person=${passengers}`
     );
   };
 
