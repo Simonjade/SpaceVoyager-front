@@ -3,12 +3,23 @@ import "./App.css";
 import "daisyui/dist/full.css";
 import Home from "./components/Home/Home";
 import Header from "./components/Header/Header";
+import SearchPlanet from "./components/SearchPlanet/SearchPlanet";
+
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
       <Header />
-      <Home />
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+        <Route path="/search" element={<SearchPlanet />} />
+
+        {/* <Route path="test/:id" element={<Test />} /> */}
+
+        {/* <Route path="*" element={<NotFound />} /> */}
+      </Routes>
     </>
   );
 }
