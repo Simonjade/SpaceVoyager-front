@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import SearchPlanet from "../SearchPlanet/SearchPlanet";
-import SearchHostel from "../SearchHostel/SearchHostel";
+import SearchPlanet from "../../components/SearchPlanet/SearchPlanet";
+import SearchHostel from "../../components/SearchHostel/SearchHostel";
 import { useLocation } from "react-router-dom";
 
 export default function Search() {
