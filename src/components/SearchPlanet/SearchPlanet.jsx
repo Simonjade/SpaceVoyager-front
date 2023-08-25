@@ -12,6 +12,7 @@ export default function SearchPlanet({
 }) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const [cardSelected, setCardSelected] = useState(null);
 
   const fetchSearchPlanet = async () => {
     try {
@@ -52,7 +53,7 @@ export default function SearchPlanet({
             <CardPlanet
               key={planetData.id}
               planetData={planetData}
-              setPlanet={setPlanet}
+              setCardSelected={setCardSelected}
             />
           ))
         ) : (
@@ -61,7 +62,9 @@ export default function SearchPlanet({
       </div>
       <button
         className="btn btn-primary"
-        onClick={() => handleClick(departureDate, comebackDate, person, planet)}
+        onClick={() =>
+          handleClick(departureDate, comebackDate, person, cardSelected)
+        }
       >
         VALIDER
       </button>
