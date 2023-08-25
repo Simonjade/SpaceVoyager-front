@@ -1,5 +1,8 @@
 import React, { createContext, useState } from "react";
 
+// LIBS
+import { decodeToken, isExpired } from "react-jwt";
+
 // TOOLS
 import request from "../tools/request";
 
@@ -10,6 +13,7 @@ const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState({
     accessToken: null,
     authenticated: null,
+    data: null,
   });
 
   const login = async (data) => {
@@ -21,7 +25,13 @@ const AuthProvider = ({ children }) => {
         accessToken: res.data.token,
         authenticated: true,
       });
+      console.log("localStorage");
+      console.log(localStorage);
+      console.log("authState");
+      console.log(authState);
     }
+    console.log("##### res");
+    console.log(res);
     return res;
   };
 
@@ -30,6 +40,7 @@ const AuthProvider = ({ children }) => {
     setAuthState({
       accessToken: null,
       authenticated: false,
+      data: null,
     });
   };
 
@@ -37,19 +48,28 @@ const AuthProvider = ({ children }) => {
     return authState.accessToken;
   };
 
+  const getData = () => {
+    return authState?.data ?? null;
+  };
+
   const checkInLocalStorage = async () => {
     const currentToken = localStorage.getItem("access_token");
 
     if (currentToken) {
-      const res = await request.auth(currentToken).get("/user/checkJWT");
-      if (res.status !== 401) {
-        setAuthState({ accessToken: currentToken, authenticated: true });
-      } else {
-        setAuthState({ accessToken: null, authenticated: false });
-      }
+      const isExpiredJWT = isExpired(currentToken);
+      const decodeTokenJWT = decodeToken(currentToken);
+      console.log(isExpiredJWT, decodeTokenJWT);
+      setAuthState({
+        accessToken: currentToken,
+        authenticated: true,
+        data: decodeTokenJWT,
+      });
     } else {
-      setAuthState({ accessToken: null, authenticated: false });
+      setAuthState({ accessToken: null, authenticated: false, data: null });
     }
+    /* } else {
+      setAuthState({ accessToken: null, authenticated: false });
+    } */
   };
 
   return (
@@ -57,6 +77,7 @@ const AuthProvider = ({ children }) => {
       value={{
         state: authState,
         getAccessToken,
+        getData,
         setState: setAuthState,
         checkInLocalStorage,
         login,

@@ -10,14 +10,19 @@ import { AuthContext } from "../../contexts/AuthContext";
 export default function Login() {
   const auth = useContext(AuthContext);
   const [hasError, setHasError] = useState(false);
+
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+
   const navigate = useNavigate();
 
   const handleSubmitLogin = async (event) => {
+    setEmail();
     event.preventDefault();
     try {
       const isLogged = await auth.login({
-        mail: "Manunu@gmail.com",
-        password: "12322222",
+        mail: email,
+        password: password,
       });
       console.log(isLogged);
       if (isLogged.status === 200) {
@@ -43,11 +48,15 @@ export default function Login() {
           type="text"
           placeholder="Email"
           className="input input-bordered my-4 input-primary w-full max-w-xs"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
-          type="text"
+          type="password"
           placeholder="Password"
           className="input input-bordered my-4 input-primary w-full max-w-xs"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <button
           className="btn btn-primary btn-wide my-4 mb-15 sm:btn-sm md:btn-md lg:btn-lg"

@@ -1,11 +1,36 @@
-import React, { useState } from "react";
+//eslint-disable-next-line
+import React, { useState, useEffect, useContext } from "react";
+import useIsAuthenticated from "../../../hooks/useIsAuthenticated";
+
+import { AuthContext } from "../../../contexts/AuthContext";
+import { StoreContext } from "../../../contexts/StoreContext";
+/* import ProtectedZone from "../../Protected/Protected";
+ProtectedZone; */
 
 export default function NavBar() {
+  const auth = useContext(AuthContext);
+  const store = useContext(StoreContext);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isAuthenticated = useIsAuthenticated();
+  /* const [islogged, setIsLogged] = useState(false); */
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  useEffect(() => {
+    console.log(isAuthenticated);
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    console.log("YOUHOUUU", auth.getData());
+  }, [auth]);
+
+  useEffect(() => {
+    console.log(store);
+    //eslint-disable-next-line
+  }, [store]);
 
   return (
     <div className="relative inline-block text-left">
@@ -50,12 +75,32 @@ export default function NavBar() {
           >
             Acceuil
           </a>
-          <a
-            href="/profil"
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-          >
-            profil
-          </a>
+
+          {
+            <a
+              href="/"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            >
+              Acceuil
+            </a>
+          }
+
+          {!isAuthenticated ? (
+            <a
+              href="/login"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            >
+              login
+            </a>
+          ) : (
+            <a
+              href="/profile"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            >
+              profile
+            </a>
+          )}
+
           <a
             href="/destinations"
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
