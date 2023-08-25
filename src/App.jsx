@@ -3,16 +3,16 @@ import "./App.css";
 import "daisyui/dist/full.css";
 import { Routes, Route } from "react-router-dom";
 
-import Home from "./components/Home/Home";
+import Home from "./pages/Home/Home";
 import Header from "./components/Header/Header";
 import SearchPlanet from "./components/SearchPlanet/SearchPlanet";
 import Footer from "./components/Footer/Footer";
-import Destinations from "./components/Destinations/Destinations";
-import About from "./components/About/About";
-import NotFound from "./components/NotFound/NotFound";
-import Profil from "./components/Profil/Profil";
-import Login from "./components/Login/Login";
-import Search from "./components/Search/Search";
+import Destinations from "./pages/Destinations/Destinations";
+import About from "./pages/About/About";
+import NotFound from "./pages/NotFound/NotFound";
+import Profil from "./pages/Profil/Profil";
+import Login from "./pages/Login/Login";
+import Search from "./pages/Search/Search";
 
 function App() {
   return (
