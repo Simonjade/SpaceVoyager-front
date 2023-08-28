@@ -3,6 +3,7 @@ import "./App.css";
 import "daisyui/dist/full.css";
 import { Routes, Route } from "react-router-dom";
 
+import Stars from "./components/Stars/Stars";
 import Home from "./pages/Home/Home";
 import Header from "./components/Header/Header";
 import SearchPlanet from "./components/SearchPlanet/SearchPlanet";
@@ -15,9 +16,11 @@ import Login from "./pages/Login/Login";
 import Search from "./pages/Search/Search";
 import BookingDetail from "./pages/BookingDetail/BookingDetail";
 
+
 function App() {
   return (
     <>
+      <Stars />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
