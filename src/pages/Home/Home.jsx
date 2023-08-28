@@ -1,27 +1,20 @@
-import React, { useContext } from "react";
+import Stars from "../../components/Stars/Stars";
 import SearchForm from "./SearchForm/SearchForm";
 
-import { StoreContext } from "../../contexts/StoreContext";
-
 export default function Home() {
-  const store = useContext(StoreContext);
-
-  const handleAction = () => {
-    store.dispatch({ type: "action", key: "monsupertest" });
-  };
-
   return (
     <>
-      <button onClick={handleAction}>test ici</button>
-      <div className="relative top-0 right-0 p-4">
+    <div className="flex justify-center flex flex-wrap">
+      <div className="relative -top-5 -left-50 p-4 mb-10">
         <h1>SPACE VOYAGER</h1>
         <h2>un peu plus proche des étoiles</h2>
       </div>
 
-      <h3 className="text-2xl font-bold mb-4">
+      <h3 className="text-2xl font-bold ml-3 p-8">
         VEILLEZ CHOISIR VOS DATES DE DEPART ET DE RETOUR
       </h3>
       <SearchForm />
+      </div>
     </>
   );
 }
