@@ -46,6 +46,7 @@ export default function SearchHostel({
   return (
     <>
       <h1>SearchHostel</h1>
+      <div></div>
       <div class="overflow-y-auto w-5/6- max-h-[600px]">
         {error ? (
           <p>Une erreur s'est produite : {error.message}</p>

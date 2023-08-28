@@ -12,7 +12,7 @@ export default function SearchPlanet({
 }) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const [cardSelected, setCardSelected] = useState(null);
+  const [cardSelected, setCardSelected] = useState([]);
 
   const fetchSearchPlanet = async () => {
     try {
@@ -42,9 +42,54 @@ export default function SearchPlanet({
     fetchSearchPlanet();
   }, []);
 
+  useEffect(() => {
+    console.log("cardSelected", cardSelected);
+  }, [cardSelected]);
+
   return (
     <>
       <h1>SearchPlanet</h1>
+      <div className="card card-side">
+        <div className="card-body  w-1/3 bg-base-100 shadow-xl">
+          <h2 className="card-title">date aller :</h2>
+          <p>{departureDate}</p>
+        </div>
+        <div className="card-body  w-1/3 bg-base-100 shadow-xl">
+          <h2 className="card-title">date retour :</h2>
+          <p>{comebackDate}</p>
+        </div>
+        <div className="card-body  w-1/3 bg-base-100 shadow-xl">
+          <h2 className="card-title">Passagers :</h2>
+          <p>{person}</p>
+        </div>
+      </div>
+      <div className="card card-side">
+        <div className="card-body  w-1/3 bg-base-100 shadow-xl">
+          <h2 className="card-title">Planet selectionnée :</h2>
+          {cardSelected.name ? <p>{cardSelected.name}</p> : <p>_</p>}
+        </div>
+        <div className="card-body  w-2/3 bg-base-100 shadow-xl">
+          <h2 className="card-title">détails voyage :</h2>
+          <p>
+            Prix :{" "}
+            {cardSelected.name ? (
+              <span>
+                {cardSelected.price}€ x {person}
+              </span>
+            ) : (
+              <sapn>_</sapn>
+            )}
+          </p>
+          <p>Prix total : {cardSelected.price * person}€</p>
+        </div>
+      </div>
+
+      <ul className="steps">
+        <li className="step step-primary">Choix planet</li>
+        <li className="step">Choix hotel</li>
+        <li className="step">Confirmation</li>
+      </ul>
+
       <div class="overflow-y-auto w-5/6- max-h-[600px]">
         {error ? (
           <p>Une erreur s'est produite : {error.message}</p>
@@ -63,7 +108,7 @@ export default function SearchPlanet({
       <button
         className="btn btn-primary"
         onClick={() =>
-          handleClick(departureDate, comebackDate, person, cardSelected)
+          handleClick(departureDate, comebackDate, person, cardSelected.name)
         }
       >
         VALIDER
