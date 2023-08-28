@@ -94,10 +94,10 @@ export default function NavBar() {
             </a>
           ) : (
             <a
-              href="/profile"
+              href="/profil"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
-              profile
+              profil
             </a>
           )}
 

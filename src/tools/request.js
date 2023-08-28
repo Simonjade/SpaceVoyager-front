@@ -14,7 +14,7 @@ const request = {
     return generic;
   },
 
-  auth: (accessToken) => {
+  protected: (accessToken) => {
     const auth = axios.create({
       baseURL: "http://localhost:3000",
     });
