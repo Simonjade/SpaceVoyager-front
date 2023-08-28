@@ -30,8 +30,6 @@ const AuthProvider = ({ children }) => {
       console.log("authState");
       console.log(authState);
     }
-    console.log("##### res");
-    console.log(res);
     return res;
   };
 
