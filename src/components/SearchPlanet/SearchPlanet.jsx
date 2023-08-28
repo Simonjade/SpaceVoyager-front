@@ -26,7 +26,7 @@ export default function SearchPlanet({
         "Une erreur s'est produite lors de la récupération des données :",
         error
       );
-      setError(error);
+      setError(erreur);
     }
   };
 

@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import Profil from "./pages/Profil/Profil";
 import Login from "./pages/Login/Login";
 import Search from "./pages/Search/Search";
+import BookingDetail from "./pages/BookingDetail/BookingDetail";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/Profil" element={<Profil />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/destinations" element={<Destinations />} />
+        <Route path="/detail" element={<BookingDetail />}></Route>
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
