@@ -16,25 +16,26 @@ import Login from "./pages/Login/Login";
 import Search from "./pages/Search/Search";
 import BookingDetail from "./pages/BookingDetail/BookingDetail";
 
-
 function App() {
   return (
     <>
       <Stars />
-      <div className="relative">
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/Profil" element={<Profil />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/destinations" element={<Destinations />} />
-        <Route path="/detail" element={<BookingDetail />}></Route>
-        <Route path="/about" element={<About />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <div className="relative flex flex-col justify-between h-screen">
+        <Header />
+        <div className="flex justify-start flex-col flex-wrap h-full">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/Profil" element={<Profil />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/destinations" element={<Destinations />} />
+            <Route path="/detail" element={<BookingDetail />}></Route>
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 }
