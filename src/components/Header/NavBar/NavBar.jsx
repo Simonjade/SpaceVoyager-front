@@ -19,16 +19,11 @@ export default function NavBar() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  useEffect(() => {
-    console.log(isAuthenticated);
-  }, [isAuthenticated]);
+  useEffect(() => {}, [isAuthenticated]);
+
+  useEffect(() => {}, [auth]);
 
   useEffect(() => {
-    console.log("YOUHOUUU", auth.getData());
-  }, [auth]);
-
-  useEffect(() => {
-    console.log(store);
     //eslint-disable-next-line
   }, [store]);
 

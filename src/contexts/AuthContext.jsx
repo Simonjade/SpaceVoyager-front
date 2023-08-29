@@ -25,9 +25,7 @@ const AuthProvider = ({ children }) => {
         accessToken: res.data.token,
         authenticated: true,
       });
-      console.log("localStorage");
-      console.log(localStorage);
-      console.log("authState");
+      console.log("LOGIN : authState il doit y avoir le token et true");
       console.log(authState);
     }
     return res;
@@ -52,6 +50,7 @@ const AuthProvider = ({ children }) => {
 
   const checkInLocalStorage = async () => {
     const currentToken = localStorage.getItem("access_token");
+    console.log("acces_token @ checkInLocalStorage", currentToken);
 
     if (currentToken) {
       const isExpiredJWT = isExpired(currentToken);
@@ -62,6 +61,7 @@ const AuthProvider = ({ children }) => {
         authenticated: true,
         data: decodeTokenJWT,
       });
+      console.log("authState @ checkInLocalStorage", authState);
     } else {
       setAuthState({ accessToken: null, authenticated: false, data: null });
     }
