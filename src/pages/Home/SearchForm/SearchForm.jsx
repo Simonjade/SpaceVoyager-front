@@ -47,7 +47,7 @@ export default function SearchForm() {
 
   return (
     <>
-      <div className="join join-vertical" bg-gray-800>
+      <div className="join join-vertical bg-gray-800">
         <DatePicker
           selected={startDate}
           onChange={(date) => setStartDate(date)}
