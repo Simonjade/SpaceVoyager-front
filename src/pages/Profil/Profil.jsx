@@ -77,7 +77,7 @@ export default function Profil() {
 
   return (
     <ProtectedZone to={"/login"}>
-      <div className="backdrop-blur-sm bg-white/30">
+      <div className="card backdrop-blur-sm bg-white/30">
         <h3>Vos informations</h3>
         <h4>Firstname</h4>
         {isEditing ? (
@@ -143,9 +143,15 @@ export default function Profil() {
       </div>
       <div className="backdrop-blur-sm bg-white/30 mt-6">
         {dataUser.reservation &&
+        //! This is bricolage, better not to send null
+        dataUser.reservation[0].planet_name !== null &&
+        dataUser.reservation.length > 0 ? (
           dataUser.reservation.map((element, index) => (
             <ReservationCard key={index} reservation={element} />
-          ))}
+          ))
+        ) : (
+          <p>No reservations available</p>
+        )}
       </div>
     </ProtectedZone>
   );
