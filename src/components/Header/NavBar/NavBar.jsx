@@ -73,31 +73,21 @@ export default function NavBar() {
             href="/"
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
           >
-            Acceuil
+            Accueil
           </a>
-
-          {
-            <a
-              href="/"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            >
-              Acceuil
-            </a>
-          }
-
           {!isAuthenticated ? (
             <a
               href="/login"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
-              login
+              Login
             </a>
           ) : (
             <a
               href="/profil"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
-              profil
+              Profil
             </a>
           )}
 
