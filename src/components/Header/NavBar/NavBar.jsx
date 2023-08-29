@@ -28,7 +28,7 @@ export default function NavBar() {
   }, [store]);
 
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative inline-block text-left ">
       <button
         type="button"
         className="btn btn-circle swap swap-rotate"
