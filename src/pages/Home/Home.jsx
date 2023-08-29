@@ -3,18 +3,16 @@ import SearchForm from "./SearchForm/SearchForm";
 
 export default function Home() {
   return (
-    <>
-    <div className="flex justify-center flex flex-wrap">
-      <div className="relative -top-5 -left-50 p-4 mb-10">
-        <h1>SPACE VOYAGER</h1>
-        <h2>un peu plus proche des étoiles</h2>
+    <div className="flex flex-col items-center justify-center min-h-screen text-white">
+      <div className="absolute top-10 left-5 mb-10 text-left ml-2 mt-10">
+        <h1 className=" text-4xl font-bold sm:text-3xl">SPACE VOYAGER</h1>
+        <h2 className="sm: text-l text-center">un peu plus proche des étoiles</h2>
       </div>
 
-      <h3 className="text-2xl font-bold ml-3 p-8">
-        VEILLEZ CHOISIR VOS DATES DE DEPART ET DE RETOUR
+      <h3 className="w-1/2 sm:text-2xl font-bold text-center">
+        VEUILLEZ CHOISIR VOS DATES DE DÉPART ET DE RETOUR
       </h3>
       <SearchForm />
-      </div>
-    </>
+    </div>
   );
 }

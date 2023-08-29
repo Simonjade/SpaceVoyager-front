@@ -47,7 +47,7 @@ export default function SearchForm() {
 
   return (
     <>
-      <div className="join join-vertical bg-gray-800">
+      <div className="join join-vertical bg-gray-700 text-center mt-5">
         <DatePicker
           selected={startDate}
           onChange={(date) => setStartDate(date)}
@@ -57,7 +57,7 @@ export default function SearchForm() {
           startDate={startDate}
           endDate={endDate}
           minDate={startDate}
-          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item"
+          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item text-black text-center"
         />
         <DatePicker
           selected={endDate}
@@ -68,10 +68,10 @@ export default function SearchForm() {
           startDate={startDate}
           endDate={endDate}
           minDate={startDate}
-          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item"
+          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item text-black text-center"
         />
         <div className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item">
-          <button className="btn btn-circle btn-outline" onClick={handleMinus}>
+          <button className="btn btn-circle btn-outline mr-2 " onClick={handleMinus}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -88,7 +88,7 @@ export default function SearchForm() {
             </svg>
           </button>
           {passengers}
-          <button className="btn btn-circle btn-outline" onClick={handlePlus}>
+          <button className="btn btn-circle btn-outline ml-2 " onClick={handlePlus}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -106,7 +106,7 @@ export default function SearchForm() {
           </button>
         </div>
         <button
-          className="btn btn-primary join-item"
+          className="btn btn-primary join-item "
           onClick={() => handleClick(startDate, endDate, passengers)}
         >
           RECHERCHER
