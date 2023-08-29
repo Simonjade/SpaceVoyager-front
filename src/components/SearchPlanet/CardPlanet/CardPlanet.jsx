@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function CardPlanet({ planetData, setCardSelected }) {
+  console.log("planetData", planetData);
   return (
     <div className="card card-side bg-base-100 shadow-xl">
       <div className="card w-96 bg-base-100 shadow-xl image-full">
@@ -18,7 +19,7 @@ export default function CardPlanet({ planetData, setCardSelected }) {
         <div className="card-actions justify-end">
           <button
             className="btn btn-primary"
-            onClick={() => setCardSelected(planetData.name)}
+            onClick={() => setCardSelected(planetData)}
           >
             selectionner
           </button>
