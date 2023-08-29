@@ -34,7 +34,11 @@ export default function ReservationCard({ reservation }) {
         </div>
         <div className="collapse-content">
           <figure>
-            <img src={reservation.planet_img} alt="planet_image" />
+            <img
+              src={reservation.planet_img}
+              alt="planet_image"
+              className="max-h-20px"
+            />
           </figure>
           <p>Your departure date : {reservation.departure_date}</p>
           <p>Your comeback date : {reservation.comeback_date}</p>
