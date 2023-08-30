@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import CardHostel from "./CardHostel/CardHostel";
 import { useNavigate } from "react-router-dom";
 
+import { useBooking } from "../../contexts/BoonkingContext";
+
 export default function SearchHostel({
   departureDate,
   comebackDate,
@@ -12,6 +14,9 @@ export default function SearchHostel({
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [hostel, setHostel] = useState(null);
+
+  const { state, dispatch } = useBooking();
+
   useEffect(() => {
     console.log("hostel", hostel);
   }, [hostel]);
@@ -28,7 +33,7 @@ export default function SearchHostel({
         "Une erreur s'est produite lors de la récupération des données :",
         error
       );
-      setError(erreur);
+      setError(error);
     }
   };
 
@@ -37,10 +42,13 @@ export default function SearchHostel({
   }, []);
   const navigate = useNavigate();
   const handleClick = (start, end, passengers, planet, hostel) => {
-    // setPlanet(planet);
     console.log(hostel);
+
+    // Utilisez dispatch pour enregistrer l'objet planet choisie
+    dispatch({ type: "SET_HOSTEL", payload: planet });
+
     navigate(
-      `/detail?departureDate=${start}&comebackDate=${end}&person=${passengers}&planet=${planet}&hostel=${hostel}`
+      `/detail?departureDate=${start}&comebackDate=${end}&person=${passengers}&planet=${planet}&hostel=${hostel.room_type}`
     );
   };
   return (
@@ -66,7 +74,7 @@ export default function SearchHostel({
         className="btn btn-primary"
         onClick={() => {
           if (hostel) {
-            handleClick(departureDate, comebackDate, person, hostel);
+            handleClick(departureDate, comebackDate, person, planet, hostel);
           }
         }}
       >
