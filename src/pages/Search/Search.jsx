@@ -17,7 +17,6 @@ export default function Search() {
   // const planet = searchParams.get("planet");
   return (
     <>
-      <div>Search</div>
       {!planet ? (
         <SearchPlanet
           departureDate={departureDate}
