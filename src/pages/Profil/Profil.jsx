@@ -78,63 +78,92 @@ export default function Profil() {
 
   return (
     <ProtectedZone to={"/login"}>
-      <Title />
-      <div className="flex flex-col items-center">
-        <div className="card card-compact w-21 text-white p-5">
-          <div className="card-title">Vos informations</div>
-          <div className="flex flex-col gap-2">
-            <label className="font-bold">FIRSTNAME</label>
-            {isEditing ? (
-              <input
-                className="input input-bordered input-primary w-full max-w-xs text-black"
-                name=""
-                defaultValue={dataUser?.firstname}
-                autoFocus
-                onChange={(event) => setEditFirstname(event.target.value)}
-              />
-            ) : (
-              <p className="p-2">
-                {editFirstname ? editFirstname : dataUser?.firstname}
-              </p>
-            )}
-            <label className="font-bold">LASTNAME</label>
-            {isEditing ? (
-              <input
-                className="input input-bordered input-primary w-full max-w-xs text-black"
-                name=""
-                defaultValue={dataUser?.lastname}
-                autoFocus
-                onChange={(event) => setEditLastname(event.target.value)}
-              />
-            ) : (
-              <p className="p-2">
-                {editLastname ? editLastname : dataUser?.lastname}
-              </p>
-            )}
-            <h4 className="font-bold">Email</h4>
-            {isEditing ? (
-              <input
-                className="input input-bordered input-primary w-full max-w-xs text-black"
-                name=""
-                defaultValue={dataUser?.mail}
-                autoFocus
-                onChange={(event) => setEditEmail(event.target.value)}
-              />
-            ) : (
-              <p className="p-2">{editEmail ? editEmail : dataUser?.mail}</p>
-            )}
+      <div className="flex flex-col items-center text-black lg:flex-row-reverse">
+        <div className="card card-compact w-21 text-white p-5 lg:w-8/12 self-start">
+          <figure className="self-center rounded-full w-4/12 lg:w-3/12 mb-4">
+            <img
+              src="../../../public/photo-1534528741775-53994a69daeb.jpg"
+              alt="planet_image"
+              className=""
+            />
+          </figure>
+          <div className="flex flex-col gap-2 text-black">
+            <div className="lg:flex justify-center gap-20">
+              <label className="w-10 font-bold text-white">FIRSTNAME</label>
+              {isEditing ? (
+                <input
+                  className="input w-full max-w-xs self-center"
+                  name=""
+                  defaultValue={dataUser?.firstname}
+                  autoFocus
+                  onChange={(event) => setEditFirstname(event.target.value)}
+                />
+              ) : (
+                <p className="input input-bordered w-full max-w-xs self-center">
+                  {editFirstname ? editFirstname : dataUser?.firstname}
+                </p>
+              )}
+            </div>
+            <div className="lg:flex justify-center gap-20">
+              <label className="w-10 font-bold text-white">LASTNAME</label>
+              {isEditing ? (
+                <input
+                  className="input input-bordered input-primary w-full max-w-xs self-center"
+                  name=""
+                  defaultValue={dataUser?.lastname}
+                  autoFocus
+                  onChange={(event) => setEditLastname(event.target.value)}
+                />
+              ) : (
+                <p className="input input-bordered input-primary w-full max-w-xs self-center">
+                  {editLastname ? editLastname : dataUser?.lastname}
+                </p>
+              )}
+            </div>
+            <div className="lg:flex justify-center gap-20">
+              <h4 className="w-10 font-bold text-white">Email</h4>
+              {isEditing ? (
+                <input
+                  className="input input-bordered input-primary w-full max-w-xs self-center"
+                  name=""
+                  defaultValue={dataUser?.mail}
+                  autoFocus
+                  onChange={(event) => setEditEmail(event.target.value)}
+                />
+              ) : (
+                <p className="input input-bordered input-primary w-full max-w-xs self-center">
+                  {editEmail ? editEmail : dataUser?.mail}
+                </p>
+              )}
+            </div>
           </div>
-          <div className="inline-flex items-center shadow-sm">
+          <div className="flex gap-2 justify-center shadow-sm">
             {isEditing ? (
               <button
-                className="text-slate-800 hover:text-blue-600 text-sm bg-white hover:bg-slate-100 border border-slate-200 rounded-l-lg font-medium px-4 py-2 inline-flex space-x-1 items-center"
+                className="mt-4 text-slate-800 hover:text-blue-600 text-sm bg-white hover:bg-slate-100 border border-slate-200 rounded-l-lg font-medium px-4 py-2 inline-flex space-x-1 items-center"
                 onClick={() => handleEdit()}
               >
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                    />
+                  </svg>
+                </span>
                 Valider
               </button>
             ) : (
               <button
-                className="text-slate-800 hover:text-blue-600 text-sm bg-white hover:bg-slate-100 border border-slate-200 rounded-l-lg font-medium px-4 py-2 inline-flex space-x-1 items-center"
+                className="mt-4 text-slate-800 hover:text-blue-600 text-sm bg-white hover:bg-slate-100 border border-slate-200 rounded-l-lg font-medium px-4 py-2 inline-flex space-x-1 items-center"
                 onClick={() => setIsEditing(true)}
               >
                 <span>
@@ -158,7 +187,7 @@ export default function Profil() {
             )}
 
             <button
-              className="text-slate-800 hover:text-blue-600 text-sm bg-white hover:bg-slate-100 border border-slate-200 rounded-r-lg font-medium px-4 py-2 inline-flex space-x-1 items-center"
+              className="mt-4 text-slate-800 hover:text-blue-600 text-sm bg-white hover:bg-slate-100 border border-slate-200 rounded-r-lg font-medium px-4 py-2 inline-flex space-x-1 items-center"
               onClick={() => window.my_modal_5.showModal()}
             >
               <span>
@@ -200,7 +229,10 @@ export default function Profil() {
             </form>
           </dialog>
         </div>
-        <div className="mt-6 flex flex-col items-center">
+
+        <div className="divider lg:divider-horizontal before:bg-primary after:bg-secondary max-w-100"></div>
+
+        <div className="flex flex-col items-center">
           {dataUser.reservation &&
           //! This is bricolage, better not to send null
           dataUser.reservation[0].planet_name !== null &&
