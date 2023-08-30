@@ -26,29 +26,31 @@ export default function ReservationCard({ reservation }) {
   };
 
   return (
-    <div className="collapse bg-base-200 w-11/12 m-1">
+    <div className="collapse bg-base-200 w-10/12 lg:w-8/12 m-1">
       <input type="checkbox" />
       <div className="collapse-title text-xl font-medium">
         Your trip to {reservation.planet_name}
       </div>
       <div className="collapse-content">
-        <figure>
+        <figure className="">
           <img
             src={reservation.planet_img}
             alt="planet_image"
-            className="rounded-lg max-h-20px mb-5"
+            className="rounded-lg w-full mb-5"
           />
         </figure>
-        <p>Your departure date : {reservation.departure_date}</p>
-        <p>Your comeback date : {reservation.comeback_date}</p>
-        <p>Your destination : {reservation.planet_name}</p>
-        <p>Your hostel : {reservation.hostel_name}</p>
-        <p>Your room : {reservation.room_rank}</p>
-        <p>
-          Total price :{" "}
-          {reservation.planet_price +
-            reservation.room_price * reservation.booking_nbparticipants}
-        </p>
+        <div className="">
+          <p>Your departure date : {reservation.departure_date}</p>
+          <p>Your comeback date : {reservation.comeback_date}</p>
+          <p>Your destination : {reservation.planet_name}</p>
+          <p>Your hostel : {reservation.hostel_name}</p>
+          <p>Your room : {reservation.room_rank}</p>
+          <p>
+            Total price :{" "}
+            {reservation.planet_price +
+              reservation.room_price * reservation.booking_nbparticipants}
+          </p>
+        </div>
         <div className="card-actions justify-end">
           <button className="btn btn-primary" onClick={() => handleDelete()}>
             Delete Trip

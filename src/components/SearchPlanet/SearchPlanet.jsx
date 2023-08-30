@@ -56,71 +56,93 @@ export default function SearchPlanet({
 
   return (
     <>
-      <div className="card card-side">
-        <div className="card-body  w-1/3 bg-base-100 shadow-xl">
-          <h2 className="card-title">date aller :</h2>
-          <p>{departureDate}</p>
+      <div className=" flex flex-col h-full justify-between">
+
+        <div className="flex gap-2 flex-col">
+          <div className="flex gap-2 mx-4">
+            <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
+              <h2 className="font-bold">Date aller :</h2>
+              <p className="text-center">{departureDate}</p>
+            </div>
+            <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
+              <h2 className="font-bold">Date retour :</h2>
+              <p className="text-center">{comebackDate}</p>
+            </div>
+          </div>
+
+          <div className=" flex gap-2 bg-indigo-50/10 mx-4 p-2 backdrop-blur-sm text-white rounded-lg text-center">
+            <h2 className="font-bold">Nombre de passager :</h2>
+            <p className="">{person}</p>
+          </div>
+
+          <div>
+            <ul className="steps">
+              <li className="step step-primary">Choix planet</li>
+              <li className="step">Choix hotel</li>
+              <li className="step">Confirmation</li>
+            </ul>
+          </div>
+
         </div>
-        <div className="card-body  w-1/3 bg-base-100 shadow-xl">
-          <h2 className="card-title">date retour :</h2>
-          <p>{comebackDate}</p>
-        </div>
-        <div className="card-body  w-1/3 bg-base-100 shadow-xl">
-          <h2 className="card-title">Passagers :</h2>
-          <p>{person}</p>
-        </div>
-      </div>
-      <div className="card card-side">
-        <div className="card-body  w-1/3 bg-base-100 shadow-xl">
-          <h2 className="card-title">Planet selectionnée :</h2>
-          {cardSelected.name ? <p>{cardSelected.name}</p> : <p>_</p>}
-        </div>
-        <div className="card-body  w-2/3 bg-base-100 shadow-xl">
-          <h2 className="card-title">détails voyage :</h2>
-          <p>
-            Prix :{" "}
-            {cardSelected.name ? (
-              <span>
-                {cardSelected.price}€ x {person}
-              </span>
+
+   
+
+          <div className="overflow-y-auto h-80">
+            {error ? (
+              <p>Une erreur s'est produite : {error.message}</p>
+            ) : data ? (
+              data.map((planetData) => (
+                <CardPlanet
+                  key={planetData.id}
+                  planetData={planetData}
+                  setCardSelected={setCardSelected}
+                />
+              ))
             ) : (
-              <sapn>_</sapn>
+              <p>Chargement en cours...</p>
             )}
-          </p>
-          <p>Prix total : {cardSelected.price * person}€</p>
+          </div>
+
+
+        <div className="">
+
+          <div className="flex gap-2 mx-4">
+
+            <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
+              <h2 className="">Planet selectionnée :</h2>
+              {cardSelected.name ? <p>{cardSelected.name}</p> : <p>_</p>}
+            </div>
+
+            <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
+              <h2 className="">détails voyage :</h2>
+              <p>
+                Prix :{" "}
+                {cardSelected.name ? (
+                  <span>
+                    {cardSelected.price}€ x {person}
+                  </span>
+                ) : (
+                  <sapn>_</sapn>
+                )}
+              </p>
+              <p>Prix total : {cardSelected.price * person}€</p>
+            </div>
+
+          </div>
+
+          <button
+            className=""
+            onClick={() =>
+              handleClick(departureDate, comebackDate, person, cardSelected)
+            }
+          >
+            VALIDER
+          </button>
+
         </div>
-      </div>
-      <div>
-        <ul className="steps">
-          <li className="step step-primary">Choix planet</li>
-          <li className="step">Choix hotel</li>
-          <li className="step">Confirmation</li>
-        </ul>
+
       </div>
 
-      <div class="overflow-y-auto w-5/6- max-h-[600px]">
-        {error ? (
-          <p>Une erreur s'est produite : {error.message}</p>
-        ) : data ? (
-          data.map((planetData) => (
-            <CardPlanet
-              key={planetData.id}
-              planetData={planetData}
-              setCardSelected={setCardSelected}
-            />
-          ))
-        ) : (
-          <p>Chargement en cours...</p>
-        )}
-      </div>
-      <button
-        className="btn btn-primary"
-        onClick={() =>
-          handleClick(departureDate, comebackDate, person, cardSelected)
-        }
-      >
-        VALIDER
-      </button>
     </>
   );
 }
