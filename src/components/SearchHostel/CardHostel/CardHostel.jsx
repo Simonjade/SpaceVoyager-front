@@ -7,11 +7,11 @@ export default function CardHostel({ hostelData, setHostel }) {
   const [checkboxes, setCheckboxes] = useState([]);
 
   // Gérez les modifications d'état de chaque case à cocher
-  const handleCheckboxChange = (hostel) => {
+  const handleCheckboxChange = (room) => {
     const updatedCheckboxes = [...checkboxes];
-    updatedCheckboxes[hostel.room_type] = !updatedCheckboxes[hostel.room_type];
+    updatedCheckboxes[room.room_type] = !updatedCheckboxes[room.room_type];
     setCheckboxes(updatedCheckboxes);
-    setHostel(hostel);
+    setHostel(room);
   };
   useEffect(() => {
     console.log(checkboxes);
