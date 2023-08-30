@@ -73,7 +73,7 @@ export default function SearchForm() {
           startDate={startDate}
           endDate={endDate}
           minDate={startDate}
-          className="w-full px-3 py-2 dark:bg-red-100/10 backdrop-blur-sm rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item text-white text-center"
+          className="w-full px-3 py-2 bg-red-100/10 backdrop-blur-sm rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item text-white text-center"
         />
         <DatePicker
           selected={endDate}
@@ -84,19 +84,20 @@ export default function SearchForm() {
           startDate={startDate}
           endDate={endDate}
           minDate={startDate}
-          className="w-full px-3 py-2 dark:bg-red-100/10 backdrop-blur-sm rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item text-white text-center"
+          className="w-full px-3 py-2 bg-red-100/10 backdrop-blur-sm rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item text-white text-center"
         />
-        <div className="w-full px-3 py-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item dark:bg-red-100/10 backdrop-blur-sm">
+        <div className="w-full px-3 py-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item bg-red-100/10 backdrop-blur-sm">
           <button
-            className="btn btn-circle btn-outline mr-4 "
+            className="btn btn-circle btn-outline mr-4 btn-primary "
             onClick={handleMinus}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4"
               fill="none"
+      
               viewBox="0 0 24 24"
-              stroke="currentColor"
+              stroke="white"
             >
               <path
                 stroke-linecap="round"
@@ -108,7 +109,7 @@ export default function SearchForm() {
           </button>
           {passengers}
           <button
-            className="btn btn-circle btn-outline ml-4 "
+            className="btn btn-circle btn-outline ml-4 btn-primary"
             onClick={handlePlus}
           >
             <svg
@@ -116,7 +117,7 @@ export default function SearchForm() {
               className="h-4 w-4"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="currentColor"
+              stroke="white"
             >
               <path
                 stroke-linecap="round"
@@ -128,7 +129,7 @@ export default function SearchForm() {
           </button>
         </div>
         <button
-          className="btn btn-primary join-item dark:bg-pink-700/60 backdrop-blur-sm"
+          className="btn btn-primary join-item bg-pink-700/60 backdrop-blur-sm"
           onClick={() => handleClick(startDate, endDate, passengers)}
         >
           RECHERCHER
