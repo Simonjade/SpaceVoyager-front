@@ -63,7 +63,7 @@ export default function SearchForm() {
 
   return (
     <>
-      <div className="join join-vertical text-center w-3/5 self-center ">
+      <div className="flex justify-center join join-vertical lg:join-horizontal text-center w-3/5 self-center ">
         <DatePicker
           selected={startDate}
           onChange={(date) => setStartDate(date)}
@@ -73,7 +73,7 @@ export default function SearchForm() {
           startDate={startDate}
           endDate={endDate}
           minDate={startDate}
-          className="w-full px-3 py-2 bg-red-100/10 backdrop-blur-sm rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item text-white text-center"
+          className=" w-full px-3 py-3 bg-indigo-50/10 backdrop-blur-sm rounded-md focus:outline-none focus:ring focus:ring-blue-200 lg:join-vertical text-white text-center"
         />
         <DatePicker
           selected={endDate}
@@ -84,52 +84,25 @@ export default function SearchForm() {
           startDate={startDate}
           endDate={endDate}
           minDate={startDate}
-          className="w-full px-3 py-2 bg-red-100/10 backdrop-blur-sm rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item text-white text-center"
+          className="w-full px-3 py-3 bg-indigo-50/10 backdrop-blur-sm rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item text-white text-center"
         />
-        <div className="w-full px-3 py-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item bg-red-100/10 backdrop-blur-sm">
-          <button
-            className="btn btn-circle btn-outline mr-4 btn-primary "
+        <div className="md:w-full lg:w-1/3 lg:max-w-2 xl:w-1/5 px-3 py-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item bg-indigo-50/10 backdrop-blur-sm">
+        <button
+            className="  mr-4 btn-primary btn-circle w-8 h-8 text-l text-black bg-white/80"
             onClick={handleMinus}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="none"
-      
-              viewBox="0 0 24 24"
-              stroke="white"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+          > -
+          
           </button>
           {passengers}
           <button
-            className="btn btn-circle btn-outline ml-4 btn-primary"
+            className=" ml-4 btn-primary btn-circle w-8 h-8 text-l text-black bg-white/80"
             onClick={handlePlus}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="white"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 18L18 6M6 6l12 12"
-              />
-            </svg>
+          > +
+            
           </button>
         </div>
         <button
-          className="btn btn-primary join-item bg-pink-700/60 backdrop-blur-sm"
+          className="btn btn-primary join-item bg-purple-500/50 backdrop-blur-sm"
           onClick={() => handleClick(startDate, endDate, passengers)}
         >
           RECHERCHER
