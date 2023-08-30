@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import "daisyui/dist/full.css";
 import { Routes, Route } from "react-router-dom";
 

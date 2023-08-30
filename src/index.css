@@ -3,12 +3,6 @@
 @tailwind utilities;
 
 :root {
-<<<<<<< HEAD
-=======
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
->>>>>>> 5dca2d8a1cf45b841b8b161926bd27b6cf86c6b5
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -62,7 +56,3 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 5dca2d8a1cf45b841b8b161926bd27b6cf86c6b5
