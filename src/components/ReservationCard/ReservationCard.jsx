@@ -26,35 +26,31 @@ export default function ReservationCard({ reservation }) {
   };
 
   return (
-    <div className="collapse bg-base-200 w-10/12 lg:w-8/12 m-1">
-      <input type="checkbox" />
-      <div className="collapse-title text-xl font-medium">
-        Your trip to {reservation.planet_name}
-      </div>
-      <div className="collapse-content">
-        <figure className="">
-          <img
-            src={reservation.planet_img}
-            alt="planet_image"
-            className="rounded-lg w-full mb-5"
-          />
+    <div>
+      <div className="card card-side backdrop-blur-sm bg-indigo-50/10 text-white shadow-xl md:m-5 mb-6">
+        <figure className="w-1/3 bg-black">
+          <img src={reservation.planet_img} alt="planet" />
         </figure>
-        <div className="">
-          <p>Your departure date : {reservation.departure_date}</p>
-          <p>Your comeback date : {reservation.comeback_date}</p>
-          <p>Your destination : {reservation.planet_name}</p>
-          <p>Your hostel : {reservation.hostel_name}</p>
-          <p>Your room : {reservation.room_rank}</p>
-          <p>
-            Total price :{" "}
-            {reservation.planet_price +
-              reservation.room_price * reservation.booking_nbparticipants}
-          </p>
-        </div>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary" onClick={() => handleDelete()}>
-            Delete Trip
-          </button>
+        <div className="card-body">
+          <h2 className="card-title">Your trip to {reservation.planet_name}</h2>
+          <div className="">
+            <p>Departure date : {reservation.departure_date}</p>
+            <p>Comeback date : {reservation.comeback_date}</p>
+            <p>Destination : {reservation.planet_name}</p>
+            <p>Hostel : {reservation.hostel_name}</p>
+            <p>Room : {reservation.room_rank}</p>
+            <p>
+              Total price :{" "}
+              {reservation.planet_price +
+                reservation.room_price * reservation.booking_nbparticipants}
+              €
+            </p>
+          </div>
+          <div className="card-actions justify-center">
+            <button className="btn btn-primary" onClick={() => handleDelete()}>
+              Delete Trip
+            </button>
+          </div>
         </div>
       </div>
     </div>
