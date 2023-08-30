@@ -40,8 +40,8 @@ export default function LoginForm() {
 
   return (
     <div>
-      <div className="grid justify-center flex-grow my-4 font-bold">LOG IN</div>
-      <form>
+      <h2 className="grid justify-center my-4 font-bold">LOG IN</h2>
+      <form className="flex items-center flex-col">
         <input
           type="text"
           placeholder="Email"
