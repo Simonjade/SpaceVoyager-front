@@ -38,8 +38,8 @@ export default function RegisterForm() {
   };
   return (
     <div>
-      <div className="grid flex-grow my-4 font-bold">REGISTER</div>
-      <form action="">
+      <h2 className="grid justify-center my-4 font-bold">REGISTER</h2>
+      <form className="flex items-center flex-col">
         <input
           type="text"
           placeholder="Firstname"
