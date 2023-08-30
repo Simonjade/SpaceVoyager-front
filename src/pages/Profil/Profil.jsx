@@ -92,7 +92,7 @@ export default function Profil() {
               <label className="w-10 font-bold text-white">FIRSTNAME</label>
               {isEditing ? (
                 <input
-                  className="input input-bordered w-full max-w-xs self-center"
+                  className="input w-full max-w-xs self-center"
                   name=""
                   defaultValue={dataUser?.firstname}
                   autoFocus
