@@ -65,7 +65,7 @@ export default function RegisterForm() {
           onChange={(e) => setPasswordRegister(e.target.value)}
         />
         <button
-          className="btn btn-primary btn-wide my-4 sm:btn-sm md:btn-md lg:btn-lg"
+          className="btn btn-secondary btn-wide my-4 sm:btn-sm md:btn-md lg:btn-lg"
           onClick={(event) => handleSubmitRegister(event)}
         >
           SEND

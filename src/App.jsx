@@ -21,18 +21,16 @@ function App() {
       <Stars />
       <div className="relative flex flex-col justify-between h-screen">
         <Header />
-        <div className="flex justify-start flex-col">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/Profil" element={<Profil />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/destinations" element={<Destinations />} />
-            <Route path="/detail" element={<BookingDetail />}></Route>
-            <Route path="/about" element={<About />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/Profil" element={<Profil />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/destinations" element={<Destinations />} />
+          <Route path="/detail" element={<BookingDetail />}></Route>
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
         <Footer />
       </div>
     </>

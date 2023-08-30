@@ -7,12 +7,10 @@ import RegisterForm from "../../components/RegisterForm/RegisterForm";
 
 export default function Login() {
   return (
-    <div className="flex flex-col w-full lg:flex-row">
+    <div className="flex flex-col w-full lg:flex-row lg:justify-center lg:gap-5">
       <LoginForm />
-      <div className="flex justify-center flex-row">
-        <div className="divider lg:divider-horizontal place-content-center font-bold"></div>
-        <div className="">OR</div>
-        <div className="divider lg:divider-horizontal place-content-center font-bold"></div>
+      <div className="divider lg:divider-horizontal before:bg-primary after:bg-secondary">
+        OR
       </div>
       <RegisterForm />
     </div>
