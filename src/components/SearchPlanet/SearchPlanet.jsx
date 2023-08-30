@@ -48,7 +48,6 @@ export default function SearchPlanet({
 
   return (
     <>
-      <h1>SearchPlanet</h1>
       <div className="card card-side">
         <div className="card-body  w-1/3 bg-base-100 shadow-xl">
           <h2 className="card-title">date aller :</h2>
@@ -83,12 +82,13 @@ export default function SearchPlanet({
           <p>Prix total : {cardSelected.price * person}€</p>
         </div>
       </div>
-
-      <ul className="steps">
-        <li className="step step-primary">Choix planet</li>
-        <li className="step">Choix hotel</li>
-        <li className="step">Confirmation</li>
-      </ul>
+      <div>
+        <ul className="steps">
+          <li className="step step-primary">Choix planet</li>
+          <li className="step">Choix hotel</li>
+          <li className="step">Confirmation</li>
+        </ul>
+      </div>
 
       <div class="overflow-y-auto w-5/6- max-h-[600px]">
         {error ? (
