@@ -13,7 +13,6 @@ export default function NavBar2() {
   const store = useContext(StoreContext);
 
   const isAuthenticated = useIsAuthenticated();
-  /* const [islogged, setIsLogged] = useState(false); */
 
   useEffect(() => {}, [isAuthenticated]);
 
@@ -55,6 +54,14 @@ export default function NavBar2() {
             >
               About
             </a>
+            {isAuthenticated && (
+              <a
+                href="/profil"
+                className="text-sm font-semibold leading-6 hover:text-secondary hover:transition-colors hover:duration-300 duration-500"
+              >
+                Profil
+              </a>
+            )}
           </div>
         </div>
         <div>
@@ -68,10 +75,11 @@ export default function NavBar2() {
               </a>
             ) : (
               <a
-                href="/profil"
+                href="#"
                 className="text-sm font-semibold leading-6 hover:text-secondary hover:transition-colors hover:duration-300 duration-500"
+                onClick={() => auth.logout()}
               >
-                Profil
+                Logout <span aria-hidden="true">&rarr;</span>
               </a>
             )}
           </div>
@@ -110,21 +118,6 @@ export default function NavBar2() {
           >
             Accueil
           </a>
-          {!isAuthenticated ? (
-            <a
-              href="/login"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            >
-              Login
-            </a>
-          ) : (
-            <a
-              href="/profil"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            >
-              Profil
-            </a>
-          )}
 
           <a
             href="/destinations"
@@ -138,6 +131,30 @@ export default function NavBar2() {
           >
             A propos
           </a>
+          {isAuthenticated && (
+            <a
+              href="/login"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            >
+              Profil
+            </a>
+          )}
+          {!isAuthenticated ? (
+            <a
+              href="/login"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            >
+              Login
+            </a>
+          ) : (
+            <a
+              href="/profil"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              onClick={() => auth.logout()}
+            >
+              Logout
+            </a>
+          )}
         </div>
       </div>
     </>

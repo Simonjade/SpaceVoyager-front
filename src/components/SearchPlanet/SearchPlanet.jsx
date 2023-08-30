@@ -57,63 +57,56 @@ export default function SearchPlanet({
   return (
     <>
       <div className=" flex flex-col h-full justify-between">
-
-        <div className="flex gap-2 flex-col">
-          <div className="flex gap-2 mx-4">
+        <div className="flex gap-3 flex-col">
+          <div className="flex gap-3 mx-4">
             <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
-              <h2 className="font-bold">Date aller :</h2>
-              <p className="text-center">{departureDate}</p>
+              <h2 className="font-bold inline">Aller : </h2>
+              <p className="text-center inline">{departureDate}</p>
             </div>
             <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
-              <h2 className="font-bold">Date retour :</h2>
-              <p className="text-center">{comebackDate}</p>
+              <h2 className="font-bold inline ">Retour : </h2>
+              <p className="text-center inline">{comebackDate}</p>
             </div>
           </div>
 
-          <div className=" flex gap-2 bg-indigo-50/10 mx-4 p-2 backdrop-blur-sm text-white rounded-lg text-center">
+          <div className=" flex gap-3 bg-indigo-50/10 mx-4 p-2 backdrop-blur-sm text-white rounded-lg text-center">
             <h2 className="font-bold">Nombre de passager :</h2>
             <p className="">{person}</p>
           </div>
 
-          <div>
+          <div className=" flex justify-center">
             <ul className="steps">
               <li className="step step-primary">Choix planet</li>
               <li className="step">Choix hotel</li>
               <li className="step">Confirmation</li>
             </ul>
           </div>
-
         </div>
 
-   
+        <div className="overflow-y-auto h-80">
+          {error ? (
+            <p>Une erreur s'est produite : {error.message}</p>
+          ) : data ? (
+            data.map((planetData) => (
+              <CardPlanet
+                key={planetData.id}
+                planetData={planetData}
+                setCardSelected={setCardSelected}
+              />
+            ))
+          ) : (
+            <p>Chargement en cours...</p>
+          )}
+        </div>
 
-          <div className="overflow-y-auto h-80">
-            {error ? (
-              <p>Une erreur s'est produite : {error.message}</p>
-            ) : data ? (
-              data.map((planetData) => (
-                <CardPlanet
-                  key={planetData.id}
-                  planetData={planetData}
-                  setCardSelected={setCardSelected}
-                />
-              ))
-            ) : (
-              <p>Chargement en cours...</p>
-            )}
-          </div>
-
-
-        <div className="">
-
-          <div className="flex gap-2 mx-4">
-
-            <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
+        <div className="bg-indigo-50/10 backdrop-blur-sm">
+          <div className="flex gap-3 mx-4">
+            <div className="w-1/2 p-2 text-white rounded-lg">
               <h2 className="">Planet selectionnée :</h2>
               {cardSelected.name ? <p>{cardSelected.name}</p> : <p>_</p>}
             </div>
 
-            <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
+            <div className="w-1/2 p-2 text-white rounded-lg">
               <h2 className="">détails voyage :</h2>
               <p>
                 Prix :{" "}
@@ -127,22 +120,19 @@ export default function SearchPlanet({
               </p>
               <p>Prix total : {cardSelected.price * person}€</p>
             </div>
-
           </div>
-
-          <button
-            className=""
-            onClick={() =>
-              handleClick(departureDate, comebackDate, person, cardSelected)
-            }
-          >
-            VALIDER
-          </button>
-
+          <div className="flex justify-center">
+            <button
+              className="btn-primary w-full"
+              onClick={() =>
+                handleClick(departureDate, comebackDate, person, cardSelected)
+              }
+            >
+              VALIDER
+            </button>
+          </div>
         </div>
-
       </div>
-
     </>
   );
 }
