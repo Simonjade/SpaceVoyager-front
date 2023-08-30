@@ -26,17 +26,17 @@ export default function ReservationCard({ reservation }) {
   };
 
   return (
-    <div className="collapse bg-base-200 w-11/12 m-1">
+    <div className="collapse bg-base-200 w-10/12 lg:w-8/12 m-1">
       <input type="checkbox" />
       <div className="collapse-title text-xl font-medium">
         Your trip to {reservation.planet_name}
       </div>
       <div className="collapse-content">
-        <figure>
+        <figure className="">
           <img
             src={reservation.planet_img}
             alt="planet_image"
-            className="rounded-lg max-h-20px mb-5"
+            className="rounded-lg w-full mb-5"
           />
         </figure>
         <p>Your departure date : {reservation.departure_date}</p>

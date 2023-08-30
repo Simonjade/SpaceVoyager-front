@@ -21,7 +21,7 @@ function App() {
       <Stars />
       <div className="relative flex flex-col justify-between h-screen">
         <Header />
-        <div className="flex justify-start flex-col h-full">
+        <div className="flex justify-start flex-col">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/search" element={<Search />} />
