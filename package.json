@@ -20,6 +20,7 @@
     "react-icons": "^4.10.1",
     "react-jwt": "^1.2.0",
     "react-router-dom": "^6.15.0",
+    "react-scripts": "^5.0.1",
     "sass": "^1.66.1",
     "tailwindcss": "^3.3.3"
   },

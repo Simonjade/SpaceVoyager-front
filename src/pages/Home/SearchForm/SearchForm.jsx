@@ -8,14 +8,21 @@ import frLocale from "date-fns/locale/fr";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 
+import { useBooking } from "../../../contexts/BoonkingContext";
+
 export default function SearchForm() {
   registerLocale("fr", frLocale);
   setDefaultLocale("fr");
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-
   const [passengers, setPassengers] = useState(0);
+
+  const { state, dispatch } = useBooking();
+
+  useEffect(() => {
+    console.log("newState", state);
+  }, [state]);
 
   useEffect(() => {
     console.log("La valeur de startDate :", format(startDate, "yyyy-MM-dd"));
@@ -39,6 +46,15 @@ export default function SearchForm() {
   const handleClick = (start, end, passengers) => {
     start = format(start, "yyyy-MM-dd");
     end = format(end, "yyyy-MM-dd");
+
+    // Utilisez dispatch pour mettre à jour la date de départ
+    dispatch({ type: "SET_DEPARTURE", payload: start });
+
+    // Utilisez dispatch pour mettre à jour la date de fin
+    dispatch({ type: "SET_COMEBACK", payload: end });
+
+    // Utilisez dispatch pour mettre à jour le nombre de passagers
+    dispatch({ type: "SET_PERSON", payload: passengers });
 
     navigate(
       `/search?departureDate=${start}&comebackDate=${end}&person=${passengers}`
@@ -71,7 +87,10 @@ export default function SearchForm() {
           className="w-full px-3 py-2 dark:bg-red-100/10 backdrop-blur-sm rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item text-white text-center"
         />
         <div className="w-full px-3 py-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item dark:bg-red-100/10 backdrop-blur-sm">
-          <button className="btn btn-circle btn-outline mr-4 " onClick={handleMinus}>
+          <button
+            className="btn btn-circle btn-outline mr-4 "
+            onClick={handleMinus}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4"
@@ -88,7 +107,10 @@ export default function SearchForm() {
             </svg>
           </button>
           {passengers}
-          <button className="btn btn-circle btn-outline ml-4 " onClick={handlePlus}>
+          <button
+            className="btn btn-circle btn-outline ml-4 "
+            onClick={handlePlus}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4"

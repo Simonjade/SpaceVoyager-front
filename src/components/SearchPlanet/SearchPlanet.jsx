@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CardPlanet from "./CardPlanet/CardPlanet";
 
+import { useBooking } from "../../contexts/BoonkingContext";
+
 export default function SearchPlanet({
   departureDate,
   comebackDate,
@@ -13,6 +15,8 @@ export default function SearchPlanet({
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [cardSelected, setCardSelected] = useState([]);
+
+  const { state, dispatch } = useBooking();
 
   const fetchSearchPlanet = async () => {
     try {
@@ -26,15 +30,19 @@ export default function SearchPlanet({
         "Une erreur s'est produite lors de la récupération des données :",
         error
       );
-      setError(erreur);
+      setError(error);
     }
   };
 
   const navigate = useNavigate();
   const handleClick = (start, end, passengers, planet) => {
-    setPlanet(planet);
+    setPlanet(planet.name);
+
+    // Utilisez dispatch pour enregistrer l'objet planet choisie
+    dispatch({ type: "SET_PLANET", payload: planet });
+
     navigate(
-      `/search?departureDate=${start}&comebackDate=${end}&person=${passengers}&planet=${planet}`
+      `/search?departureDate=${start}&comebackDate=${end}&person=${passengers}&planet=${planet.name}`
     );
   };
 
@@ -108,7 +116,7 @@ export default function SearchPlanet({
       <button
         className="btn btn-primary"
         onClick={() =>
-          handleClick(departureDate, comebackDate, person, cardSelected.name)
+          handleClick(departureDate, comebackDate, person, cardSelected)
         }
       >
         VALIDER
