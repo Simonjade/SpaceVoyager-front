@@ -5,7 +5,9 @@ export default function LogoMini() {
     <>
       <div>
         <div className="w-12">
-          <img src="../../../../mini-logo-space-voyager.svg" />
+          <a href="/">
+            <img src="../../../../mini-logo-space-voyager.svg" />
+          </a>
         </div>
       </div>
     </>

@@ -251,7 +251,13 @@ export default function Profil() {
               <ReservationCard key={index} reservation={element} />
             ))
           ) : (
-            <p>No reservations available</p>
+            <div className="card w-96 backdrop-blur-sm bg-indigo-50/10 shadow-xl">
+              <div className="card-body">
+                <p className="text-center text-white font-bold">
+                  No reservations yet
+                </p>
+              </div>
+            </div>
           )}
         </div>
       </div>

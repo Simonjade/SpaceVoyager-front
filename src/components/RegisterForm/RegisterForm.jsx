@@ -53,7 +53,7 @@ export default function RegisterForm() {
           onChange={(e) => setLastnameRegister(e.target.value)}
         />
         <input
-          type="text"
+          type="email"
           placeholder="Email"
           className="input input-bordered my-4 input-primary w-full max-w-xs text-black"
           onChange={(e) => setEmailRegister(e.target.value)}
