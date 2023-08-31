@@ -6,12 +6,8 @@ export default function Home() {
   return (
     <>
       <div className="h-full">
-        <div className="flex flex-col justify-end h-4/6 gap-8">
+        <div className="flex flex-col justify-center h-4/6 landscape:h-2/3 gap-3 landscape:gap-9 sm:gap-1">
           <TitleMain />
-          <h3 className="text-1xl font-bold text-center self-center inline-block max-w-sm mb-1">
-            {/* VEUILLEZ CHOISIR VOS DATES DE DEPART ET DE RETOUR */}
-            Veuillez choisir vos dates de depart et de retour
-          </h3>
           <SearchForm />
         </div>
       </div>

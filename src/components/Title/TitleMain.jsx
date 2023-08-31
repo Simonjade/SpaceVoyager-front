@@ -3,8 +3,8 @@ import React from "react";
 export default function Title() {
   return (
     <>
-      <div className=" pl-5 mb-20">
-        <h1 className="text-3xl hero lg:text-8xl text-4xl lg:font-bolder bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+      <div className=" pl-5 portrait:mb-10 landscape:mb-3">
+        <h1 className="hero lg:text-8xl md:text-6xl text-center font-extrabold bg-gradient-to-l from-fuchsia-600 via-purple-500 to-indigo-600 bg-clip-text text-transparent">
           SPACE VOYAGER
         </h1>
         <h2 className="text-xs tracking-widest hero">
