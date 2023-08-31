@@ -90,12 +90,12 @@ export default function SearchHostel({
         <div className="overflow-y-auto no-scrollbar h-80 lg:h-[45rem] lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1">
           {error ? (
             <p>Une erreur s'est produite : {error.message}</p>
-          ) : data ? (
-            data.map((hostelData) => (
+          ) : hostel ? (
+            hostel.map((hostelData) => (
               <CardHostel
                 key={hostelData.id}
                 hostelData={hostelData}
-                setHostel={setHostel}
+                setRoom={setRoom}
               />
             ))
           ) : (
@@ -136,7 +136,8 @@ export default function SearchHostel({
                       comebackDate,
                       person,
                       planet,
-                      hostel
+                      hostel,
+                      room
                     );
                   }
                 }}

@@ -11,8 +11,8 @@ export default function LoginForm() {
   const auth = useContext(AuthContext);
   const [hasError, setHasError] = useState(false);
 
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
@@ -48,6 +48,7 @@ export default function LoginForm() {
           className="input input-bordered my-4 input-primary w-full max-w-xs text-black"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          autoComplete="email"
         />
         <input
           type="password"
@@ -55,6 +56,7 @@ export default function LoginForm() {
           className="input input-bordered my-4 input-primary w-full max-w-xs text-black"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          autoComplete="current-password"
         />
         <button
           className="btn btn-primary btn-wide my-4 mb-15 sm:btn-sm md:btn-md lg:btn-lg"

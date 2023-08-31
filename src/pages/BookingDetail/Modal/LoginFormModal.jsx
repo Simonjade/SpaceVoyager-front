@@ -11,8 +11,8 @@ export default function LoginFormModal() {
   const auth = useContext(AuthContext);
   const [hasError, setHasError] = useState(false);
 
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
@@ -41,13 +41,14 @@ export default function LoginFormModal() {
   return (
     <div>
       <h2 className="grid justify-center my-4 font-bold">LOG IN</h2>
-      <form className="flex items-center flex-col">
+      <div className="flex items-center flex-col">
         <input
           type="text"
           placeholder="Email"
           className="input input-bordered my-4 input-primary w-full max-w-xs"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          autoComplete="email"
         />
         <input
           type="password"
@@ -55,6 +56,7 @@ export default function LoginFormModal() {
           className="input input-bordered my-4 input-primary w-full max-w-xs"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          autoComplete="current-password"
         />
         <button
           className="btn btn-primary btn-wide my-4 mb-15 sm:btn-sm md:btn-md lg:btn-lg"
@@ -62,7 +64,7 @@ export default function LoginFormModal() {
         >
           SEND
         </button>
-      </form>
+      </div>
       {hasError && (
         <div className="text-red">Email ou mot de passe incorrect</div>
       )}
