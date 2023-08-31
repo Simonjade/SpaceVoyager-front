@@ -18,24 +18,23 @@ export default function CardHostel({ hostelData, setRoom }) {
     console.log(checkboxes);
   }, [checkboxes]);
   return (
-    <div className="card card-side bg-base-100 shadow-xl">
-      <div className="card w-96 bg-base-100 shadow-xl image-full">
+    <div className="m-5 lg:flex rounded-lg backdrop-blur-sm bg-indigo-50/10">
+      <div className="relative lg:w-1/2">
         <figure>
-          <img src={hostel} alt={hostelData.name} />
+          <img className="object-contain" src={hostel} alt={hostelData.name} />
         </figure>
-        <div className="card-actions justify-end items-end">
-          <button className="btn btn-primary">Détails</button>
-        </div>
+        <button className="btn-primary absolute mb-2 mr-2 bottom-0 right-0">
+          Détails
+        </button>
       </div>
-      <div className="card-body">
-        <h2 className="card-title">{hostelData.name}</h2>
-        <p>Prix du vol aller/retour:</p>
-        <p>{hostelData.price} €</p>
-        <div className="card-actions justify-end">
+      <div className="flex flex-col lg:justify-between gap-3 m-2 lg:w-1/2">
+        <h2 className="lg:text-xl font-bold">{hostelData.name}</h2>
+        <div className="flex flex-col gap-2">
           {hostelData.room.map((roomData) => (
             <label key={roomData.id}>
               <input
                 type="checkbox"
+                className="mr-2"
                 checked={checkboxes[roomData.room_type] || false}
                 onChange={() => handleCheckboxChange(roomData)}
               />
@@ -44,6 +43,7 @@ export default function CardHostel({ hostelData, setRoom }) {
           ))}
         </div>
       </div>
+      <div className="lg:hidden divider lg:divider-horizontal before:bg-primary after:bg-secondary max-w-100"></div>
     </div>
   );
 }

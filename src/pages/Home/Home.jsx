@@ -1,14 +1,13 @@
 import Stars from "../../components/Stars/Stars";
 import SearchForm from "./SearchForm/SearchForm";
+import TitleMain from "../../components/Title/TitleMain";
 
 export default function Home() {
   return (
     <>
       <div className="h-full">
-        <div className="flex flex-col justify-end h-4/6 gap-8">
-          <h3 className="text-2xl font-bold text-center self-center inline-block max-w-sm">
-            VEUILLEZ CHOISIR VOS DATES DE DEPART ET DE RETOUR
-          </h3>
+        <div className="flex flex-col justify-center h-4/6 landscape:h-2/3 gap-3 landscape:gap-9 sm:gap-1">
+          <TitleMain />
           <SearchForm />
         </div>
       </div>
