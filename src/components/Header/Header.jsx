@@ -10,7 +10,6 @@ export default function Header() {
     <>
       <div className="mb-4">
         <NavBar2 />
-        <Title />
       </div>
     </>
   );

@@ -100,7 +100,7 @@ export default function Profil() {
                   onChange={(event) => setEditFirstname(event.target.value)}
                 />
               ) : (
-                <div className="h-[3rem] rounded-lg border-2 border-violet-800 backdrop-blur-sm bg-indigo-50/10 w-80 flex align-center">
+                <div className="h-[3rem] rounded-lg border-2 border-primary backdrop-blur-sm bg-indigo-50/10 w-80 flex align-center">
                   <p className="max-w-xs self-center text-white align-middle ml-2">
                     {editFirstname ? editFirstname : dataUser?.firstname}
                   </p>
@@ -119,7 +119,7 @@ export default function Profil() {
                   onChange={(event) => setEditLastname(event.target.value)}
                 />
               ) : (
-                <div className="h-[3rem] rounded-lg border-2 border-violet-800 backdrop-blur-sm bg-indigo-50/10 w-80 flex align-center">
+                <div className="h-[3rem] rounded-lg border-2 border-primary backdrop-blur-sm bg-indigo-50/10 w-80 flex align-center">
                   <p className="max-w-xs self-center text-white align-middle ml-2">
                     {editLastname ? editLastname : dataUser?.lastname}
                   </p>
@@ -137,7 +137,7 @@ export default function Profil() {
                   onChange={(event) => setEditEmail(event.target.value)}
                 />
               ) : (
-                <div className="h-[3rem] rounded-lg border-2 border-violet-800 backdrop-blur-sm bg-indigo-50/10 w-80 flex align-center">
+                <div className="h-[3rem] rounded-lg border-2 border-primary  backdrop-blur-sm bg-indigo-50/10 w-80 flex align-center">
                   <p className="max-w-xs self-center text-white align-middle ml-2">
                     {editEmail ? editEmail : dataUser?.mail}
                   </p>
@@ -145,7 +145,7 @@ export default function Profil() {
               )}
             </div>
           </div>
-          <div className="flex gap-2 justify-center shadow-sm">
+          <div className="flex gap-3 lg:ml-12 justify-center shadow-sm">
             {isEditing ? (
               <button
                 className="mt-4 btn-secondary inline-flex space-x-1 items-center"
@@ -242,7 +242,7 @@ export default function Profil() {
         </div>
         <div className="divider lg:divider-horizontal before:bg-primary after:bg-secondary"></div>
 
-        <div className="flex flex-col items-center lg:w-1/2 scroll-auto overflow-y-auto lg:h-2/2 self-start">
+        <div className="flex flex-col items-center lg:w-1/2 no-scrollbar overflow-y-scroll lg:h-[40rem] lg:h-2/2 self-start">
           {dataUser.reservation &&
           //! This is bricolage, better not to send null
           dataUser.reservation[0].planet_name !== null &&

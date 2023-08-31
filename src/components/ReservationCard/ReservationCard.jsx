@@ -27,7 +27,7 @@ export default function ReservationCard({ reservation }) {
 
   return (
     <div>
-      <div className="card card-side backdrop-blur-sm bg-indigo-50/10 text-white shadow-xl md:m-5 mb-6">
+      <div className="card card-side backdrop-blur-sm bg-indigo-50/10 text-white shadow-xl md:m-5 mb-6 m-4 border-2 border-primary">
         <figure className="w-1/3 bg-black">
           <img src={reservation.planet_img} alt="planet" />
         </figure>
