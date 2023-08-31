@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "./NavBar/Navbar";
+import NavBar from "./NavBar/NavBar";
 import Avatar from "./NavBar/Avatar";
 import LogoMini from "../LogoMini/LogoMini";
 import Title from "../Title/Title";

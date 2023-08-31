@@ -7,7 +7,7 @@ import { StoreContext } from "../../../contexts/StoreContext";
 /* import ProtectedZone from "../../Protected/Protected";
 ProtectedZone; */
 
-export default function NavBar() {
+export default function NavBarOld() {
   const auth = useContext(AuthContext);
   const store = useContext(StoreContext);
 

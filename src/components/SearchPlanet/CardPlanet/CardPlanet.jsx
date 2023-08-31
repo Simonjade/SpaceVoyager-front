@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function CardPlanet({ planetData, setCardSelected }) {
-  console.log("planetData", planetData);
   return (
     <div className="m-5 lg:flex rounded-lg backdrop-blur-sm bg-indigo-50/10">
       <div className="relative lg:w-1/2">

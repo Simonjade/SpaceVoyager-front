@@ -95,7 +95,7 @@ export default function SearchHostel({
               <CardHostel
                 key={hostelData.id}
                 hostelData={hostelData}
-                setHostel={setHostel}
+                setRoom={setRoom}
               />
             ))
           ) : (
@@ -136,7 +136,8 @@ export default function SearchHostel({
                       comebackDate,
                       person,
                       planet,
-                      hostel
+                      hostel,
+                      room
                     );
                   }
                 }}

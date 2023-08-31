@@ -8,7 +8,7 @@ import { StoreContext } from "../../../contexts/StoreContext";
 
 import LogoMini from "../../LogoMini/LogoMini";
 
-export default function NavBar2() {
+export default function NavBar() {
   const auth = useContext(AuthContext);
   const store = useContext(StoreContext);
 

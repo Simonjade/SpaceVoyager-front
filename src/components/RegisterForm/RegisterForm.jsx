@@ -6,10 +6,10 @@ import { useContext, useEffect } from "react";
 import request from "../../tools/request";
 
 export default function RegisterForm() {
-  const [emailRegister, setEmailRegister] = useState(null);
-  const [passwordRegister, setPasswordRegister] = useState(null);
-  const [firstnameRegister, setFirstnameRegister] = useState(null);
-  const [lastnameRegister, setLastnameRegister] = useState(null);
+  const [emailRegister, setEmailRegister] = useState("");
+  const [passwordRegister, setPasswordRegister] = useState("");
+  const [firstnameRegister, setFirstnameRegister] = useState("");
+  const [lastnameRegister, setLastnameRegister] = useState("");
   const [message, setMessage] = useState(null);
 
   const handleSubmitRegister = async (event) => {
@@ -57,12 +57,14 @@ export default function RegisterForm() {
           placeholder="Email"
           className="input input-bordered my-4 input-primary w-full max-w-xs text-black"
           onChange={(e) => setEmailRegister(e.target.value)}
+          autoComplete="email"
         />
         <input
           type="password"
           placeholder="Password"
           className="input input-bordered my-4 input-primary w-full max-w-xs text-black"
           onChange={(e) => setPasswordRegister(e.target.value)}
+          autoComplete="current-password"
         />
         <button
           className="btn btn-secondary btn-wide my-4 sm:btn-sm md:btn-md lg:btn-lg"
