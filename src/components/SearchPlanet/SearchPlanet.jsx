@@ -56,7 +56,7 @@ export default function SearchPlanet({
 
   return (
     <>
-      <div className="sm:flex sm:flex-col sm:justify-between h-screen lg:grid lg:grid-cols-3 lg:grid-rows-3 lg:gap-4">
+      <div className="sm:flex sm:flex-col sm:justify-between h-full lg:grid lg:grid-cols-3 lg:mx-10 lg:grid-rows-3 lg:gap-4">
         <div className="flex gap-3 flex-col lg:col-start-3 lg:row-start-1">
           <div className="flex gap-3 mx-4">
             <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
@@ -83,7 +83,7 @@ export default function SearchPlanet({
           </div>
         </div>
 
-        <div className="overflow-y-auto no-scrollbar h-80 lg:h-[45rem] lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1">
+        <div className="overflow-y-auto no-scrollbar h-96 lg:h-[45rem] lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1">
           {error ? (
             <p>Une erreur s'est produite : {error.message}</p>
           ) : data ? (
