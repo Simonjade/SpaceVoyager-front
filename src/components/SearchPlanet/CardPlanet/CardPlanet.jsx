@@ -15,6 +15,12 @@ export default function CardPlanet({ planetData, setCardSelected }) {
         <button className="btn-primary absolute mb-2 mr-2 bottom-0 right-0">
           Détails
         </button>
+        <label
+          htmlFor="my-drawer-4"
+          className="btn-primary absolute mb-2 mr-2 bottom-0 right-0 drawer-button btn"
+        >
+          Détails
+        </label>
       </div>
       <div className="flex flex-col lg:justify-between gap-3 m-2 lg:w-1/2">
         <h2 className="lg:text-xl font-bold">{planetData.name}</h2>

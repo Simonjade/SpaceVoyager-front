@@ -23,7 +23,7 @@ export default function SearchPlanet({
       const response = await axios.get(
         `http://localhost:3000/booking/search?departureDate=${departureDate}&comebackDate=${comebackDate}&person=${person}`
       );
-      console.log(response.data);
+      console.log("response.data", response.data);
       setData(response.data);
     } catch (error) {
       console.error(
@@ -47,6 +47,7 @@ export default function SearchPlanet({
   };
 
   useEffect(() => {
+    console.log("this is fetchSearchPlanet");
     fetchSearchPlanet();
   }, []);
 
@@ -56,6 +57,16 @@ export default function SearchPlanet({
 
   return (
     <>
+      <div className="drawer drawer-end">
+        <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+        <div className="drawer-content">{/* Page content here */}</div>
+        <div className="drawer-side z-50">
+          <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
+          <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+            {}
+          </ul>
+        </div>
+      </div>
       <div className="sm:flex sm:flex-col sm:justify-between h-full lg:grid lg:grid-cols-3 lg:mx-10 lg:grid-rows-3 lg:gap-4">
         <div className="flex gap-3 flex-col lg:col-start-3 lg:row-start-1">
           <div className="flex gap-3 mx-4">
@@ -82,7 +93,6 @@ export default function SearchPlanet({
             </ul>
           </div>
         </div>
-
         <div className="overflow-y-auto no-scrollbar h-96 lg:h-[45rem] lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1">
           {error ? (
             <p>Une erreur s'est produite : {error.message}</p>
