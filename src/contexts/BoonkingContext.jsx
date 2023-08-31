@@ -10,6 +10,7 @@ const initialState = {
   person: null,
   planet: null,
   hostel: null,
+  room: null,
 };
 
 // Étape 3 : Créez votre réducteur
@@ -25,6 +26,8 @@ function reducer(state, action) {
       return { ...state, planet: action.payload };
     case "SET_HOSTEL":
       return { ...state, hostel: action.payload };
+    case "SET_ROOM":
+      return { ...state, room: action.payload };
     default:
       return state;
   }

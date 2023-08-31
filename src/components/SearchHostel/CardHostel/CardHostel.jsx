@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import hostel from "../../../assets/hostel.jpg";
 import { useState } from "react";
 
-export default function CardHostel({ hostelData, setHostel }) {
+export default function CardHostel({ hostelData, setRoom }) {
   // Créez un état pour gérer les cases à cocher
   const [checkboxes, setCheckboxes] = useState([]);
 
@@ -11,7 +11,8 @@ export default function CardHostel({ hostelData, setHostel }) {
     const updatedCheckboxes = [...checkboxes];
     updatedCheckboxes[room.room_type] = !updatedCheckboxes[room.room_type];
     setCheckboxes(updatedCheckboxes);
-    setHostel(room);
+
+    setRoom(room);
   };
   useEffect(() => {
     console.log(checkboxes);

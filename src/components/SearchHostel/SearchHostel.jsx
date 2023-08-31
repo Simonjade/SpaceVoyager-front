@@ -11,9 +11,9 @@ export default function SearchHostel({
   person,
   planet,
 }) {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
   const [hostel, setHostel] = useState(null);
+  const [error, setError] = useState(null);
+  const [room, setRoom] = useState(null);
 
   const { state, dispatch } = useBooking();
 
@@ -21,13 +21,17 @@ export default function SearchHostel({
     console.log("hostel", hostel);
   }, [hostel]);
 
+  useEffect(() => {
+    console.log("room", room);
+  }, [room]);
+
   const fetchSearchHostel = async () => {
     try {
       const response = await axios.get(
         `http://localhost:3000/booking/search?departureDate=${departureDate}&comebackDate=${comebackDate}&person=${person}&planet=${planet}`
       );
       console.log(response.data);
-      setData(response.data);
+      setHostel(response.data);
     } catch (error) {
       console.error(
         "Une erreur s'est produite lors de la récupération des données :",
@@ -41,14 +45,17 @@ export default function SearchHostel({
     fetchSearchHostel();
   }, []);
   const navigate = useNavigate();
-  const handleClick = (start, end, passengers, planet, hostel) => {
-    console.log(hostel);
+  const handleClick = (start, end, passengers, planet, hostel, room) => {
+    console.log(room);
 
     // Utilisez dispatch pour enregistrer l'objet planet choisie
-    dispatch({ type: "SET_HOSTEL", payload: planet });
+    dispatch({ type: "SET_HOSTEL", payload: hostel[0] });
+
+    // Utilisez dispatch pour enregistrer l'objet planet choisie
+    dispatch({ type: "SET_ROOM", payload: room });
 
     navigate(
-      `/detail?departureDate=${start}&comebackDate=${end}&person=${passengers}&planet=${planet}&hostel=${hostel.room_type}`
+      `/detail?departureDate=${start}&comebackDate=${end}&person=${passengers}&planet=${planet}&hostel=${hostel.name}`
     );
   };
   return (

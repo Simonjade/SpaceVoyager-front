@@ -23,8 +23,10 @@ export default function Carousel({ destinations }) {
             key={`slide${index + 1}`}
             id={`slide${index + 1}`}
             className={`carousel-image relative w-full ${
-              index + 1 === slide ? "" : "hidden"
-            }`}
+              index + 1 === slide
+                ? "transform translate-x-0 opacity-100"
+                : "transform translate-x-full full opacity-0"
+            } transition-transform transition-opacity duration-500 ease-in-out`}
           >
             <img
               className="w-full h-auto" // Ajustez la classe CSS pour le dimensionnement de l'image
