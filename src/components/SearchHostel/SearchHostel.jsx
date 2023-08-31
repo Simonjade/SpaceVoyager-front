@@ -53,33 +53,93 @@ export default function SearchHostel({
   };
   return (
     <>
-      <h1>SearchHostel</h1>
-      <div></div>
-      <div class="overflow-y-auto w-5/6- max-h-[600px]">
-        {error ? (
-          <p>Une erreur s'est produite : {error.message}</p>
-        ) : data ? (
-          data.map((hostelData) => (
-            <CardHostel
-              key={hostelData.id}
-              hostelData={hostelData}
-              setHostel={setHostel}
-            />
-          ))
-        ) : (
-          <p>Chargement en cours...</p>
-        )}
+      <div className="sm:flex sm:flex-col sm:justify-between h-screen lg:grid lg:grid-cols-3 lg:grid-rows-3 lg:gap-4">
+        <div className="flex gap-3 flex-col lg:col-start-3 lg:row-start-1">
+          <div className="flex gap-3 mx-4">
+            <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
+              <h2 className="font-bold inline">Aller : </h2>
+              <p className="text-center inline">{departureDate}</p>
+            </div>
+            <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
+              <h2 className="font-bold inline ">Retour : </h2>
+              <p className="text-center inline">{comebackDate}</p>
+            </div>
+          </div>
+
+          <div className=" flex gap-3 bg-indigo-50/10 mx-4 p-2 backdrop-blur-sm text-white rounded-lg text-center">
+            <h2 className="font-bold">Nombre de passager :</h2>
+            <p className="">{person}</p>
+          </div>
+
+          <div className=" flex mb-4 justify-center">
+            <ul className="steps">
+              <li className="step step-primary">Choix planet</li>
+              <li className="step step-primary">Choix hotel</li>
+              <li className="step">Confirmation</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="overflow-y-auto no-scrollbar h-80 lg:h-[45rem] lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1">
+          {error ? (
+            <p>Une erreur s'est produite : {error.message}</p>
+          ) : data ? (
+            data.map((hostelData) => (
+              <CardHostel
+                key={hostelData.id}
+                hostelData={hostelData}
+                setHostel={setHostel}
+              />
+            ))
+          ) : (
+            <p>Chargement en cours...</p>
+          )}
+        </div>
+        <div className="flex flex-col justify-between mx-4 gap-3 lg:row-span-3 lg:col-start-3 lg:row-start-2">
+          <div className="rounded-lg bg-indigo-50/10 backdrop-blur-sm">
+            <div className="flex gap-3">
+              <div className="w-1/2 p-2 text-white rounded-lg">
+                <h2 className="font-bold">Hotel selectionnée :</h2>
+                {/* {setHostel.name ? <p>{setHostel.name}</p> : <p>_</p>} */}
+              </div>
+
+              <div className="w-1/2 p-2 text-white rounded-lg">
+                {/* <p className="font-bold">
+                  Prix :{" "}
+                  {cardSelected.name ? (
+                    <span>
+                      {cardSelected.price}€ x {person}
+                    </span>
+                  ) : (
+                    <sapn>_</sapn>
+                  )}
+                </p>
+                <p className="font-bold">
+                  Prix total : {cardSelected.price * person}€
+                </p> */}
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <button
+                className="btn-primary rounded-none rounded-b-lg w-full"
+                onClick={() => {
+                  if (hostel) {
+                    handleClick(
+                      departureDate,
+                      comebackDate,
+                      person,
+                      planet,
+                      hostel
+                    );
+                  }
+                }}
+              >
+                VALIDER
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <button
-        className="btn btn-primary"
-        onClick={() => {
-          if (hostel) {
-            handleClick(departureDate, comebackDate, person, planet, hostel);
-          }
-        }}
-      >
-        VALIDER
-      </button>
     </>
   );
 }
