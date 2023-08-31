@@ -56,7 +56,7 @@ export default function SearchPlanet({
 
   return (
     <>
-      <div className="sm:flex sm:flex-col sm:justify-between h-screen lg:grid lg:grid-cols-3 lg:grid-rows-3 lg:gap-4">
+      <div className="sm:flex sm:flex-col sm:justify-between h-screen lg:grid lg:grid-cols-3 lg:mx-10 lg:grid-rows-3 lg:gap-4">
         
         <div className="flex gap-3 flex-col lg:col-start-3 lg:row-start-1">
           <div className="flex gap-3 mx-4">
