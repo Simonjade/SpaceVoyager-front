@@ -43,7 +43,7 @@ export default function LoginForm() {
       <h2 className="grid justify-center my-4 font-bold">LOG IN</h2>
       <form className="flex items-center flex-col">
         <input
-          type="text"
+          type="email"
           placeholder="Email"
           className="input input-bordered my-4 input-primary w-full max-w-xs text-black"
           value={email}

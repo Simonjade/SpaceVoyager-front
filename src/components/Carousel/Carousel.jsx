@@ -16,8 +16,8 @@ export default function Carousel({ destinations }) {
   };
 
   return (
-    <div className="flex flex-col justify-start mt-10">
-      <div className="carousel w-full max-w-screen-lg mx-auto relative">
+    <div className="flex flex-col justify-start align-center self-">
+      <div className="carousel h-full max-w-sm mx-auto">
         {destinations.map((destination, index) => (
           <div
             key={`slide${index + 1}`}
@@ -31,6 +31,13 @@ export default function Carousel({ destinations }) {
               src={`../../../../${destination.img}`}
               alt={destination.name}
             />
+            <div>name : {destination.name}</div>
+            <div>radius : {destination.radius}</div>
+            <div>distance : {destination.distance}</div>
+            <div>distance light year : {destination.distance_light_year}</div>
+            <div>temp max : {destination.temp_max}</div>
+            <div>temp min : {destination.temp_min}</div>
+            <div>contenu : {destination.content}</div>
             <div className="absolute inset-0 flex justify-between items-center px-5">
               <button
                 className="bg-white bg-opacity-50 text-gray-700 p-2 rounded-full"

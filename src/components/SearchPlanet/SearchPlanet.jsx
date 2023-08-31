@@ -57,7 +57,6 @@ export default function SearchPlanet({
   return (
     <>
       <div className="sm:flex sm:flex-col sm:justify-between h-full lg:grid lg:grid-cols-3 lg:mx-10 lg:grid-rows-3 lg:gap-4">
-        
         <div className="flex gap-3 flex-col lg:col-start-3 lg:row-start-1">
           <div className="flex gap-3 mx-4">
             <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
@@ -116,7 +115,7 @@ export default function SearchPlanet({
                       {cardSelected.price}€ x {person}
                     </span>
                   ) : (
-                    <sapn>_</sapn>
+                    <span>_</span>
                   )}
                 </p>
                 <p className="font-bold">
@@ -136,7 +135,6 @@ export default function SearchPlanet({
             </div>
           </div>
         </div>
-
       </div>
     </>
   );
