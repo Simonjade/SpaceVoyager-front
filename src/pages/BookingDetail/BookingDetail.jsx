@@ -1,8 +1,69 @@
-import React from "react";
 import { useBooking } from "../../contexts/BoonkingContext";
+
+// CONTEXTS
+import { AuthContext } from "../../contexts/AuthContext";
+
+// HOOKS
+import { useContext, useEffect, useState } from "react";
+import Modal from "./Modal/Modal";
 
 export default function BookingDetail() {
   const { state } = useBooking();
+
+  const auth = useContext(AuthContext);
+
+  const [isAuthenticated, SetIsAuthenticated] = useState(null);
+
+  useEffect(() => {
+    console.log("auth", auth.state); // state de auth
+    console.log("isAuthenticated", auth.state.authenticated); //si connécté ou pas
+    if (auth.state.data) {
+      console.log("profil user", auth.state.data.user); //info user
+    }
+    console.log("postBookingData", postBookingData);
+    SetIsAuthenticated(auth.state.authenticated);
+  }, []);
+
+  const postBookingData = {
+    person: state.person,
+    total_price: (state.planet.price + state.room.price) * state.person,
+    hostel_id: state.hostel.id,
+    room_id: state.room.id,
+    dp_date: state.departure,
+    cb_date: state.comeBack,
+    planet_id: state.planet.id,
+    user_id: state,
+  };
+
+  const postBooking = async () => {
+    try {
+      const response = await axios.post(
+        `http://localhost:3000/booking`,
+        postBookingData
+      );
+      // Si la requête réussit, vous pouvez traiter la réponse ici
+      console.log("Réponse de l'API :", response.data);
+    } catch (error) {
+      // En cas d'erreur, affichez l'erreur
+      console.error("Erreur lors de la requête POST :", error);
+    }
+  };
+
+  const handleclick = () => {
+    if (isAuthenticated) {
+      console.log("voyage réservé");
+      // postBooking()
+    } else {
+      window.my_modal_5.showModal();
+    }
+  };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      window.my_modal_5.showModal(false);
+    }
+    console.log(isAuthenticated);
+  }, [isAuthenticated]);
 
   return (
     <>
@@ -15,7 +76,7 @@ export default function BookingDetail() {
           <h3 className="text-xl font-semibold">Informations du voyage</h3>
           <div className="flex">
             <img
-              class="object-contain h-1/3 w-1/4"
+              className="object-contain h-1/3 w-1/4"
               src={`../../../../${state.planet.img}`}
               alt={state.planet.name}
             ></img>
@@ -27,9 +88,9 @@ export default function BookingDetail() {
               <p className="text-gray-600">Destination : {state.planet.name}</p>
             </div>
           </div>
-          <p className="text-gray-600">Date de retour : {state.hostel.name}</p>
+          <p className="text-gray-600">Hotel : {state.hostel.name}</p>
           <p className="text-gray-600">
-            Destination : {state.hostel.room_type}
+            type de chambre : {state.room.room_type}
           </p>
 
           {/* <div className="mb-4">
@@ -49,7 +110,7 @@ export default function BookingDetail() {
             <h3 className="text-xl font-semibold">Prix par personne</h3>
             <div className="flex">
               <p className="text-green-600 text-xl font-semibold">
-                {state.planet.price + state.hostel.price} €
+                {state.planet.price + state.room.price} €
               </p>
               <p className="text-white-600 text-xl font-semibold">
                 x {state.person}
@@ -59,11 +120,14 @@ export default function BookingDetail() {
           <div className="mb-4">
             <h3 className="text-xl font-semibold">Prix total</h3>
             <p className="text-green-600 text-xl font-semibold">
-              {state.planet.price * state.person} €
+              {(state.planet.price + state.room.price) * state.person} €
             </p>
           </div>
 
-          <button className="btn btn-primary">Confirmer la réservation</button>
+          <button className="btn btn-primary" onClick={() => handleclick()}>
+            Confirmer la réservation
+          </button>
+          <Modal />
         </div>
       </div>
     </>
