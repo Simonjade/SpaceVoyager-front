@@ -16,7 +16,7 @@ export default function SearchForm() {
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [passengers, setPassengers] = useState(0);
+  const [passengers, setPassengers] = useState(1);
 
   const { state, dispatch } = useBooking();
 
@@ -37,7 +37,7 @@ export default function SearchForm() {
   };
 
   const handleMinus = () => {
-    if (passengers > 0) {
+    if (passengers > 1) {
       setPassengers(passengers - 1);
     }
   };
@@ -86,23 +86,28 @@ export default function SearchForm() {
           minDate={startDate}
           className="w-full px-3 py-3 bg-indigo-50/10 backdrop-blur-sm rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item text-white text-center"
         />
-        <div className="md:w-full lg:w-1/3 lg:max-w-2 xl:w-1/5 px-3 py-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item bg-indigo-50/10 backdrop-blur-sm">
-        <button
+        <div
+          className="md:w-full lg:w-1/3 lg:max-w-2 xl:w-1/5 px-3 py-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item bg-indigo-50/10 backdrop-blur-sm lg:tooltip tooltip-primary"
+          data-tip="2 maximum"
+        >
+          <button
             className="  mr-4 btn-primary btn-circle w-8 h-8 text-l text-black bg-white/80"
             onClick={handleMinus}
-          > -
-          
+          >
+            {" "}
+            -
           </button>
           {passengers}
           <button
             className=" ml-4 btn-primary btn-circle w-8 h-8 text-l text-black bg-white/80"
             onClick={handlePlus}
-          > +
-            
+          >
+            {" "}
+            +
           </button>
         </div>
         <button
-          className="btn btn-primary join-item bg-purple-500/50 backdrop-blur-sm"
+          className="btn join-item backdrop-blur-sm bg-gradient-to-r from-primary to-secondary text-white"
           onClick={() => handleClick(startDate, endDate, passengers)}
         >
           RECHERCHER
