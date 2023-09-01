@@ -19,7 +19,6 @@ export default function RegisterForm() {
       lastname: lastnameRegister,
       password: passwordRegister,
       mail: emailRegister,
-      role: "member",
     };
     try {
       const response = await request.generic().post("/user", data);
