@@ -1,6 +1,6 @@
 import Stars from "../../components/Stars/Stars";
-import SearchForm from "./SearchForm/SearchForm";
 import TitleMain from "../../components/Title/TitleMain";
+import SearchForm from "./SearchForm/SearchForm";
 
 export default function Home() {
   return (

@@ -43,21 +43,33 @@ export default function SearchHostel({
   };
 
   useEffect(() => {
+    // Utilisez dispatch pour mettre à jour la date de départ
+    dispatch({ type: "SET_DEPARTURE", payload: departureDate });
+
+    // Utilisez dispatch pour mettre à jour la date de fin
+    dispatch({ type: "SET_COMEBACK", payload: comebackDate });
+
+    // Utilisez dispatch pour mettre à jour le nombre de passagers
+    dispatch({ type: "SET_PERSON", payload: person });
+
+    // Convertissez le state en chaîne JSON
+    const stateJSON = JSON.stringify(state);
     fetchSearchHostel();
   }, []);
   const navigate = useNavigate();
   const handleClick = (start, end, passengers, planet, hostel, room) => {
     console.log(room);
+    if (room) {
+      // Utilisez dispatch pour enregistrer l'objet planet choisie
+      dispatch({ type: "SET_HOSTEL", payload: hostel[0] });
 
-    // Utilisez dispatch pour enregistrer l'objet planet choisie
-    dispatch({ type: "SET_HOSTEL", payload: hostel[0] });
+      // Utilisez dispatch pour enregistrer l'objet planet choisie
+      dispatch({ type: "SET_ROOM", payload: room });
 
-    // Utilisez dispatch pour enregistrer l'objet planet choisie
-    dispatch({ type: "SET_ROOM", payload: room });
-
-    navigate(
-      `/detail?departureDate=${start}&comebackDate=${end}&person=${passengers}&planet=${planet}&hostel=${hostel.name}`
-    );
+      navigate(
+        `/detail?departureDate=${start}&comebackDate=${end}&person=${passengers}&planet=${planet}&hostel=${hostel.name}`
+      );
+    }
   };
   return (
     <>

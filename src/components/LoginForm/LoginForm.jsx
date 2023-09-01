@@ -17,7 +17,6 @@ export default function LoginForm() {
   const navigate = useNavigate();
 
   const handleSubmitLogin = async (event) => {
-    setEmail();
     event.preventDefault();
     try {
       const isLogged = await auth.login({
