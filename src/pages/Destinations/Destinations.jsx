@@ -31,7 +31,7 @@ export default function Destinations() {
 
   return (
     <div>
-      <div className="flex flex-col justify-start">
+      <div className="flex flex-col justify-center">
         {error ? (
           <p>Une erreur s'est produite : {error.message}</p>
         ) : destinations ? (
