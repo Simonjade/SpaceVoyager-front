@@ -27,14 +27,19 @@ export default function CardPlanet({
         </label>
       </div>
       <div className="flex flex-col lg:justify-between gap-2 m-2 lg:w-1/2">
-        <h2 className="lg:text-3xl lg:mt-4 text-center font-bold">{planetData.name}</h2>
+        <h2 className="lg:text-3xl lg:mt-4 text-center font-bold">
+          {planetData.name}
+        </h2>
         <div className="flex flex-col lg:gap-3 gap-2">
-          <p className="lg:text-lg">Prix du vol aller/retour: <span className="font-bold">{planetData.price}</span> €</p>
+          <p className="lg:text-lg">
+            Prix du vol aller/retour:{" "}
+            <span className="font-bold">{planetData.price}</span> €
+          </p>
           <button
             className="btn-secondary mb-2 lg:mb-0"
             onClick={() => setCardSelected(planetData)}
           >
-            selectionner
+            Sélectionner
           </button>
         </div>
       </div>

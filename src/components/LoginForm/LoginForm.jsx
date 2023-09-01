@@ -39,11 +39,13 @@ export default function LoginForm() {
 
   return (
     <div>
-      <h2 className="grid justify-center my-4 font-bold">LOG IN</h2>
+      <h2 className="uppercase grid justify-center my-4 font-bold">
+        Connexion
+      </h2>
       <form className="flex items-center flex-col">
         <input
           type="email"
-          placeholder="Email"
+          placeholder="E-mail"
           className="input input-bordered my-4 input-primary w-full max-w-xs text-black"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -51,7 +53,7 @@ export default function LoginForm() {
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Mot de passe"
           className="input input-bordered my-4 input-primary w-full max-w-xs text-black"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -61,10 +63,10 @@ export default function LoginForm() {
           className="btn btn-primary btn-wide my-4 mb-15 sm:btn-sm md:btn-md lg:btn-lg"
           onClick={(event) => handleSubmitLogin(event)}
         >
-          SEND
+          SE CONNECTER
         </button>
       </form>
-      {hasError && <div>PAS TIP TOP</div>}
+      {hasError && <div>Email ou mot de passe incorrect</div>}
     </div>
   );
 }

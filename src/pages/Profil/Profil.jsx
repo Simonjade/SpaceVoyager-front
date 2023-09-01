@@ -90,7 +90,7 @@ export default function Profil() {
 
           <div className="flex flex-col gap-2 text-black self-center">
             <div className="lg:flex lg:justify-center lg:gap-20">
-              <label className="w-10 font-bold text-white">Firstname</label>
+              <label className="w-10 font-bold text-white">Prénom</label>
               {isEditing ? (
                 <input
                   className="input input-bordered input-primary w-80 max-w-xs self-center"
@@ -109,7 +109,7 @@ export default function Profil() {
             </div>
 
             <div className="lg:flex justify-center gap-20">
-              <label className="w-10 font-bold text-white">Lastname</label>
+              <label className="w-10 font-bold text-white">Nom</label>
               {isEditing ? (
                 <input
                   className="input input-bordered input-primary w-80 max-w-xs self-center"
@@ -223,13 +223,13 @@ export default function Profil() {
             className="modal modal-bottom sm:modal-middle text-black"
           >
             <form method="dialog" className="modal-box">
-              <h3 className="font-bold text-lg">Hello!</h3>
+              <h3 className="font-bold text-lg">Prend garde space voyager !</h3>
               <p className="py-4">
-                Etes vous sûr de vouloir supprimer votre profil ? Toutes vos
-                réservations le seront également
+                Es-tu sûr de vouloir supprimer ton profile ? Toutes tes
+                merveilleuses réservations le seront également.
               </p>
               <div className="modal-action">
-                <button className="btn">Close</button>
+                <button className="btn">Fermer</button>
                 <button
                   className="btn btn-error"
                   onClick={() => handleDelete()}
@@ -253,8 +253,8 @@ export default function Profil() {
           ) : (
             <div className="card w-96 backdrop-blur-sm bg-indigo-50/10 shadow-xl">
               <div className="card-body">
-                <p className="text-center text-white font-bold">
-                  No reservations yet
+                <p className="uppercase text-center text-white font-bold">
+                  Pas de réservation
                 </p>
               </div>
             </div>
