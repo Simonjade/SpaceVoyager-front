@@ -85,22 +85,14 @@ export default function BookingDetail() {
                 src={`../../../../${state.planet.img}`}
                 alt={state.planet.name}
               ></img>
-              <div className="mb-4">
-                <p className="text-gray-600">
-                  Date de départ : {state.departure}
-                </p>
-                <p className="text-gray-600">
-                  Date de retour : {state.comeBack}
-                </p>
-                <p className="text-gray-600">
-                  Destination : {state.planet.name}
-                </p>
+              <div className="mb-4 text-white">
+                <p className="">Date de départ : {state.departure}</p>
+                <p className="">Date de retour : {state.comeBack}</p>
+                <p className="">Destination : {state.planet.name}</p>
               </div>
             </div>
-            <p className="text-gray-600">Hotel : {state.hostel.name}</p>
-            <p className="text-gray-600">
-              type de chambre : {state.room.room_type}
-            </p>
+            <p className="">Hotel : {state.hostel.name}</p>
+            <p className="">Type de chambre : {state.room.room_type}</p>
 
             {/* <div className="mb-4">
         <h3 className="text-xl font-semibold">Passagers</h3>
@@ -124,7 +116,7 @@ export default function BookingDetail() {
                   {state.planet.price + state.room.price} €
                 </p>
                 <p className="text-white-600 text-xl font-semibold">
-                  x {state.person}
+                  &ensp;x {state.person}
                 </p>
               </div>
             </div>

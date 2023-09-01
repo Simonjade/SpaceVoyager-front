@@ -46,20 +46,20 @@ export default function NavBar() {
               href="/destinations"
               className="text-sm text-white font-semibold leading-6 hover:text-secondary hover:transition-colors hover:duration-300 duration-500"
             >
-              Destination
+              Destinations
             </a>
             <a
               href="/about"
               className="text-sm text-white font-semibold leading-6 hover:text-secondary hover:transition-colors hover:duration-300 duration-500"
             >
-              About
+              A propos
             </a>
             {isAuthenticated && (
               <a
                 href="/profil"
                 className="text-sm text-white font-semibold leading-6 hover:text-secondary hover:transition-colors hover:duration-300 duration-500"
               >
-                Profil
+                Profile
               </a>
             )}
           </div>
@@ -71,7 +71,7 @@ export default function NavBar() {
                 href="/login"
                 className="text-sm text-white font-semibold leading-6 hover:text-secondary hover:transition-colors hover:duration-300 duration-500"
               >
-                Login <span aria-hidden="true">&rarr;</span>
+                Connexion <span aria-hidden="true">&rarr;</span>
               </a>
             ) : (
               <a
@@ -79,7 +79,7 @@ export default function NavBar() {
                 className="text-sm text-white font-semibold leading-6 hover:text-secondary hover:transition-colors hover:duration-300 duration-500"
                 onClick={() => auth.logout()}
               >
-                Logout <span aria-hidden="true">&rarr;</span>
+                Deconnexion <span aria-hidden="true">&rarr;</span>
               </a>
             )}
           </div>
@@ -136,7 +136,7 @@ export default function NavBar() {
               href="/login"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
-              Profil
+              Profile
             </a>
           )}
           {!isAuthenticated ? (
@@ -144,7 +144,7 @@ export default function NavBar() {
               href="/login"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
-              Login
+              Connexion
             </a>
           ) : (
             <a
@@ -152,7 +152,7 @@ export default function NavBar() {
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               onClick={() => auth.logout()}
             >
-              Logout
+              Deconnexion
             </a>
           )}
         </div>

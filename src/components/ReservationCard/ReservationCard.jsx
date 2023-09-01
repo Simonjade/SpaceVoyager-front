@@ -32,15 +32,15 @@ export default function ReservationCard({ reservation }) {
           <img src={reservation.planet_img} alt="planet" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">Your trip to {reservation.planet_name}</h2>
+          <h2 className="card-title">Voyage vers {reservation.planet_name}</h2>
           <div className="">
-            <p>Departure date : {reservation.departure_date}</p>
-            <p>Comeback date : {reservation.comeback_date}</p>
+            <p>Date de départ : {reservation.departure_date}</p>
+            <p>Date de retour : {reservation.comeback_date}</p>
             <p>Destination : {reservation.planet_name}</p>
-            <p>Hostel : {reservation.hostel_name}</p>
-            <p>Room : {reservation.room_rank}</p>
+            <p>Hotel : {reservation.hostel_name}</p>
+            <p>Chambre : {reservation.room_rank}</p>
             <p>
-              Total price :{" "}
+              Prix total :{" "}
               {reservation.planet_price +
                 reservation.room_price * reservation.booking_nbparticipants}
               €
@@ -48,7 +48,7 @@ export default function ReservationCard({ reservation }) {
           </div>
           <div className="card-actions justify-center">
             <button className="btn btn-primary" onClick={() => handleDelete()}>
-              Delete Trip
+              Annuler
             </button>
           </div>
         </div>

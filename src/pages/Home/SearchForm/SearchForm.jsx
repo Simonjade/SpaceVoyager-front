@@ -121,7 +121,7 @@ export default function SearchForm() {
             className="btn join-item bg-gradient-to-r from-violet-600 to-indigo-600 text-white border-none"
             onClick={() => handleClick(startDate, endDate, passengers)}
           >
-            EXPLORE NOW
+            Explorer
           </button>
         </div>
       </div>
