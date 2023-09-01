@@ -99,7 +99,7 @@ export default function NavBar() {
       </nav>
 
       <div
-        className={`origin-top-right absolute right-0 mt-2 w-52 rounded-md shadow-lg ${
+        className={`origin-top-right mr-4 absolute z-50 right-0 mt-2 w-52 rounded-md shadow-lg ${
           mobileMenuOpen ? "block" : "hidden"
         }`}
       >
