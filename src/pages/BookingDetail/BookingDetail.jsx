@@ -1,4 +1,7 @@
 import { useBooking } from "../../contexts/BoonkingContext";
+import request from "../../tools/request";
+
+import axios from "axios";
 
 // CONTEXTS
 import { AuthContext } from "../../contexts/AuthContext";
@@ -32,15 +35,17 @@ export default function BookingDetail() {
     dp_date: state.departure,
     cb_date: state.comeBack,
     planet_id: state.planet.id,
-    user_id: state,
+    user_id: auth.state.data.user.id,
   };
+  console.log("this is the postbooking data", postBookingData);
 
   const postBooking = async () => {
     try {
-      const response = await axios.post(
-        `http://localhost:3000/booking`,
-        postBookingData
-      );
+      const token = auth.getAccessToken();
+      console.log("this is token", token);
+      const response = await request
+        .protected(token)
+        .post(`/booking`, postBookingData);
       // Si la requête réussit, vous pouvez traiter la réponse ici
       console.log("Réponse de l'API :", response.data);
     } catch (error) {
@@ -52,18 +57,18 @@ export default function BookingDetail() {
   const handleclick = () => {
     if (isAuthenticated) {
       console.log("voyage réservé");
-      // postBooking()
+      postBooking();
     } else {
       window.my_modal_5.showModal();
     }
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (openModal) {
       window.my_modal_5.showModal(false);
     }
     console.log(openModal);
-  }, [openModal]);
+  }, [openModal]); */
 
   return (
     <>
