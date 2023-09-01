@@ -21,10 +21,6 @@ export default function SearchForm() {
   const { state, dispatch } = useBooking();
 
   useEffect(() => {
-    console.log("newState", state);
-  }, [state]);
-
-  useEffect(() => {
     console.log("La valeur de startDate :", format(startDate, "yyyy-MM-dd"));
     console.log("La valeur de endtDate :", endDate);
     console.log("La valeur de startDate :", passengers);
@@ -47,19 +43,30 @@ export default function SearchForm() {
     start = format(start, "yyyy-MM-dd");
     end = format(end, "yyyy-MM-dd");
 
-    // Utilisez dispatch pour mettre à jour la date de départ
-    dispatch({ type: "SET_DEPARTURE", payload: start });
+    // // Utilisez dispatch pour mettre à jour la date de départ
+    // dispatch({ type: "SET_DEPARTURE", payload: start });
 
-    // Utilisez dispatch pour mettre à jour la date de fin
-    dispatch({ type: "SET_COMEBACK", payload: end });
+    // // Utilisez dispatch pour mettre à jour la date de fin
+    // dispatch({ type: "SET_COMEBACK", payload: end });
 
-    // Utilisez dispatch pour mettre à jour le nombre de passagers
-    dispatch({ type: "SET_PERSON", payload: passengers });
+    // // Utilisez dispatch pour mettre à jour le nombre de passagers
+    // dispatch({ type: "SET_PERSON", payload: passengers });
 
+    // // Convertissez le state en chaîne JSON
+    // const stateJSON = JSON.stringify(state);
+
+    // // Stockez la chaîne JSON dans le local storage sous une clé spécifique
+    // localStorage.setItem("bookingState", stateJSON);
+    // setTimeout(() => {
     navigate(
       `/search?departureDate=${start}&comebackDate=${end}&person=${passengers}`
     );
+    // }, 200); // 100 millisecondes de délai
   };
+
+  useEffect(() => {
+    console.log("yes");
+  }, [state]);
 
   return (
     <>

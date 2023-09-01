@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 // CONTEXTS
 import { AuthContext } from "../../../contexts/AuthContext";
 
-export default function LoginFormModal() {
+export default function LoginFormModal({ setOpenModal }) {
   const auth = useContext(AuthContext);
   const [hasError, setHasError] = useState(false);
 
@@ -17,7 +17,6 @@ export default function LoginFormModal() {
   const navigate = useNavigate();
 
   const handleSubmitLogin = async (event) => {
-    setEmail();
     event.preventDefault();
     try {
       const isLogged = await auth.login({
@@ -26,7 +25,7 @@ export default function LoginFormModal() {
       });
       console.log(isLogged);
       if (isLogged.status === 200) {
-        return setModal(false);
+        return setOpenModal(false);
       } else {
         setHasError(true);
       }

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import LoginFormModal from "./LoginFormModal";
 
-export default function Modal() {
+export default function Modal(setOpenModal) {
   return (
     <>
       {/* Open the modal using ID.showModal() method */}
@@ -14,7 +14,7 @@ export default function Modal() {
           <p className="py-4">
             Veillez vous connecter/s'inscrire avant de valider votre réservation
           </p>
-          <LoginFormModal />
+          <LoginFormModal setOpenModal={setOpenModal} />
           <div className="modal-action">
             {/* if there is a button in form, it will close the modal */}
             <button className="btn">Close</button>

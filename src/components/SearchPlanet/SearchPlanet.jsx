@@ -47,6 +47,17 @@ export default function SearchPlanet({
   };
 
   useEffect(() => {
+    // Utilisez dispatch pour mettre à jour la date de départ
+    dispatch({ type: "SET_DEPARTURE", payload: departureDate });
+
+    // Utilisez dispatch pour mettre à jour la date de fin
+    dispatch({ type: "SET_COMEBACK", payload: comebackDate });
+
+    // Utilisez dispatch pour mettre à jour le nombre de passagers
+    dispatch({ type: "SET_PERSON", payload: person });
+
+    // Convertissez le state en chaîne JSON
+    const stateJSON = JSON.stringify(state);
     fetchSearchPlanet();
   }, []);
 

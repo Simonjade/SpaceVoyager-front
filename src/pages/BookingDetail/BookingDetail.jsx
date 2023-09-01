@@ -13,7 +13,7 @@ export default function BookingDetail() {
   const auth = useContext(AuthContext);
 
   const [isAuthenticated, SetIsAuthenticated] = useState(null);
-
+  const [openModal, setOpenModal] = useState(true);
   useEffect(() => {
     console.log("auth", auth.state); // state de auth
     console.log("isAuthenticated", auth.state.authenticated); //si connécté ou pas
@@ -59,11 +59,11 @@ export default function BookingDetail() {
   };
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (openModal) {
       window.my_modal_5.showModal(false);
     }
-    console.log(isAuthenticated);
-  }, [isAuthenticated]);
+    console.log(openModal);
+  }, [openModal]);
 
   return (
     <>
