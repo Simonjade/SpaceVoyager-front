@@ -13,6 +13,7 @@ export default function SearchPlanet({
   planet,
 }) {
   const [data, setData] = useState(null);
+  const [modaldata, setModalData] = useState([]);
   const [error, setError] = useState(null);
   const [cardSelected, setCardSelected] = useState([]);
 
@@ -23,7 +24,7 @@ export default function SearchPlanet({
       const response = await axios.get(
         `http://localhost:3000/booking/search?departureDate=${departureDate}&comebackDate=${comebackDate}&person=${person}`
       );
-      console.log(response.data);
+      console.log("response.data", response.data);
       setData(response.data);
     } catch (error) {
       console.error(
@@ -67,7 +68,31 @@ export default function SearchPlanet({
 
   return (
     <>
-      <div className="sm:flex sm:flex-col sm:justify-between h-full lg:grid lg:grid-cols-3 lg:mx-10 lg:grid-rows-3 lg:gap-4">
+      <div className="drawer drawer-end">
+        <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+        <div className="drawer-content"></div>
+        <div className="drawer-side z-50">
+          <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
+          <div className="p-2 lg:w-[45rem] flex flex-col align-middle gap-5 w-80 min-h-full text-base-content backdrop-blur-2xl bg-indigo-50/10 text-white">
+            <div className="hero font-bold text-5xl">{modaldata.name}</div>
+            <div>
+              <img className="rounded-lg" src={modaldata.img} alt="" />
+            </div>
+            <div className="flex flex-col">
+              <div>{modaldata.content}</div>
+              <br />
+              <div>Distance : {modaldata.distance} km</div>
+              <div>
+                Distance en années lumières : {modaldata.distance_light_year}
+              </div>
+              <div>Circonférence : {modaldata.radius} km</div>
+              <div>Température minimale : {modaldata.temp_min}°</div>
+              <div>Température maximale : {modaldata.temp_max}°</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="sm:flex sm:flex-col sm:justify-between h-full lg:grid lg:grid-cols-3 lg:mx-48 lg:grid-rows-3 lg:gap-4">
         <div className="flex gap-3 flex-col lg:col-start-3 lg:row-start-1">
           <div className="flex gap-3 mx-4">
             <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
@@ -93,7 +118,6 @@ export default function SearchPlanet({
             </ul>
           </div>
         </div>
-
         <div className="overflow-y-auto no-scrollbar h-96 lg:h-[45rem] lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1">
           {error ? (
             <p>Une erreur s'est produite : {error.message}</p>
@@ -103,6 +127,7 @@ export default function SearchPlanet({
                 key={planetData.id}
                 planetData={planetData}
                 setCardSelected={setCardSelected}
+                setModalData={setModalData}
               />
             ))
           ) : (

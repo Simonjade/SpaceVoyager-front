@@ -84,7 +84,7 @@ export default function SearchForm() {
             startDate={startDate}
             endDate={endDate}
             minDate={startDate}
-            className=" w-full px-3 py-3 bg-indigo-50/10 backdrop-blur-sm rounded-md focus:outline-none focus:ring focus:ring-blue-200 lg:join-vertical text-white text-center"
+            className=" w-full px-3 py-3 bg-indigo-50/10 focus:outline-none focus:ring focus:ring-blue-200 join-item lg:join-vertical text-white text-center"
           />
           <DatePicker
             selected={endDate}
@@ -95,10 +95,10 @@ export default function SearchForm() {
             startDate={startDate}
             endDate={endDate}
             minDate={startDate}
-            className="w-full px-3 py-3 bg-indigo-50/10 backdrop-blur-sm rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item text-white text-center"
+            className="w-full px-3 py-3 bg-indigo-50/10 focus:outline-none focus:ring focus:ring-blue-200 join-item text-white text-center"
           />
           <div
-            className="md:w-full lg:w-1/3 lg:max-w-2 xl:w-1/5 px-3 py-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200 join-item bg-indigo-50/10 backdrop-blur-sm lg:tooltip tooltip-primary"
+            className="md:w-full lg:w-1/3 lg:max-w-2 xl:w-1/5 px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200 join-item bg-indigo-50/10 lg:tooltip tooltip-primary"
             data-tip="2 maximum"
           >
             <button
@@ -118,7 +118,7 @@ export default function SearchForm() {
             </button>
           </div>
           <button
-            className="btn join-item backdrop-blur-sm bg-gradient-to-r from-violet-600 to-indigo-600 text-white border-none"
+            className="btn join-item bg-gradient-to-r from-violet-600 to-indigo-600 text-white border-none"
             onClick={() => handleClick(startDate, endDate, passengers)}
           >
             EXPLORE NOW
