@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import hostel from "../../../assets/hostel.jpg";
 import { useState } from "react";
 
-export default function CardHostel({ hostelData, setRoom }) {
+export default function CardHostel({ hostelData, setRoom, setModalData }) {
   // Créez un état pour gérer les cases à cocher
   const [checkboxes, setCheckboxes] = useState([]);
 
@@ -23,9 +23,15 @@ export default function CardHostel({ hostelData, setRoom }) {
         <figure>
           <img className="object-contain rounded-lg" src={hostel} alt={hostelData.name} />
         </figure>
-        <button className="btn-primary absolute mb-2 mr-2 bottom-0 right-0 drawer-button btn">
+        <label
+          htmlFor="my-drawer-4"
+          className="btn-primary absolute mb-2 mr-2 bottom-0 right-0 drawer-button btn"
+          onClick={() => {
+            setModalData(hostelData);
+          }}
+        >
           Détails
-        </button>
+        </label>
       </div>
       <div className="flex flex-col lg:justify-between gap-2 m-2 lg:w-1/2">
         <h2 className="lg:text-3xl lg:mt-4 text-center font-bold">{hostelData.name}</h2>
@@ -33,7 +39,7 @@ export default function CardHostel({ hostelData, setRoom }) {
           {hostelData.room.map((roomData) => (
             <label key={roomData.id}>
               <input
-                type="checkbox"
+                type="radio"
                 className="mr-2"
                 checked={checkboxes[roomData.room_type] || false}
                 onChange={() => handleCheckboxChange(roomData)}

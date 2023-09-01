@@ -1,6 +1,11 @@
 import React from "react";
 
-export default function CardPlanet({ planetData, setCardSelected }) {
+export default function CardPlanet({
+  planetData,
+  setCardSelected,
+  setModalData,
+}) {
+  console.log("planetData", planetData);
   return (
     <div className="m-5 lg:flex border-2 border-solid border-violet-900 rounded-lg backdrop-blur-sm bg-indigo-50/10">
       <div className="relative lg:w-1/2">
@@ -11,10 +16,12 @@ export default function CardPlanet({ planetData, setCardSelected }) {
             alt={planetData.name}
           />
         </figure>
-
         <label
           htmlFor="my-drawer-4"
           className="btn-primary absolute mb-2 mr-2 bottom-0 right-0 drawer-button btn"
+          onClick={() => {
+            setModalData(planetData);
+          }}
         >
           Détails
         </label>

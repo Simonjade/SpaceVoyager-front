@@ -17,7 +17,7 @@ export default function Carousel({ destinations }) {
 
   return (
     <div className="h-max">
-      <div className="carousel border-solid border-2 border-blue-700">
+      <div className="carousel">
         {destinations.map((destination, index) => (
           <div
             key={`slide${index + 1}`}
@@ -28,7 +28,7 @@ export default function Carousel({ destinations }) {
           >
             <div>
               <img
-                className="w-full p-2 border-solid border-2 border-green-700" // Ajustez la classe CSS pour le dimensionnement de l'image
+                className="w-full p-2" // Ajustez la classe CSS pour le dimensionnement de l'image
                 src={`../../../../${destination.img}`}
                 alt={destination.name}
               />
@@ -55,7 +55,7 @@ export default function Carousel({ destinations }) {
             id={`slide${index + 1}`}
             className={`w-full ${index + 1 === slide ? "" : "hidden"}`}
           >
-            <div className="border-2 h-full">
+            <div className="h-full">
               <div className="text-primary hero text-5xl mb-3">
                 {destination.name}
               </div>
