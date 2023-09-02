@@ -16,8 +16,28 @@ export default function SearchPlanet({
   const [modaldata, setModalData] = useState([]);
   const [error, setError] = useState(null);
   const [cardSelected, setCardSelected] = useState([]);
+  const [sortType, setSortType] = useState(""); // État pour suivre le type de tri
 
   const { state, dispatch } = useBooking();
+
+  const handleSortChange = (e) => {
+    setSortType(e.target.value);
+    sortData(e.target.value);
+  };
+
+  const sortData = (criteria) => {
+    const newData = [...data];
+    newData.sort((a, b) => {
+      if (criteria === "nom") {
+        return a.name.localeCompare(b.name);
+      } else if (criteria === "prix") {
+        return a.price - b.price;
+      } else {
+        return a.id - b.id;
+      }
+    });
+    setData(newData);
+  };
 
   const fetchSearchPlanet = async () => {
     try {
@@ -106,7 +126,7 @@ export default function SearchPlanet({
           </div>
 
           <div className=" flex gap-3 bg-indigo-50/10 mx-4 p-2 backdrop-blur-sm text-white rounded-lg text-center">
-            <h2 className="font-bold">Nombre de passager :</h2>
+            <h2 className="font-bold">Nombre de passager : </h2>
             <p className="">{person}</p>
           </div>
 
@@ -118,23 +138,32 @@ export default function SearchPlanet({
             </ul>
           </div>
         </div>
-        <div className="overflow-y-auto no-scrollbar h-96 lg:h-[45rem] lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1">
-          {error ? (
-            <p>Une erreur s'est produite : {error.message}</p>
-          ) : data ? (
-            data.map((planetData) => (
-              <CardPlanet
-                key={planetData.id}
-                planetData={planetData}
-                setCardSelected={setCardSelected}
-                setModalData={setModalData}
-              />
-            ))
-          ) : (
-            <p>Chargement en cours...</p>
-          )}
+        <div className="h-96 lg:h-[45rem] lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1">
+          <div className="flex ml-6 mb-1">
+            <p> Trier par :</p>
+            <select onChange={handleSortChange} value={sortType}>
+              <option value="-"> -</option>
+              <option value="nom"> nom</option>
+              <option value="prix"> prix</option>
+            </select>
+          </div>
+          <div className="overflow-y-auto no-scrollbar h-96 lg:h-[45rem] lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1">
+            {error ? (
+              <p>Une erreur s'est produite : {error.message}</p>
+            ) : data ? (
+              data.map((planetData) => (
+                <CardPlanet
+                  key={planetData.id}
+                  planetData={planetData}
+                  setCardSelected={setCardSelected}
+                  setModalData={setModalData}
+                />
+              ))
+            ) : (
+              <p>Chargement en cours...</p>
+            )}
+          </div>
         </div>
-
         <div className="flex flex-col justify-between mx-4 gap-3 lg:row-span-3 lg:col-start-3 lg:row-start-2">
           <div className="rounded-lg bg-indigo-50/10 backdrop-blur-sm">
             <div className="flex gap-3">
