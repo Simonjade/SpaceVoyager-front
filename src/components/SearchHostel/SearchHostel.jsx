@@ -29,7 +29,7 @@ export default function SearchHostel({
   const fetchSearchHostel = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/booking/search?departureDate=${departureDate}&comebackDate=${comebackDate}&person=${person}&planet=${planet}`
+        `https://space-voyager-back.onrender.com/booking/search?departureDate=${departureDate}&comebackDate=${comebackDate}&person=${person}&planet=${planet}`
       );
       console.log(response.data);
       setHostel(response.data);

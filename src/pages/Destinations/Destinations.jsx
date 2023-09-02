@@ -9,7 +9,9 @@ export default function Destinations() {
   const [error, setError] = useState(null);
   const fetchPlanets = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/planet`);
+      const response = await axios.get(
+        `https://space-voyager-back.onrender.com/planet`
+      );
       console.log(response.data);
       setDestinations(response.data);
     } catch (error) {

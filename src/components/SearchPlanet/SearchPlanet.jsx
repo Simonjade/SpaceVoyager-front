@@ -22,7 +22,7 @@ export default function SearchPlanet({
   const fetchSearchPlanet = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/booking/search?departureDate=${departureDate}&comebackDate=${comebackDate}&person=${person}`
+        `https://space-voyager-back.onrender.com/booking/search?departureDate=${departureDate}&comebackDate=${comebackDate}&person=${person}`
       );
       console.log("response.data", response.data);
       setData(response.data);
