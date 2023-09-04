@@ -19,11 +19,15 @@ export default function SearchHostel({
   const { state, dispatch } = useBooking();
 
   useEffect(() => {
-    console.log("hostel", hostel);
+    if (hostel) {
+      console.log("hostel", hostel);
+    }
   }, [hostel]);
 
   useEffect(() => {
-    console.log("room", room);
+    if (hostel) {
+      console.log("room", room);
+    }
   }, [room]);
 
   const fetchSearchHostel = async () => {
@@ -58,7 +62,6 @@ export default function SearchHostel({
   }, []);
   const navigate = useNavigate();
   const handleClick = (start, end, passengers, planet, hostel, room) => {
-    console.log(room);
     if (room) {
       // Utilisez dispatch pour enregistrer l'objet planet choisie
       dispatch({ type: "SET_HOSTEL", payload: hostel[0] });

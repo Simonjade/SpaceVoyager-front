@@ -5,7 +5,6 @@ export default function CardPlanet({
   setCardSelected,
   setModalData,
 }) {
-  console.log("planetData", planetData);
   return (
     <div className="m-5 lg:flex border-2 border-solid border-violet-900 rounded-lg backdrop-blur-sm bg-indigo-50/10">
       <div className="relative lg:w-1/2">
