@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "daisyui/dist/full.css";
+/* import "daisyui/dist/full.css"; */
 import { Routes, Route } from "react-router-dom";
 
 import Stars from "./components/Stars/Stars";

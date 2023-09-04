@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaBeer } from "react-icons/fa";
 
 import request from "../../tools/request";
 

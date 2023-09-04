@@ -6,7 +6,10 @@ export default function LogoMini() {
       <div>
         <div className="w-52">
           <a href="/">
-            <img src="../../../../mini-logo-space-voyager.svg" />
+            <img
+              src="../../../../mini-logo.webp"
+              alt="logo du site space voyager"
+            />
           </a>
         </div>
       </div>
