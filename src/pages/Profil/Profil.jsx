@@ -54,7 +54,6 @@ export default function Profil() {
         .protected(token)
         .patch(`/user/${id}`, user);
       setIsEditing(false);
-      //setData(response.data[0]);
     } catch (err) {
       console.log(err);
     }
@@ -65,7 +64,6 @@ export default function Profil() {
     const token = auth.getAccessToken();
     try {
       const response = await request.protected(token).delete(`/user/${id}`);
-      /* console.log(response); */
       await auth.logout();
     } catch (err) {
       console.log(err);
@@ -73,6 +71,7 @@ export default function Profil() {
   };
 
   useEffect(() => {
+    console.log(isAuthenticated);
     if (isAuthenticated) getUserProfil();
   }, [isAuthenticated]);
 
@@ -243,11 +242,11 @@ export default function Profil() {
         <div className="divider lg:divider-horizontal before:bg-primary after:bg-secondary"></div>
 
         <div className="flex flex-col items-center lg:w-1/2 no-scrollbar overflow-y-scroll lg:h-[40rem] lg:h-2/2 self-start">
-          {dataUser.reservation &&
+          {dataUser?.reservation &&
           //! This is bricolage, better not to send null
-          dataUser.reservation[0].planet_name !== null &&
-          dataUser.reservation.length > 0 ? (
-            dataUser.reservation.map((element, index) => (
+          dataUser?.reservation[0].planet_name !== null &&
+          dataUser?.reservation.length > 0 ? (
+            dataUser?.reservation.map((element, index) => (
               <ReservationCard key={index} reservation={element} />
             ))
           ) : (

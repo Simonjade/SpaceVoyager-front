@@ -50,24 +50,23 @@ const AuthProvider = ({ children }) => {
 
   const checkInLocalStorage = async () => {
     const currentToken = localStorage.getItem("access_token");
-    console.log("acces_token @ checkInLocalStorage", currentToken);
 
     if (currentToken) {
       const isExpiredJWT = isExpired(currentToken);
-      const decodeTokenJWT = decodeToken(currentToken);
-      console.log(isExpiredJWT, decodeTokenJWT);
-      setAuthState({
-        accessToken: currentToken,
-        authenticated: true,
-        data: decodeTokenJWT,
-      });
-      console.log("authState @ checkInLocalStorage", authState);
+      if (isExpiredJWT) {
+        setAuthState({ accessToken: null, authenticated: false, data: null });
+      } else {
+        const decodeTokenJWT = decodeToken(currentToken);
+        console.log(isExpiredJWT, decodeTokenJWT);
+        setAuthState({
+          accessToken: currentToken,
+          authenticated: true,
+          data: decodeTokenJWT,
+        });
+      }
     } else {
       setAuthState({ accessToken: null, authenticated: false, data: null });
     }
-    /* } else {
-      setAuthState({ accessToken: null, authenticated: false });
-    } */
   };
 
   return (
