@@ -5,7 +5,7 @@ const BookingContext = createContext();
 
 // Étape 3 : Définissez l'initial state
 const initialState = {
-  daprture: null,
+  departure: null,
   comeBack: null,
   person: null,
   planet: null,
@@ -38,7 +38,25 @@ export function BookingProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
+    // Récupérer l'état stocké dans le localStorage (s'il existe)
+    const storedState = JSON.parse(localStorage.getItem("bookingState"));
+
+    // Si un état a été précédemment stocké, utilisez-le
+    if (storedState) {
+      dispatch({ type: "SET_DEPARTURE", payload: storedState.departure });
+      dispatch({ type: "SET_COMEBACK", payload: storedState.comeBack });
+      dispatch({ type: "SET_PERSON", payload: storedState.person });
+      dispatch({ type: "SET_PLANET", payload: storedState.planet });
+      dispatch({ type: "SET_HOSTEL", payload: storedState.hostel });
+      dispatch({ type: "SET_ROOM", payload: storedState.room });
+    }
+  }, []);
+
+  useEffect(() => {
     console.log("newState", state);
+
+    // Enregistrez le nouvel état dans le localStorage à chaque changement
+    localStorage.setItem("bookingState", JSON.stringify(state));
   }, [state]);
 
   return (
