@@ -6,8 +6,8 @@ export default function CardPlanet({
   setModalData,
 }) {
   return (
-    <div className="m-5 lg:flex border-2 border-solid border-violet-900 rounded-lg backdrop-blur-sm bg-indigo-50/10">
-      <div className="relative lg:w-1/2">
+    <div className="m-5 md:flex border-2 border-solid border-violet-900 rounded-lg backdrop-blur-sm bg-indigo-50/10">
+      <div className="relative md:w-1/2">
         <figure>
           <img
             className="object-contain rounded-lg"
@@ -25,17 +25,17 @@ export default function CardPlanet({
           Détails
         </label>
       </div>
-      <div className="flex flex-col lg:justify-between gap-2 m-2 lg:w-1/2">
-        <h2 className="lg:text-3xl lg:mt-4 text-center font-bold">
+      <div className="flex flex-col md:justify-between gap-2 m-2 md:w-1/2">
+        <h2 className="md:text-3xl md:mt-4 text-center font-bold">
           {planetData.name}
         </h2>
-        <div className="flex flex-col lg:gap-3 gap-2">
-          <p className="lg:text-lg">
+        <div className="flex flex-col md:gap-3 gap-2">
+          <p className="md:text-lg">
             Prix du vol aller/retour:{" "}
             <span className="font-bold">{planetData.price}</span> €
           </p>
           <button
-            className="btn-secondary mb-2 lg:mb-0"
+            className="btn-secondary mb-2 md:mb-0"
             onClick={() => setCardSelected(planetData)}
           >
             Sélectionner
