@@ -18,9 +18,7 @@ export default function NavBar() {
 
   useEffect(() => {}, [auth]);
 
-  useEffect(() => {
-    //eslint-disable-next-line
-  }, [store]);
+  useEffect(() => {}, [store]);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -133,7 +131,7 @@ export default function NavBar() {
           </a>
           {isAuthenticated && (
             <a
-              href="/login"
+              href="/profil"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               Profile

@@ -10,7 +10,6 @@ const useIsAuthenticated = () => {
 
   useEffect(() => {
     auth.checkInLocalStorage();
-    //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
