@@ -2,14 +2,14 @@ import React from "react";
 
 const teamMembers = [
   {
-    firstName: "Nikolai",
+    firstName: "Nicolas",
     lastName: "CORROYEZ",
-    role: "SCRUM MASTER",
+    role: "Scrum Master",
     description:
       "Il a dirigé la maison blanche, malin intelligent et dangereux, il est la cible parfaite des autres groupes d'apo !",
     photo: (
       <img
-        src="../../../public/nikolai.jpg"
+        src="../../../public/nikolai.webp"
         alt="planet_image"
         className="rounded-full"
       />
@@ -23,7 +23,7 @@ const teamMembers = [
       "Il aime bien la sécurité avant tout, il cherche à dépasser Benjamin sur l'utilisation du JWT et a t-il laissé tombé ThreeJS ?",
     photo: (
       <img
-        src="../../../public/reda.jpg"
+        src="../../../public/reda.webp"
         alt="planet_image"
         className="rounded-full"
       />
@@ -37,7 +37,7 @@ const teamMembers = [
       "Sur les pas d'Einstein, 144 de QI si ce n'est plus ! Son cerveau quantique lui a permi de faire une requete SQL de 90 lignes",
     photo: (
       <img
-        src="../../../public/jade.jpg"
+        src="../../../public/jade.webp"
         alt="planet_image"
         className="rounded-full"
       />
@@ -52,7 +52,7 @@ const teamMembers = [
       "Nicolas il aime bien le nutela de 1kg, tout ce sucre lui a permi d'apprendre Github en une nuit. Un vrai de vrai !",
     photo: (
       <img
-        src="../../../public/nico.jpg"
+        src="../../../public/nico.webp"
         alt="planet_image"
         className="rounded-full"
       />
@@ -66,7 +66,7 @@ const teamMembers = [
       "Le ninja de warzazat ! Il a quitté la France pour coder dans l'ombre, il est rapide et ses visuels se vendent cher sur le marcher !",
     photo: (
       <img
-        src="../../../public/tarek.jpg"
+        src="../../../public/tarek.webp"
         alt="planet_image"
         className="rounded-full"
       />

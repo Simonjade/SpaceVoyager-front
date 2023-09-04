@@ -82,7 +82,7 @@ export default function Profil() {
         <div className="card card-compact w-21 text-white p-5 lg:w-1/2 self-start">
           <figure className="self-center rounded-full w-4/12 lg:w-3/12 lg:mb-6 mb-4">
             <img
-              src="../../../public/photo-1534528741775-53994a69daeb.jpg"
+              src="../../../public/profil-light.webp"
               alt="planet_image"
               className=""
             />
