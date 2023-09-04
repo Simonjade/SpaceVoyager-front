@@ -64,10 +64,6 @@ export default function SearchForm() {
     // }, 200); // 100 millisecondes de délai
   };
 
-  useEffect(() => {
-    console.log("yes");
-  }, [state]);
-
   return (
     <>
       <div className="flex flex-col lg:mt-2">

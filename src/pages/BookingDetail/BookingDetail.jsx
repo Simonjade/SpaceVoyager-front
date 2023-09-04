@@ -23,24 +23,23 @@ export default function BookingDetail() {
     if (auth.state.data) {
       console.log("profil user", auth.state.data.user); //info user
     }
-    console.log("postBookingData", postBookingData);
+    //console.log("postBookingData", postBookingData);
     SetIsAuthenticated(auth.state.authenticated);
   }, []);
 
-  const postBookingData = {
-    person: state.person,
-    total_price: (state.planet.price + state.room.price) * state.person,
-    hostel_id: state.hostel.id,
-    room_id: state.room.id,
-    dp_date: state.departure,
-    cb_date: state.comeBack,
-    planet_id: state.planet.id,
-    user_id: auth.state.data.user.id,
-  };
-  console.log("this is the postbooking data", postBookingData);
-
   const postBooking = async () => {
     try {
+      const postBookingData = {
+        person: state.person,
+        total_price: (state.planet.price + state.room.price) * state.person,
+        hostel_id: state.hostel.id,
+        room_id: state.room.id,
+        dp_date: state.departure,
+        cb_date: state.comeBack,
+        planet_id: state.planet.id,
+        user_id: auth.state.data.user.id,
+      };
+      console.log("this is the postbooking data", postBookingData);
       const token = auth.getAccessToken();
       console.log("this is token", token);
       const response = await request
