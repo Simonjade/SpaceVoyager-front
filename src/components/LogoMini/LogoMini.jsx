@@ -7,7 +7,7 @@ export default function LogoMini() {
         <div className="w-52">
           <a href="/">
             <img
-              src="../../../public/logo/logo-space-voyager.svg"
+              src="./logo/logo-mini.svg"
               alt="logo du site space voyager"
             />
           </a>
