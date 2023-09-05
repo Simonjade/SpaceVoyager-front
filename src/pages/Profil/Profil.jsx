@@ -33,8 +33,8 @@ export default function Profil() {
       const token = auth.getAccessToken();
 
       const response = await request.protected(token).get(`/user/${id}`);
-      console.log("this is reponse.data[0]", response.data[0]);
-      setDataUser(response.data[0]);
+      console.log("this is reponse.data", response.data);
+      setDataUser(response.data);
     } catch (err) {
       console.log(err);
     }
