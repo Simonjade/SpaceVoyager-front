@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import planetImg from "../../assets/planet/PlanetImg";
 
 export default function Carousel({ destinations }) {
   const [slide, setSlide] = useState(1);
@@ -14,7 +15,6 @@ export default function Carousel({ destinations }) {
       prevSlide === destinations.length ? 1 : prevSlide + 1
     );
   };
-
   return (
     <div className="backdrop-blur-sm bg-indigo-50/20 shadow-xl">
       <div className="h-max">
@@ -30,7 +30,7 @@ export default function Carousel({ destinations }) {
               <div>
                 <img
                   className="w-full p-2" // Ajustez la classe CSS pour le dimensionnement de l'image
-                  src={`../../../../${destination.img}`}
+                  src={planetImg[destination.name.toLowerCase()]}
                   alt={destination.name}
                 />
                 <div className="absolute inset-0 flex justify-between items-center px-5">
