@@ -9,7 +9,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 export default function LoginForm() {
   const auth = useContext(AuthContext);
-  const [hasError, setHasError] = useState(false);
+  const [hasError, setHasError] = useState(null);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,7 +27,7 @@ export default function LoginForm() {
       if (isLogged.status === 200) {
         return navigate("/Profil");
       } else {
-        setHasError(true);
+        setHasError("Email ou mot de passe incorrect");
       }
     } catch (error) {
       console.error(
@@ -66,7 +66,7 @@ export default function LoginForm() {
           SE CONNECTER
         </button>
       </form>
-      {hasError && <div>Email ou mot de passe incorrect</div>}
+      {hasError && <div>{hasError}</div>}
     </div>
   );
 }

@@ -57,13 +57,13 @@ export default function NavBar() {
                 href="/profil"
                 className="text-sm text-white font-semibold leading-6 hover:text-secondary hover:transition-colors hover:duration-300 duration-500"
               >
-                Profile
+                Profil
               </a>
             )}
           </div>
         </div>
         <div>
-          <div className="hidden lg:flex lg:flex-1">
+          <div className="hidden lg:flex lg:flex-1 w-52 text-end justify-end">
             {!isAuthenticated ? (
               <a
                 href="/login"
@@ -134,7 +134,7 @@ export default function NavBar() {
               href="/profil"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
-              Profile
+              Profil
             </a>
           )}
           {!isAuthenticated ? (
