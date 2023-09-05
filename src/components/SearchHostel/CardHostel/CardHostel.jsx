@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import hostelImg from "../../../assets/hostel/HostelImg";
 
 export default function CardHostel({ hostelData, setRoom, setModalData }) {
   // Créez un état pour gérer les cases à cocher
@@ -22,7 +22,7 @@ export default function CardHostel({ hostelData, setRoom, setModalData }) {
         <figure>
           <img
             className="object-contain rounded-lg"
-            src="/src/assets/hostel/hostel.jpg"
+            src={hostelImg.hostel}
             alt={hostelData.name}
           />
         </figure>
