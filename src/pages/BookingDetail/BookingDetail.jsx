@@ -8,6 +8,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 // HOOKS
 import { useContext, useEffect, useState } from "react";
+import useIsAuthenticated from "../../hooks/useIsAuthenticated";
 import Modal from "./Modal/Modal";
 
 export default function BookingDetail() {
@@ -16,7 +17,7 @@ export default function BookingDetail() {
   const auth = useContext(AuthContext);
 
   const [isAuthenticated, SetIsAuthenticated] = useState(null);
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
   useEffect(() => {
     console.log("auth", auth.state); // state de auth
     console.log("isAuthenticated", auth.state.authenticated); //si connécté ou pas
@@ -25,7 +26,13 @@ export default function BookingDetail() {
     }
     //console.log("postBookingData", postBookingData);
     SetIsAuthenticated(auth.state.authenticated);
-  }, []);
+  }, [auth.state]);
+
+  useEffect(() => {
+    if (auth.state.data) {
+      console.log("profil user", auth.state.data.user); //info user
+    }
+  }, [auth.state.data]);
 
   const postBooking = async () => {
     try {
@@ -61,13 +68,10 @@ export default function BookingDetail() {
       window.my_modal_5.showModal();
     }
   };
-
-  /* useEffect(() => {
-    if (openModal) {
-      window.my_modal_5.showModal(false);
-    }
-    console.log(openModal);
-  }, [openModal]); */
+  useEffect(() => {
+    console.log(isAuthenticated);
+    console.log(auth);
+  }, [isAuthenticated]);
 
   return (
     <>
@@ -89,18 +93,18 @@ export default function BookingDetail() {
               <div className="flex flex-col gap-3 lg:flex-row">
                 <img
                   className="object-contain h-1/3 lg:w-2/4 w-full"
-                  src={`../../../../public/planet/${state.planet.img}`}
-                  alt={state.planet.name}
+                  src={`../../../../public/planet/${state?.planet?.img}`}
+                  alt={state?.planet?.name}
                 ></img>
                 <div className="flex flex-col justify-evenly ml-4 text-white">
                   <p className="lg:text-xl font-semibold">
-                    Destination : {state.planet.name}
+                    Destination : {state?.planet?.name}
                   </p>
                   <p className="lg:text-xl font-semibold">
-                    Hotel : {state.hostel.name}
+                    Hotel : {state?.hostel?.name}
                   </p>
                   <p className="lg:text-xl font-semibold">
-                    Chambre : {state.room.room_type}
+                    Chambre : {state?.room?.room_type}
                   </p>
                 </div>
               </div>
@@ -115,13 +119,13 @@ export default function BookingDetail() {
                   <p className="text-xl">
                     Date de départ :{" "}
                     <span className="font-semibold">
-                      &ensp;{state.departure}
+                      &ensp;{state?.departure}
                     </span>
                   </p>
                   <p className="text-xl">
                     Date de retour :{" "}
                     <span className="font-semibold">
-                      &ensp;{state.comeBack}
+                      &ensp;{state?.comeBack}
                     </span>
                   </p>
                 </div>
@@ -131,17 +135,19 @@ export default function BookingDetail() {
                     <h3 className="text-xl font-semibold">Prix par personne</h3>
                     <div className="flex">
                       <p className="text-secondary text-xl font-semibold">
-                        {state.planet.price + state.room.price} €
+                        {state?.planet?.price + state?.room?.price} €
                       </p>
                       <p className="text-white-600 text-xl font-semibold">
-                        &ensp;x {state.person}
+                        &ensp;x {state?.person}
                       </p>
                     </div>
                   </div>
                   <div className="mb-4">
                     <h3 className="text-xl font-semibold">Prix total</h3>
                     <p className="text-secondary text-xl font-semibold">
-                      {(state.planet.price + state.room.price) * state.person} €
+                      {(state?.planet?.price + state?.room?.price) *
+                        state?.person}{" "}
+                      €
                     </p>
                   </div>
                 </div>

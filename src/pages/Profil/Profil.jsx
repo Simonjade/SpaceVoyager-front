@@ -30,6 +30,7 @@ export default function Profil() {
     try {
       console.log("isAuthenticated", isAuthenticated);
       const id = auth.state.data.user.id;
+      console.log("user", auth.state.data.user);
       const token = auth.getAccessToken();
 
       const response = await request.protected(token).get(`/user/${id}`);
