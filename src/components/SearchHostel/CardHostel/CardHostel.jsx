@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import hostel from "../../../assets/hostel.jpg";
 import { useState } from "react";
 
 export default function CardHostel({ hostelData, setRoom, setModalData }) {
@@ -21,7 +20,11 @@ export default function CardHostel({ hostelData, setRoom, setModalData }) {
     <div className="m-5 md:flex border-2 border-solid border-violet-900 rounded-lg backdrop-blur-sm bg-indigo-50/10">
       <div className="relative md:w-1/2">
         <figure>
-          <img className="object-contain rounded-lg" src={hostel} alt={hostelData.name} />
+          <img
+            className="object-contain rounded-lg"
+            src="../../../../public/hostel/hostel.jpg"
+            alt={hostelData.name}
+          />
         </figure>
         <label
           htmlFor="my-drawer-4"
@@ -34,7 +37,9 @@ export default function CardHostel({ hostelData, setRoom, setModalData }) {
         </label>
       </div>
       <div className="flex flex-col md:justify-between gap-2 m-2 md:w-1/2">
-        <h2 className="md:text-3xl md:mt-4 text-center font-bold">{hostelData.name}</h2>
+        <h2 className="md:text-3xl md:mt-4 text-center font-bold">
+          {hostelData.name}
+        </h2>
         <div className="flex flex-col md:gap-3 gap-2">
           {hostelData.room.map((roomData) => (
             <label key={roomData.id}>
