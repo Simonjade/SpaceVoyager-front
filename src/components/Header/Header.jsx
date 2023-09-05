@@ -1,18 +1,15 @@
 import React from "react";
 import NavBar from "./NavBar/NavBar";
 import Avatar from "./NavBar/Avatar";
+import LogoMini from "../LogoMini/LogoMini";
+import Title from "../Title/Title";
 
 export default function Header() {
   return (
     <>
-      <div className="header fixed top-0 left-0 w-full bg-gray-800 text-white p-1 flex justify-between items-center">
-        <div className="flex ml-auto items-center space-x-4">
-          <Avatar />
-          <NavBar />
-        </div>
+      <div className="mb-4">
+        <NavBar />
       </div>
     </>
   );
 }
-
-// "header fixed top-0 left-0 w-full bg-gray-800 text-white p-1"

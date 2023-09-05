@@ -1,30 +1,39 @@
 import { useState } from "react";
-import "./App.css";
-import "daisyui/dist/full.css";
+/* import "daisyui/dist/full.css"; */
 import { Routes, Route } from "react-router-dom";
 
-import Home from "./components/Home/Home";
+import Stars from "./components/Stars/Stars";
+import Home from "./pages/Home/Home";
 import Header from "./components/Header/Header";
 import SearchPlanet from "./components/SearchPlanet/SearchPlanet";
 import Footer from "./components/Footer/Footer";
-import Destinations from "./components/Destinations/Destinations";
-import About from "./components/About/About";
-import NotFound from "./components/NotFound/NotFound";
-import Profil from "./components/Profil/Profil";
+import Destinations from "./pages/Destinations/Destinations";
+import About from "./pages/About/About";
+import NotFound from "./pages/NotFound/NotFound";
+import Profil from "./pages/Profil/Profil";
+import Login from "./pages/Login/Login";
+import Search from "./pages/Search/Search";
+import BookingDetail from "./pages/BookingDetail/BookingDetail";
 
 function App() {
   return (
     <>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/search" element={<SearchPlanet />} />
-        <Route path="/Profil" element={<Profil />} />
-        <Route path="/destinations" element={<Destinations />} />
-        <Route path="/about" element={<About />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Footer />
+      <Stars />
+      <div className="relative flex flex-col justify-between h-screen">
+        <Header />
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/Profil" element={<Profil />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/destinations" element={<Destinations />} />
+          <Route path="/detail" element={<BookingDetail />}></Route>
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Footer />
+      </div>
     </>
   );
 }
