@@ -12,7 +12,7 @@ export default function CardPlanet({
         <figure>
           <img
             className="object-contain rounded-lg"
-            src={`../../../../public/planet/${planetData.img}`}
+            src={`/src/assets/planet/${planetData.img}`}
             alt={planetData.name}
           />
         </figure>
