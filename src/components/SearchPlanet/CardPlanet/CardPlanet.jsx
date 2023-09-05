@@ -5,13 +5,14 @@ export default function CardPlanet({
   setCardSelected,
   setModalData,
 }) {
+  console.log(planetData.img);
   return (
     <div className="m-5 md:flex border-2 border-solid border-violet-900 rounded-lg backdrop-blur-sm bg-indigo-50/10">
       <div className="relative md:w-1/2">
         <figure>
           <img
             className="object-contain rounded-lg"
-            src={`../../../../${planetData.img}`}
+            src={`../../../../public/planet/${planetData.img}`}
             alt={planetData.name}
           />
         </figure>
