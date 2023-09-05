@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import CardHostel from "./CardHostel/CardHostel";
 import { useNavigate } from "react-router-dom";
-
+import ThreeHostel from "../ThreeScene/Views360"
 import { useBooking } from "../../contexts/BoonkingContext";
 
 export default function SearchHostel({
@@ -81,15 +81,16 @@ export default function SearchHostel({
         <div className="drawer-content"></div>
         <div className="drawer-side z-50">
           <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
-          <div className="p-2 lg:w-[45rem] flex flex-col align-middle gap-5 w-80 min-h-full text-base-content backdrop-blur-2xl bg-indigo-50/10 text-white">
+          <div className="p-2 flex flex-col align-middle gap-5 lg:w-2/3 w-4/5 min-h-full text-base-content backdrop-blur-2xl bg-indigo-50/10 text-white">
             <div className="hero font-bold text-5xl">{modaldata.name}</div>
-            <div>
-              <img className="rounded-lg" src={modaldata.img} alt="" />
+            <div className="lg:flex justify-center hidden">
+              {/* <img className="rounded-lg" src={modaldata.img} alt="" /> */}
+              <ThreeHostel />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col m-4">
               <div>{modaldata.content}</div>
               <br />
-              <div>
+              <div className="font-bold">
                 Types de chambres :{" "}
                 {console.log("this is modaldata.room", modaldata.room)}
                 {/* {modaldata.room.map((element) => {
