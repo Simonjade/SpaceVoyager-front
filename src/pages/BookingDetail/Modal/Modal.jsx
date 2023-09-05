@@ -23,11 +23,6 @@ export default function Modal(setOpenModal) {
             Veillez vous connecter/s'inscrire avant de valider votre réservation
           </p>
           <LoginFormModal setLogged={setLogged} />
-          {/* {logged && (
-            <label className="modal-backdrop" htmlFor="my_modal_7">
-              Close
-            </label>
-          )} */}
           <div className="modal-action">
             {/* if there is a button in form, it will close the modal */}
             <button className="btn">Close</button>
