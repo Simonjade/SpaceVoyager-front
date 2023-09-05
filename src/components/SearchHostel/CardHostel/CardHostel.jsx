@@ -22,7 +22,7 @@ export default function CardHostel({ hostelData, setRoom, setModalData }) {
         <figure>
           <img
             className="object-contain rounded-lg"
-            src="../../../../public/hostel/hostel.jpg"
+            src="/src/assets/hostel/hostel.jpg"
             alt={hostelData.name}
           />
         </figure>
