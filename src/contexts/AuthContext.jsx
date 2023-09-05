@@ -21,9 +21,11 @@ const AuthProvider = ({ children }) => {
 
     if (res.status === 200 && res.data.token) {
       localStorage.setItem("access_token", res.data.token);
+      const decodeTokenJWT = decodeToken(res.data.token);
       setAuthState({
         accessToken: res.data.token,
         authenticated: true,
+        data: decodeTokenJWT,
       });
       console.log("LOGIN : authState il doit y avoir le token et true");
       console.log(authState);

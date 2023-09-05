@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 // CONTEXTS
 import { AuthContext } from "../../../contexts/AuthContext";
 
-export default function LoginFormModal({ setOpenModal }) {
+export default function LoginFormModal({ setLogged }) {
   const auth = useContext(AuthContext);
   const [hasError, setHasError] = useState(false);
 
@@ -25,7 +25,7 @@ export default function LoginFormModal({ setOpenModal }) {
       });
       console.log(isLogged);
       if (isLogged.status === 200) {
-        return setOpenModal(false);
+        return setLogged(true);
       } else {
         setHasError(true);
       }

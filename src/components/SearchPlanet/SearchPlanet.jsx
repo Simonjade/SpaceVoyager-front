@@ -61,6 +61,7 @@ export default function SearchPlanet({
 
     // Utilisez dispatch pour enregistrer l'objet planet choisie
     dispatch({ type: "SET_PLANET", payload: planet });
+    dispatch({ type: "SAVE" });
 
     navigate(
       `/search?departureDate=${start}&comebackDate=${end}&person=${passengers}&planet=${planet.name}`

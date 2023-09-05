@@ -28,6 +28,8 @@ function reducer(state, action) {
       return { ...state, hostel: action.payload };
     case "SET_ROOM":
       return { ...state, room: action.payload };
+    case "SAVE":
+      return { ...state, type: action.type };
     default:
       return state;
   }
@@ -43,6 +45,7 @@ export function BookingProvider({ children }) {
 
     // Si un état a été précédemment stocké, utilisez-le
     if (storedState) {
+      console.log("READ BOOKING STORAGE", storedState);
       dispatch({ type: "SET_DEPARTURE", payload: storedState.departure });
       dispatch({ type: "SET_COMEBACK", payload: storedState.comeBack });
       dispatch({ type: "SET_PERSON", payload: storedState.person });
@@ -53,10 +56,12 @@ export function BookingProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    console.log("newState", state);
+    if (state.type === "SAVE") {
+      console.log("newState", state);
 
-    // Enregistrez le nouvel état dans le localStorage à chaque changement
-    localStorage.setItem("bookingState", JSON.stringify(state));
+      // Enregistrez le nouvel état dans le localStorage à chaque changement
+      localStorage.setItem("bookingState", JSON.stringify(state));
+    }
   }, [state]);
 
   return (
