@@ -1,18 +1,19 @@
 import React from "react";
+import planetImg from "../../../assets/planet/PlanetImg";
 
 export default function CardPlanet({
   planetData,
   setCardSelected,
   setModalData,
 }) {
-  console.log(planetData.img);
+  console.log(planetImg[planetData.name.toLowerCase()]);
   return (
     <div className="m-5 md:flex border-2 border-solid border-violet-900 rounded-lg backdrop-blur-sm bg-indigo-50/10">
       <div className="relative md:w-1/2">
         <figure>
           <img
             className="object-contain rounded-lg"
-            src={`/src/assets/planet/${planetData.img}`}
+            src={planetImg[planetData.name.toLowerCase()]}
             alt={planetData.name}
           />
         </figure>
