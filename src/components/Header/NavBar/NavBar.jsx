@@ -35,26 +35,26 @@ export default function NavBar() {
         <div>
           <div className="hidden lg:flex lg:gap-x-12">
             <a
-              href="/"
+              href="./"
               className="text-sm text-white font-semibold leading-6 hover:text-secondary hover:transition-colors hover:duration-300 duration-500"
             >
               Accueil
             </a>
             <a
-              href="/destinations"
+              href="./destinations"
               className="text-sm text-white font-semibold leading-6 hover:text-secondary hover:transition-colors hover:duration-300 duration-500"
             >
               Destinations
             </a>
             <a
-              href="/about"
+              href="./about"
               className="text-sm text-white font-semibold leading-6 hover:text-secondary hover:transition-colors hover:duration-300 duration-500"
             >
               A propos
             </a>
             {isAuthenticated && (
               <a
-                href="/profil"
+                href="./profil"
                 className="text-sm text-white font-semibold leading-6 hover:text-secondary hover:transition-colors hover:duration-300 duration-500"
               >
                 Profil
@@ -66,7 +66,7 @@ export default function NavBar() {
           <div className="hidden lg:flex lg:flex-1 w-52 text-end justify-end">
             {!isAuthenticated ? (
               <a
-                href="/login"
+                href="./login"
                 className="text-sm text-white font-semibold leading-6 hover:text-secondary hover:transition-colors hover:duration-300 duration-500"
               >
                 Connexion <span aria-hidden="true">&rarr;</span>
@@ -111,27 +111,27 @@ export default function NavBar() {
             <XMarkIcon className="h-6 w-6" aria-hidden="true" />
           </button>
           <a
-            href="/"
+            href="./"
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
           >
             Accueil
           </a>
 
           <a
-            href="/destinations"
+            href="./destinations"
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
           >
             Destinations
           </a>
           <a
-            href="/about"
+            href="./about"
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
           >
             A propos
           </a>
           {isAuthenticated && (
             <a
-              href="/profil"
+              href="./profil"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               Profil
@@ -139,14 +139,14 @@ export default function NavBar() {
           )}
           {!isAuthenticated ? (
             <a
-              href="/login"
+              href="./login"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               Connexion
             </a>
           ) : (
             <a
-              href="/profil"
+              href="./profil"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               onClick={() => auth.logout()}
             >
