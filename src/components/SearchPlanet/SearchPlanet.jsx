@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CardPlanet from "./CardPlanet/CardPlanet";
+import ThreePlanet from "../ThreeScene/ThreePlanet";
 
 import { useBooking } from "../../contexts/BoonkingContext";
 
@@ -10,7 +11,6 @@ export default function SearchPlanet({
   comebackDate,
   person,
   setPlanet,
-  planet,
 }) {
   const [data, setData] = useState(null);
   const [modaldata, setModalData] = useState([]);
@@ -85,7 +85,9 @@ export default function SearchPlanet({
   useEffect(() => {
     console.log("cardSelected", cardSelected);
   }, [cardSelected]);
-
+  {
+    /* <img className="rounded-lg" src={modaldata.img} alt="" /> */
+  }
   return (
     <>
       <div>
@@ -94,11 +96,12 @@ export default function SearchPlanet({
           <div className="drawer-content"></div>
           <div className="drawer-side z-50">
             <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
-            <div className="p-2 lg:w-[45rem] flex flex-col align-middle gap-5 w-80 min-h-full text-base-content backdrop-blur-2xl bg-indigo-50/10 text-white">
+            <div className="p-2 flex flex-col align-middle gap-5 lg:w-2/3 w-4/5 min-h-full text-base-content backdrop-blur-2xl bg-indigo-50/10 text-white">
               <div className="hero font-bold text-5xl">{modaldata.name}</div>
-              <div>
-                <img className="rounded-lg" src={modaldata.img} alt="" />
+              <div className="md:flex justify-center hidden">
+                <ThreePlanet />
               </div>
+                
               <div className="flex flex-col">
                 <div>{modaldata.content}</div>
                 <br />
@@ -140,9 +143,9 @@ export default function SearchPlanet({
             </div>
           </div>
           <div className="h-96 lg:h-[45rem] lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1">
-            <div className="flex ml-6 mb-1">
-              <p> Trier par :</p>
-              <select onChange={handleSortChange} value={sortType}>
+            <div className="flex ml-6 mb-1 ">
+              <p className=""> Trier par :</p>
+              <select onChange={handleSortChange} value={sortType} className="bg-black text-white border-2 border-primary">
                 <option value="-"> -</option>
                 <option value="nom"> nom</option>
                 <option value="prix"> prix</option>
