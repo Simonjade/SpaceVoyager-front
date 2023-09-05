@@ -32,8 +32,8 @@ export default function Profil() {
       const token = auth.getAccessToken();
 
       const response = await request.protected(token).get(`/user/${id}`);
-      console.log("this is reponse.data[0]", response.data[0]);
-      setDataUser(response.data[0]);
+      console.log("this is reponse.data", response.data);
+      setDataUser(response.data);
     } catch (err) {
       console.log(err);
     }
@@ -82,7 +82,7 @@ export default function Profil() {
           <figure className="self-center rounded-full w-4/12 lg:w-3/12 lg:mb-6 mb-4">
             <img
               src="../../../public/profil-light.webp"
-              alt="planet_image"
+              alt="profil_image"
               className=""
             />
           </figure>
