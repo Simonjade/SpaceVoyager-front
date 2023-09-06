@@ -1,8 +1,6 @@
 import { useBooking } from "../../contexts/BoonkingContext";
 import request from "../../tools/request";
 
-import axios from "axios";
-
 // CONTEXTS
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -11,6 +9,8 @@ import { useContext, useEffect, useState } from "react";
 import useIsAuthenticated from "../../hooks/useIsAuthenticated";
 import Modal from "./Modal/Modal";
 import planetImg from "../../assets/planet/PlanetImg";
+import AlertConfirmation from "../../components/AlertConfirmation/AlertConfirmation";
+import { useNavigate } from "react-router";
 
 export default function BookingDetail() {
   const { state } = useBooking();
@@ -18,7 +18,7 @@ export default function BookingDetail() {
   const auth = useContext(AuthContext);
 
   const [isAuthenticated, SetIsAuthenticated] = useState(null);
-  const [openModal, setOpenModal] = useState(false);
+  const [alert, setAlert] = useState(false);
   useEffect(() => {
     console.log("auth", auth.state); // state de auth
     console.log("isAuthenticated", auth.state.authenticated); //si connécté ou pas
@@ -35,6 +35,7 @@ export default function BookingDetail() {
     }
   }, [auth.state.data]);
 
+  const navigate = useNavigate();
   const postBooking = async () => {
     try {
       const postBookingData = {
@@ -55,6 +56,13 @@ export default function BookingDetail() {
         .post(`/booking`, postBookingData);
       // Si la requête réussit, vous pouvez traiter la réponse ici
       console.log("Réponse de l'API :", response.data);
+      console.log("voyage réservé");
+      setAlert(true);
+
+      setTimeout(() => {
+        localStorage.removeItem("bookingState");
+        navigate("/");
+      }, 2000);
     } catch (error) {
       // En cas d'erreur, affichez l'erreur
       console.error("Erreur lors de la requête POST :", error);
@@ -63,7 +71,6 @@ export default function BookingDetail() {
 
   const handleclick = () => {
     if (isAuthenticated) {
-      console.log("voyage réservé");
       postBooking();
     } else {
       window.my_modal_5.showModal();
@@ -76,6 +83,11 @@ export default function BookingDetail() {
 
   return (
     <>
+      {alert && (
+        <div className="modal-overlay">
+          <AlertConfirmation />
+        </div>
+      )}
       <div className="flex flex-col gap-3">
         <div className="flex justify-center">
           <ul className="steps">
