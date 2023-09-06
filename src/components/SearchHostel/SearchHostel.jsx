@@ -70,7 +70,7 @@ export default function SearchHostel({
       dispatch({ type: "SET_ROOM", payload: room });
 
       navigate(
-        `/detail?departureDate=${start}&comebackDate=${end}&person=${passengers}&planet=${planet}&hostel=${hostel.name}`
+        `/detail?departureDate=${start}&comebackDate=${end}&person=${passengers}&planet=${planet}&hostel=${hostel[0].name}`
       );
     }
   };
@@ -84,7 +84,6 @@ export default function SearchHostel({
           <div className="p-2 flex flex-col align-middle gap-5 lg:w-2/3 w-4/5 min-h-full text-base-content backdrop-blur-2xl bg-indigo-50/10 text-white">
             <div className="hero font-bold text-5xl">{modaldata.name}</div>
             <div className="lg:flex justify-center hidden">
-              {/* <img className="rounded-lg" src={modaldata.img} alt="" /> */}
               <ThreeHostel />
             </div>
             <div className="flex flex-col m-4">
@@ -93,9 +92,6 @@ export default function SearchHostel({
               <div className="font-bold">
                 Types de chambres :{" "}
                 {console.log("this is modaldata.room", modaldata.room)}
-                {/* {modaldata.room.map((element) => {
-                  console.log(element.id);
-                })} */}
               </div>
             </div>
           </div>
@@ -150,24 +146,9 @@ export default function SearchHostel({
               <div className="w-1/2 p-2 text-white rounded-lg">
                 <h2 className="font-bold">Chambre selectionnée :</h2>
                 {room ? <span>{room.room_type}</span> : <span>_</span>}
-                {/* {setHostel.name ? <p>{setHostel.name}</p> : <p>_</p>} */}
               </div>
 
-              <div className="w-1/2 p-2 text-white rounded-lg">
-                {/* <p className="font-bold">
-                  Prix :{" "}
-                  {cardSelected.name ? (
-                    <span>
-                      {cardSelected.price}€ x {person}
-                    </span>
-                  ) : (
-                    <sapn>_</sapn>
-                  )}
-                </p>
-                <p className="font-bold">
-                  Prix total : {cardSelected.price * person}€
-                </p> */}
-              </div>
+              <div className="w-1/2 p-2 text-white rounded-lg"></div>
             </div>
             <div className="flex justify-center">
               <button
