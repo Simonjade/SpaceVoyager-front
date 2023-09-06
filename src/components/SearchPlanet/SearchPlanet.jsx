@@ -94,9 +94,9 @@ export default function SearchPlanet({ setPlanet }) {
   return (
     <>
       <div>
-        //* MODAL *//
+        {/* MODAL */}
         <ModalPlanet modaldata={modaldata} />
-        //* MAIN PAGE *//
+        {/* MAIN PAGE */}
         <div className="sm:flex sm:flex-col sm:justify-between h-full lg:grid lg:grid-cols-3 2xl:mx-48 xl:mx-24 lg:mx-10 lg:grid-rows-3 lg:gap-4">
           <div className="flex gap-3 flex-col lg:col-start-3 lg:row-start-1">
             <div className="flex gap-3 mx-4">
@@ -136,7 +136,7 @@ export default function SearchPlanet({ setPlanet }) {
                 <option value="prix"> prix</option>
               </select>
             </div>
-            //* Planets list*//
+            {/* Planets list */}
             <div className="overflow-y-auto no-scrollbar h-96 lg:h-[45rem] lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1">
               {error ? (
                 <p>Une erreur s'est produite : {error.message}</p>
