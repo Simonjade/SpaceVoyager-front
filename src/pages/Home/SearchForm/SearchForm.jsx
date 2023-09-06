@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import "daisyui/dist/full.css";
-// import { DatePicker } from "daisyui/react";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import { registerLocale, setDefaultLocale } from "react-datepicker";
@@ -26,6 +24,13 @@ export default function SearchForm() {
     console.log("La valeur de startDate :", passengers);
   }, [startDate, endDate, passengers]);
 
+  useEffect(() => {
+    // Mettre à jour la date de retour à un jour de plus que la date de départ
+    const nextDay = new Date(startDate);
+    nextDay.setDate(nextDay.getDate() + 1);
+    setEndDate(nextDay);
+  }, [startDate]);
+
   const handlePlus = () => {
     if (passengers < 2) {
       setPassengers(passengers + 1);
@@ -42,26 +47,9 @@ export default function SearchForm() {
   const handleClick = (start, end, passengers) => {
     start = format(start, "yyyy-MM-dd");
     end = format(end, "yyyy-MM-dd");
-
-    // // Utilisez dispatch pour mettre à jour la date de départ
-    // dispatch({ type: "SET_DEPARTURE", payload: start });
-
-    // // Utilisez dispatch pour mettre à jour la date de fin
-    // dispatch({ type: "SET_COMEBACK", payload: end });
-
-    // // Utilisez dispatch pour mettre à jour le nombre de passagers
-    // dispatch({ type: "SET_PERSON", payload: passengers });
-
-    // // Convertissez le state en chaîne JSON
-    // const stateJSON = JSON.stringify(state);
-
-    // // Stockez la chaîne JSON dans le local storage sous une clé spécifique
-    // localStorage.setItem("bookingState", stateJSON);
-    // setTimeout(() => {
     navigate(
       `/search?departureDate=${start}&comebackDate=${end}&person=${passengers}`
     );
-    // }, 200); // 100 millisecondes de délai
   };
 
   return (

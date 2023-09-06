@@ -101,19 +101,34 @@ export default function SearchPlanet({
               <div className="hero font-bold text-5xl">{modaldata.name}</div>
 
               <div className="md:flex justify-center hidden">
-              <ThreePlanet planetName={modaldata.name} />
+                <ThreePlanet planetName={modaldata.name} />
               </div>
-                
+
               <div className="flex flex-col m-4">
                 <div className="">{modaldata.content}</div>
                 <br />
-                <div className="">Distance : <span className="font-bold">{modaldata.distance} km</span></div>
                 <div className="">
-                  Distance en années lumières : <span className="font-bold">{modaldata.distance_light_year}</span>
+                  Distance :{" "}
+                  <span className="font-bold">{modaldata.distance} km</span>
                 </div>
-                <div className="">Circonférence : <span className="font-bold">{modaldata.radius} km</span></div>
-                <div className="">Température minimale : <span className="font-bold">{modaldata.temp_min}</span>°</div>
-                <div className="">Température maximale : <span className="font-bold">{modaldata.temp_max}</span>°</div>
+                <div className="">
+                  Distance en années lumières :{" "}
+                  <span className="font-bold">
+                    {modaldata.distance_light_year}
+                  </span>
+                </div>
+                <div className="">
+                  Circonférence :{" "}
+                  <span className="font-bold">{modaldata.radius} km</span>
+                </div>
+                <div className="">
+                  Température minimale :{" "}
+                  <span className="font-bold">{modaldata.temp_min}</span>°
+                </div>
+                <div className="">
+                  Température maximale :{" "}
+                  <span className="font-bold">{modaldata.temp_max}</span>°
+                </div>
               </div>
             </div>
           </div>
@@ -147,7 +162,11 @@ export default function SearchPlanet({
           <div className="h-96 lg:h-[45rem] lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1">
             <div className="flex ml-6 mb-1 ">
               <p className=""> Trier par :</p>
-              <select onChange={handleSortChange} value={sortType} className="bg-black text-white border-2 border-primary">
+              <select
+                onChange={handleSortChange}
+                value={sortType}
+                className="bg-black text-white border-2 border-primary"
+              >
                 <option value="-"> -</option>
                 <option value="nom"> nom</option>
                 <option value="prix"> prix</option>
@@ -186,11 +205,16 @@ export default function SearchPlanet({
                         {cardSelected.price}€ x {person}
                       </span>
                     ) : (
-                      <span>_</span>
+                      <span>0€</span>
                     )}
                   </p>
                   <p className="font-bold">
-                    Prix total : {cardSelected.price * person}€
+                    Prix total :{" "}
+                    {cardSelected.name ? (
+                      <span>{cardSelected.price * person}€</span>
+                    ) : (
+                      <span>0€</span>
+                    )}
                   </p>
                 </div>
               </div>
