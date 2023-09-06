@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import CardHostel from "./CardHostel/CardHostel";
 import { useNavigate } from "react-router-dom";
-import ThreeHostel from "../ThreeScene/Views360";
-
-//CONTEXT
+import ThreeHostel from "../ThreeScene/ThreeHostel"
 import { useBooking } from "../../contexts/BoonkingContext";
 
 // TOOLS
@@ -82,6 +80,14 @@ export default function SearchHostel({
     fetchSearchHostel();
   }, []);
 
+      // Utilisez dispatch pour enregistrer l'objet planet choisie
+      dispatch({ type: "SET_ROOM", payload: room });
+
+      navigate(
+        `/detail?departureDate=${start}&comebackDate=${end}&person=${passengers}&planet=${planet}&hostel=${hostel[0].name}`
+      );
+    }
+  };
   return (
     <>
       <div className="drawer drawer-end">
@@ -90,31 +96,36 @@ export default function SearchHostel({
         <div className="drawer-side z-50">
           <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
           <div className="p-2 flex flex-col align-middle gap-5 lg:w-2/3 w-4/5 min-h-full text-base-content backdrop-blur-2xl bg-indigo-50/10 text-white">
-            <div className="hero font-bold text-5xl">{modaldata.name}</div>
+            <h2 className="hero font-bold text-5xl">{modaldata.name}</h2>
             <div className="lg:flex justify-center hidden">
-              <ThreeHostel />
+              <ThreeHostel hostelName={modaldata.name} />
             </div>
             <div className="flex flex-col m-4">
-              <div>{modaldata.content}</div>
+              <p>{modaldata.content}</p>
+              <br />
+              <div className="font-bold">
+                Types de chambres :{" "}
+                {console.log("this is modaldata.room", modaldata.room)}
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="sm:flex sm:flex-col sm:justify-between h-screen lg:grid lg:grid-cols-3 lg:mx-48 lg:grid-rows-3 lg:gap-4">
+      <div className="sm:flex sm:flex-col sm:justify-between h-full lg:grid lg:grid-cols-3 2xl:mx-48 xl:mx-24 lg:mx-10 lg:grid-rows-3 lg:gap-4">
         <div className="flex gap-3 flex-col lg:col-start-3 lg:row-start-1">
           <div className="flex gap-3 mx-4">
             <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
-              <h2 className="font-bold inline">Aller : </h2>
+              <strong className="font-bold inline">Aller : </strong>
               <p className="text-center inline">{departureDate}</p>
             </div>
             <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
-              <h2 className="font-bold inline ">Retour : </h2>
+              <strong className="font-bold inline ">Retour : </strong>
               <p className="text-center inline">{comebackDate}</p>
             </div>
           </div>
 
           <div className=" flex gap-3 bg-indigo-50/10 mx-4 p-2 backdrop-blur-sm text-white rounded-lg text-center">
-            <h2 className="font-bold">Nombre de passager :</h2>
+            <strong className="font-bold">Nombre de passager :</strong>
             <p className="">{person}</p>
           </div>
 

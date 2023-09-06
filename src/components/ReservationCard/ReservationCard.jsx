@@ -6,6 +6,7 @@ import request from "../../tools/request";
 
 // CONTEXTS
 import { AuthContext } from "../../contexts/AuthContext";
+import planetImg from "../../assets/planet/PlanetImg";
 
 export default function ReservationCard({ reservation }) {
   const auth = useContext(AuthContext);
@@ -28,7 +29,10 @@ export default function ReservationCard({ reservation }) {
     <div>
       <div className="card card-side backdrop-blur-sm bg-indigo-50/10 text-white shadow-xl md:m-5 mb-6 m-4 border-2 border-primary">
         <figure className="w-1/3 bg-black">
-          <img src={reservation.planet_img} alt="planet" />
+          <img
+            src={planetImg[reservation.planet_name.toLowerCase()]}
+            alt={reservation.planet_name}
+          />
         </figure>
         <div className="card-body">
           <h2 className="card-title">Voyage vers {reservation.planet_name}</h2>

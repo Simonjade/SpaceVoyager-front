@@ -1,4 +1,5 @@
 import { Component } from "react";
+
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import hostelTexture from "../../assets/hostelTexture/hostelTexture";
@@ -7,7 +8,7 @@ class ThreeHostel extends Component {
   constructor(props) {
     super(props);
     this.sceneInitialized = false;
-    this.sphere = null; // Référence à la sphère
+    this.sphere = null;
   }
 
   componentDidMount() {
@@ -16,7 +17,14 @@ class ThreeHostel extends Component {
       this.sceneInitialized = true;
     }
   }
-
+  
+  componentDidUpdate(prevProps) {
+    if (this.props.hostelName !== prevProps.hostelName) {
+      const formattedHostelName = this.props.hostelName.replace(/['\s]/g, '_'); // Remplace les espaces et les apostrophes par des underscores
+      this.updateTexture(formattedHostelName);
+    }
+  }
+  
   initializeScene() {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -36,7 +44,9 @@ class ThreeHostel extends Component {
 
     const geometry = new THREE.SphereGeometry(50, 64, 64);
     const textureLoader = new THREE.TextureLoader();
-    const texture = textureLoader.load(hostelTexture.hostel);
+
+    const texture = textureLoader.load(hostelTexture[this.props.hostelName]);
+    
     texture.wrapS = THREE.RepeatWrapping;
     texture.repeat.x = -1;
     const material = new THREE.MeshBasicMaterial({
@@ -80,6 +90,14 @@ class ThreeHostel extends Component {
 
   updateSphereMaterial() {
     this.sphere.material.map = this.texture;
+    this.sphere.material.needsUpdate = true;
+  }
+
+  updateTexture(hostelName) {
+    const texture = new THREE.TextureLoader().load(hostelTexture[hostelName]);
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.repeat.x = -1;
+    this.sphere.material.map = texture;
     this.sphere.material.needsUpdate = true;
   }
 

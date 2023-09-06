@@ -13,16 +13,20 @@ export default function CardHostel({ hostelData, setRoom, setModalData }) {
 
     setRoom(room);
   };
+
   useEffect(() => {
     console.log(checkboxes);
   }, [checkboxes]);
+
+  const formattedImageName = hostelData.name.replace(/['\s]/g, '_');
+
   return (
     <div className="m-5 md:flex border-2 border-solid border-violet-900 rounded-lg backdrop-blur-sm bg-indigo-50/10">
       <div className="relative md:w-1/2">
         <figure>
           <img
             className="object-contain rounded-lg"
-            src={hostelImg.hostel}
+            src={hostelImg[formattedImageName]}
             alt={hostelData.name}
           />
         </figure>
