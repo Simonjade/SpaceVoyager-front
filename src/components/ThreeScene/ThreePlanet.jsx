@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import React, { Component } from "react";
+import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import planetTexture from "../../assets/planetTexture/planetTexture";
 
 class ThreePlanet extends Component {
   constructor(props) {
@@ -24,7 +25,12 @@ class ThreePlanet extends Component {
 
   initializeScene() {
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
     const renderer = new THREE.WebGLRenderer({ alpha: true });
     const controls = new OrbitControls(camera, renderer.domElement);
     renderer.clear();
@@ -59,7 +65,7 @@ class ThreePlanet extends Component {
 
     controls.enableZoom = false;
     controls.update();
-    
+
     const animate = () => {
       requestAnimationFrame(animate);
       renderer.render(scene, camera);
@@ -69,7 +75,7 @@ class ThreePlanet extends Component {
 
     animate();
 
-    window.addEventListener('resize', onResize);
+    window.addEventListener("resize", onResize);
     onResize();
   }
 
@@ -85,14 +91,19 @@ class ThreePlanet extends Component {
   }
 
   updateTexture(planetName) {
-    this.texture = new THREE.TextureLoader().load(`./texture_planet/${planetName}_texture.webp`);
+    this.texture = new THREE.TextureLoader().load(planetTexture[planetName]);
     this.texture.wrapS = THREE.RepeatWrapping;
     this.texture.repeat.x = -1;
     this.updateSphereMaterial();
   }
 
   render() {
-    return <div className='flex justify-center relative lg:w-2/3 w-4/5 h-96' ref={(ref) => (this.mount = ref)} />;
+    return (
+      <div
+        className="flex justify-center relative lg:w-2/3 w-4/5 h-96"
+        ref={(ref) => (this.mount = ref)}
+      />
+    );
   }
 }
 

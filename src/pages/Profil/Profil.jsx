@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { useContext, useEffect } from "react";
 import request from "../../tools/request";
 // LIBS
-/* import { useNavigate } from "react-router-dom"; */
-import Title from "../../components/Title/Title";
 
 // CONTEXTS
 import { AuthContext } from "../../contexts/AuthContext";
@@ -14,6 +12,8 @@ import useIsAuthenticated from "../../hooks/useIsAuthenticated";
 // COMPONENTS
 import ProtectedZone from "../../components/Protected/Protected";
 import ReservationCard from "../../components/ReservationCard/ReservationCard";
+
+import profilImg from "../../assets/profil/ProfilImg";
 
 export default function Profil() {
   const isAuthenticated = useIsAuthenticated();
@@ -86,11 +86,7 @@ export default function Profil() {
         <div className="flex flex-col items-center text-black lg:flex-row-reverse align-center">
           <div className="card card-compact w-21 text-white p-5 lg:w-1/2 self-start">
             <figure className="self-center rounded-full w-4/12 lg:w-3/12 lg:mb-6 mb-4">
-              <img
-                src="../../../public/profil-light.webp"
-                alt="planet_image"
-                className=""
-              />
+              <img src={profilImg.profil} alt="planet_image" className="" />
             </figure>
 
             <div className="flex flex-col gap-2 text-black self-center">

@@ -10,6 +10,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { useContext, useEffect, useState } from "react";
 import useIsAuthenticated from "../../hooks/useIsAuthenticated";
 import Modal from "./Modal/Modal";
+import planetImg from "../../assets/planet/PlanetImg";
 
 export default function BookingDetail() {
   const { state } = useBooking();
@@ -93,7 +94,8 @@ export default function BookingDetail() {
               <div className="flex flex-col gap-3 lg:flex-row">
                 <img
                   className="object-contain h-1/3 lg:w-2/4 w-full"
-                  src={`../../../../public/planet/${state?.planet?.img}`}
+                  // src={`../../../../public/planet/${state?.planet?.img}`}
+                  src={planetImg[state?.planet?.name.toLowerCase()]}
                   alt={state?.planet?.name}
                 ></img>
                 <div className="flex flex-col justify-evenly ml-4 text-white">

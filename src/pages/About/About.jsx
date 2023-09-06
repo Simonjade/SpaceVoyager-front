@@ -1,7 +1,4 @@
-import jade from "/src/assets/about/jade.webp";
-import nikolai from "/src/assets/about/nikolai.webp";
-import reda from "/src/assets/about/reda.webp";
-import tarek from "/src/assets/about/tarek.webp";
+import profilImg from "../../assets/profil/ProfilImg";
 
 const teamMembers = [
   {
@@ -10,7 +7,13 @@ const teamMembers = [
     role: "Scrum Master",
     description:
       "Il a dirigé la maison blanche, malin intelligent et dangereux, il est la cible parfaite des autres groupes d'apo !",
-    photo: <img src={nikolai} alt="nikolai_image" className="rounded-full" />,
+    photo: (
+      <img
+        src={profilImg.nikolai}
+        alt="nikolai_image"
+        className="rounded-full"
+      />
+    ),
   },
   {
     firstName: "Réda",
@@ -18,7 +21,9 @@ const teamMembers = [
     role: "Lead dev back",
     description:
       "Il aime bien la sécurité avant tout, il cherche à dépasser Benjamin sur l'utilisation du JWT et a t-il laissé tombé ThreeJS ?",
-    photo: <img src={reda} alt="Réda_image" className="rounded-full" />,
+    photo: (
+      <img src={profilImg.reda} alt="Réda_image" className="rounded-full" />
+    ),
   },
   {
     firstName: "Jade",
@@ -26,7 +31,9 @@ const teamMembers = [
     role: "Product Owner",
     description:
       "Sur les pas d'Einstein, 144 de QI si ce n'est plus ! Son cerveau quantique lui a permi de faire une requete SQL de 90 lignes",
-    photo: <img src={jade} alt="Jade_image" className="rounded-full" />,
+    photo: (
+      <img src={profilImg.jade} alt="Jade_image" className="rounded-full" />
+    ),
   },
 
   {
@@ -35,7 +42,9 @@ const teamMembers = [
     role: "Git Master",
     description:
       "Nicolas il aime bien le nutela de 1kg, tout ce sucre lui a permi d'apprendre Github en une nuit. Un vrai de vrai !",
-    photo: <img src={reda} alt="Nicolas_image" className="rounded-full" />,
+    photo: (
+      <img src={profilImg.reda} alt="Nicolas_image" className="rounded-full" />
+    ),
   },
   {
     firstName: "Tarek",
@@ -43,7 +52,9 @@ const teamMembers = [
     role: "Lead dev front",
     description:
       "Le ninja de warzazat ! Il a quitté la France pour coder dans l'ombre, il est rapide et ses visuels se vendent cher sur le marcher !",
-    photo: <img src={tarek} alt="Tarek_image" className="rounded-full" />,
+    photo: (
+      <img src={profilImg.tarek} alt="Tarek_image" className="rounded-full" />
+    ),
   },
 ];
 
