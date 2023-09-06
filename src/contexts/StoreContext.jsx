@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useEffect } from "react";
+import { createContext, useReducer, useEffect } from "react";
 
 const StoreContext = createContext(null);
 const { Provider } = StoreContext;

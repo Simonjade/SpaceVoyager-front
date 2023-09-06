@@ -1,4 +1,3 @@
-import React from "react";
 import planetImg from "../../../assets/planet/PlanetImg";
 
 export default function CardPlanet({

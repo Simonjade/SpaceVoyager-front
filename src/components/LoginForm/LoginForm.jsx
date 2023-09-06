@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useContext, useEffect } from "react";
+//IMPORT
+import { useContext, useState } from "react";
 
 // LIBS
 import { useNavigate } from "react-router-dom";
@@ -8,12 +8,11 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 
 export default function LoginForm() {
-  const auth = useContext(AuthContext);
   const [hasError, setHasError] = useState(null);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const auth = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmitLogin = async (event) => {
@@ -23,7 +22,6 @@ export default function LoginForm() {
         mail: email,
         password: password,
       });
-      console.log(isLogged);
       if (isLogged.status === 200) {
         return navigate("/Profil");
       } else {

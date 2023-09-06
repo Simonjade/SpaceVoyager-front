@@ -1,12 +1,8 @@
-import { useState } from "react";
-/* import "daisyui/dist/full.css"; */
+// IMPORT ROUTER
 import { Routes, Route } from "react-router-dom";
 
-import Stars from "./components/Stars/Stars";
+//IMPORT FOR PAGES
 import Home from "./pages/Home/Home";
-import Header from "./components/Header/Header";
-import SearchPlanet from "./components/SearchPlanet/SearchPlanet";
-import Footer from "./components/Footer/Footer";
 import Destinations from "./pages/Destinations/Destinations";
 import About from "./pages/About/About";
 import NotFound from "./pages/NotFound/NotFound";
@@ -15,13 +11,18 @@ import Login from "./pages/Login/Login";
 import Search from "./pages/Search/Search";
 import BookingDetail from "./pages/BookingDetail/BookingDetail";
 
+//COMPONENT IN COMMON FOR PAGES
+import Stars from "./components/Stars/Stars";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+
+//APP AND ROUTING
 function App() {
   return (
     <>
       <Stars />
       <div className="relative flex flex-col justify-between h-screen">
         <Header />
-
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
@@ -39,18 +40,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* <div className="bg-blue-500 text-white p-4">
-        C'est un exemple de composant React avec Tailwind CSS.
-      </div>
-      <button className="btn btn-primary">Bouton Daisy UI</button>
-      <div className="join join-vertical">
-        <button className="btn join-item">Button</button>
-        <button className="btn join-item">Button</button>
-        <button className="btn join-item">Button</button>
-        <button className="btn btn-primary join-item">Bouton Daisy UI</button>
-      </div>
-      <div className="container mx-auto p-4"></div>
-      </div> */
-}

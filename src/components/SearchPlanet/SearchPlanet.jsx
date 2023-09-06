@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 import CardPlanet from "./CardPlanet/CardPlanet";
 import ThreePlanet from "../ThreeScene/ThreePlanet";
 
+//CONTEXT
 import { useBooking } from "../../contexts/BoonkingContext";
+
+// TOOLS
+import request from "../../tools/request";
 
 export default function SearchPlanet({
   departureDate,
@@ -20,10 +24,7 @@ export default function SearchPlanet({
 
   const { state, dispatch } = useBooking();
 
-  const handleSortChange = (e) => {
-    setSortType(e.target.value);
-    sortData(e.target.value);
-  };
+  const navigate = useNavigate();
 
   const sortData = (criteria) => {
     const newData = [...data];
@@ -41,10 +42,11 @@ export default function SearchPlanet({
 
   const fetchSearchPlanet = async () => {
     try {
-      const response = await axios.get(
-        `https://space-voyager-back.onrender.com/booking/search?departureDate=${departureDate}&comebackDate=${comebackDate}&person=${person}`
-      );
-      console.log("response.data", response.data);
+      const response = await request
+        .generic()
+        .get(
+          `/booking/search?departureDate=${departureDate}&comebackDate=${comebackDate}&person=${person}`
+        );
       setData(response.data);
     } catch (error) {
       console.error(
@@ -55,7 +57,11 @@ export default function SearchPlanet({
     }
   };
 
-  const navigate = useNavigate();
+  const handleSortChange = (e) => {
+    setSortType(e.target.value);
+    sortData(e.target.value);
+  };
+
   const handleClick = (start, end, passengers, planet) => {
     setPlanet(planet.name);
 
@@ -86,9 +92,7 @@ export default function SearchPlanet({
   useEffect(() => {
     console.log("cardSelected", cardSelected);
   }, [cardSelected]);
-  {
-    /* <img className="rounded-lg" src={modaldata.img} alt="" /> */
-  }
+
   return (
     <>
       <div>

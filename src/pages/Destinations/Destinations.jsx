@@ -1,18 +1,18 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
+
+//COMPONENT
 import Carousel from "../../components/Carousel/Carousel";
-import axios from "axios";
+
+// TOOLS
+import request from "../../tools/request";
 
 export default function Destinations() {
   const [destinations, setDestinations] = useState(null);
-  const [slide, setSlide] = useState(1);
   const [error, setError] = useState(null);
   const fetchPlanets = async () => {
     try {
-      const response = await axios.get(
-        `https://space-voyager-back.onrender.com/planet`
-      );
-      console.log(response.data);
+      const response = await request.generic().get(`/planet`);
       setDestinations(response.data);
     } catch (error) {
       console.error(
@@ -26,10 +26,6 @@ export default function Destinations() {
   useEffect(() => {
     fetchPlanets();
   }, []);
-
-  useEffect(() => {
-    console.log("destinations", destinations);
-  }, [destinations]);
 
   return (
     <div>

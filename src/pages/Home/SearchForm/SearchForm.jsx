@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import { registerLocale, setDefaultLocale } from "react-datepicker";
@@ -6,7 +6,7 @@ import frLocale from "date-fns/locale/fr";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 
-import { useBooking } from "../../../contexts/BoonkingContext";
+import { useBooking } from "../../../contexts/BoonkingContext"; //! KEZAKO
 
 export default function SearchForm() {
   registerLocale("fr", frLocale);
@@ -16,7 +16,7 @@ export default function SearchForm() {
   const [endDate, setEndDate] = useState(new Date());
   const [passengers, setPassengers] = useState(1);
 
-  const { state, dispatch } = useBooking();
+  const { state, dispatch } = useBooking(); //! KEZAKO
 
   useEffect(() => {
     console.log("La valeur de startDate :", format(startDate, "yyyy-MM-dd"));

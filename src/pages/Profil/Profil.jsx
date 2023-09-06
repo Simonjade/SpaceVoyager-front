@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useContext, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
+
+// TOOLS
 import request from "../../tools/request";
-// LIBS
 
 // CONTEXTS
 import { AuthContext } from "../../contexts/AuthContext";
@@ -13,10 +13,10 @@ import useIsAuthenticated from "../../hooks/useIsAuthenticated";
 import ProtectedZone from "../../components/Protected/Protected";
 import ReservationCard from "../../components/ReservationCard/ReservationCard";
 
+//IMG
 import profilImg from "../../assets/profil/ProfilImg";
 
 export default function Profil() {
-  const isAuthenticated = useIsAuthenticated();
   const [isEditing, setIsEditing] = useState(false);
   const [editLastname, setEditLastname] = useState("");
   const [editFirstname, setEditFirstname] = useState("");
@@ -24,17 +24,17 @@ export default function Profil() {
   const [dataUser, setDataUser] = useState({});
   const [error, setError] = useState(null);
 
+  const isAuthenticated = useIsAuthenticated();
+
   const auth = useContext(AuthContext);
 
   const getUserProfil = async () => {
     try {
-      console.log("isAuthenticated", isAuthenticated);
       const id = auth.state.data.user.id;
-      console.log("user", auth.state.data.user);
       const token = auth.getAccessToken();
 
       const response = await request.protected(token).get(`/user/${id}`);
-      console.log("this is reponse.data", response.data);
+
       setDataUser(response.data);
     } catch (err) {
       console.log(err);
@@ -74,7 +74,6 @@ export default function Profil() {
   };
 
   useEffect(() => {
-    console.log(isAuthenticated);
     if (isAuthenticated) getUserProfil();
   }, [isAuthenticated]);
 
@@ -247,7 +246,6 @@ export default function Profil() {
 
           <div className="flex flex-col items-center lg:w-1/2 no-scrollbar overflow-y-scroll lg:h-[40rem] lg:h-2/2 self-start">
             {dataUser?.reservation &&
-            //! This is bricolage, better not to send null
             dataUser?.reservation[0].planet_name !== null &&
             dataUser?.reservation.length > 0 ? (
               dataUser?.reservation.map((element, index) => (

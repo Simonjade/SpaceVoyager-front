@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import { Component } from "react";
+
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import hostelTexture from "../../assets/hostelTexture/hostelTexture";
@@ -16,14 +17,14 @@ class ThreeHostel extends Component {
       this.sceneInitialized = true;
     }
   }
-
+  
   componentDidUpdate(prevProps) {
     if (this.props.hostelName !== prevProps.hostelName) {
       const formattedHostelName = this.props.hostelName.replace(/['\s]/g, '_'); // Remplace les espaces et les apostrophes par des underscores
       this.updateTexture(formattedHostelName);
     }
   }
-
+  
   initializeScene() {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -43,7 +44,9 @@ class ThreeHostel extends Component {
 
     const geometry = new THREE.SphereGeometry(50, 64, 64);
     const textureLoader = new THREE.TextureLoader();
+
     const texture = textureLoader.load(hostelTexture[this.props.hostelName]);
+    
     texture.wrapS = THREE.RepeatWrapping;
     texture.repeat.x = -1;
     const material = new THREE.MeshBasicMaterial({
