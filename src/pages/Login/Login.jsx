@@ -1,6 +1,3 @@
-import React, { useState } from "react";
-import { useContext, useEffect } from "react";
-
 //COMPONENT
 import LoginForm from "../../components/LoginForm/LoginForm";
 import RegisterForm from "../../components/RegisterForm/RegisterForm";

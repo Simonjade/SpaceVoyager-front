@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
+//TOOLS
 import request from "../../tools/request";
 
 // CONTEXTS

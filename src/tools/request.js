@@ -1,6 +1,9 @@
+//IMPORT AXIOS
 import axios from "axios";
 
+//TOOLS FOR REQUEST API
 const request = {
+  //API CALL WITHOUT AUTHENTIFICATION TOKEN
   generic: () => {
     const generic = axios.create({
       baseURL: "https://space-voyager-back.onrender.com",
@@ -15,6 +18,7 @@ const request = {
   },
 
   protected: (accessToken) => {
+    //API CALL WITH AUTHENTIFICATION TOKEN
     const auth = axios.create({
       baseURL: "https://space-voyager-back.onrender.com",
     });

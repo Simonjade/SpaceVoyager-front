@@ -1,9 +1,13 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CardHostel from "./CardHostel/CardHostel";
 import { useNavigate } from "react-router-dom";
 import ThreeHostel from "../ThreeScene/Views360";
+
+//CONTEXT
 import { useBooking } from "../../contexts/BoonkingContext";
+
+// TOOLS
+import request from "../../tools/request";
 
 export default function SearchHostel({
   departureDate,
@@ -18,6 +22,39 @@ export default function SearchHostel({
 
   const { state, dispatch } = useBooking();
 
+  const navigate = useNavigate();
+
+  const fetchSearchHostel = async () => {
+    try {
+      const response = await request
+        .generic()
+        .get(
+          `/booking/search?departureDate=${departureDate}&comebackDate=${comebackDate}&person=${person}&planet=${planet}`
+        );
+      setHostel(response.data);
+    } catch (error) {
+      console.error(
+        "Une erreur s'est produite lors de la récupération des données :",
+        error
+      );
+      setError(error);
+    }
+  };
+
+  const handleClick = (start, end, passengers, planet, hostel, room) => {
+    if (room) {
+      // Utilisez dispatch pour enregistrer l'objet planet choisie
+      dispatch({ type: "SET_HOSTEL", payload: hostel[0] });
+
+      // Utilisez dispatch pour enregistrer l'objet planet choisie
+      dispatch({ type: "SET_ROOM", payload: room });
+
+      navigate(
+        `/detail?departureDate=${start}&comebackDate=${end}&person=${passengers}&planet=${planet}&hostel=${hostel.name}`
+      );
+    }
+  };
+
   useEffect(() => {
     if (hostel) {
       console.log("hostel", hostel);
@@ -29,22 +66,6 @@ export default function SearchHostel({
       console.log("room", room);
     }
   }, [room]);
-
-  const fetchSearchHostel = async () => {
-    try {
-      const response = await axios.get(
-        `https://space-voyager-back.onrender.com/booking/search?departureDate=${departureDate}&comebackDate=${comebackDate}&person=${person}&planet=${planet}`
-      );
-      console.log(response.data);
-      setHostel(response.data);
-    } catch (error) {
-      console.error(
-        "Une erreur s'est produite lors de la récupération des données :",
-        error
-      );
-      setError(error);
-    }
-  };
 
   useEffect(() => {
     // Utilisez dispatch pour mettre à jour la date de départ
@@ -60,20 +81,7 @@ export default function SearchHostel({
     const stateJSON = JSON.stringify(state);
     fetchSearchHostel();
   }, []);
-  const navigate = useNavigate();
-  const handleClick = (start, end, passengers, planet, hostel, room) => {
-    if (room) {
-      // Utilisez dispatch pour enregistrer l'objet planet choisie
-      dispatch({ type: "SET_HOSTEL", payload: hostel[0] });
 
-      // Utilisez dispatch pour enregistrer l'objet planet choisie
-      dispatch({ type: "SET_ROOM", payload: room });
-
-      navigate(
-        `/detail?departureDate=${start}&comebackDate=${end}&person=${passengers}&planet=${planet}&hostel=${hostel.name}`
-      );
-    }
-  };
   return (
     <>
       <div className="drawer drawer-end">
@@ -84,19 +92,10 @@ export default function SearchHostel({
           <div className="p-2 flex flex-col align-middle gap-5 lg:w-2/3 w-4/5 min-h-full text-base-content backdrop-blur-2xl bg-indigo-50/10 text-white">
             <div className="hero font-bold text-5xl">{modaldata.name}</div>
             <div className="lg:flex justify-center hidden">
-              {/* <img className="rounded-lg" src={modaldata.img} alt="" /> */}
               <ThreeHostel />
             </div>
             <div className="flex flex-col m-4">
               <div>{modaldata.content}</div>
-              <br />
-              <div className="font-bold">
-                Types de chambres :{" "}
-                {console.log("this is modaldata.room", modaldata.room)}
-                {/* {modaldata.room.map((element) => {
-                  console.log(element.id);
-                })} */}
-              </div>
             </div>
           </div>
         </div>
@@ -150,23 +149,6 @@ export default function SearchHostel({
               <div className="w-1/2 p-2 text-white rounded-lg">
                 <h2 className="font-bold">Chambre selectionnée :</h2>
                 {room ? <span>{room.room_type}</span> : <span>_</span>}
-                {/* {setHostel.name ? <p>{setHostel.name}</p> : <p>_</p>} */}
-              </div>
-
-              <div className="w-1/2 p-2 text-white rounded-lg">
-                {/* <p className="font-bold">
-                  Prix :{" "}
-                  {cardSelected.name ? (
-                    <span>
-                      {cardSelected.price}€ x {person}
-                    </span>
-                  ) : (
-                    <sapn>_</sapn>
-                  )}
-                </p>
-                <p className="font-bold">
-                  Prix total : {cardSelected.price * person}€
-                </p> */}
               </div>
             </div>
             <div className="flex justify-center">

@@ -1,4 +1,3 @@
-import React from "react";
 import logospacevoyager from "../../assets/logo/logo-space-voyager.svg";
 export default function LogoMini() {
   return (

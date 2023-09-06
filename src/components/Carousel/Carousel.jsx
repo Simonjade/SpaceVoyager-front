@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
+//IMPORT IMG
 import planetImg from "../../assets/planet/PlanetImg";
 
 export default function Carousel({ destinations }) {

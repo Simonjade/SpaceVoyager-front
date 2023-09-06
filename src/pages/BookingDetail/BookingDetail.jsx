@@ -1,14 +1,17 @@
-import { useBooking } from "../../contexts/BoonkingContext";
+import { useContext, useEffect, useState } from "react";
+
+//TOOLS
 import request from "../../tools/request";
 
-import axios from "axios";
-
 // CONTEXTS
+import { useBooking } from "../../contexts/BoonkingContext";
 import { AuthContext } from "../../contexts/AuthContext";
 
 // HOOKS
-import { useContext, useEffect, useState } from "react";
+
 import useIsAuthenticated from "../../hooks/useIsAuthenticated";
+
+//COMPONENT
 import Modal from "./Modal/Modal";
 import planetImg from "../../assets/planet/PlanetImg";
 
