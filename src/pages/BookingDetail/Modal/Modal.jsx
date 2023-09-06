@@ -17,15 +17,15 @@ export default function Modal(setOpenModal) {
         open modal
       </button> */}
       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-        <form method="dialog" className="modal-box">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">
+        <form method="dialog" className="modal-box backdrop-blur-sm bg-white ">
+          <h3 className="font-bold text-lg text-primary">Hello!</h3>
+          <p className="py-4 text-primary">
             Veillez vous connecter/s'inscrire avant de valider votre réservation
           </p>
           <LoginFormModal setLogged={setLogged} />
-          <div className="modal-action">
+          <div className="modal-action text-black">
             {/* if there is a button in form, it will close the modal */}
-            <button className="btn">Close</button>
+            <button className="btn bg-white text-black">Close</button>
           </div>
         </form>
       </dialog>

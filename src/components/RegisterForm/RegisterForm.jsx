@@ -63,26 +63,26 @@ export default function RegisterForm() {
         <input
           type="text"
           placeholder="Prénom"
-          className="input input-bordered my-4 input-primary w-full max-w-xs text-white"
+          className="input input-bordered my-4 input-primary w-full max-w-xs bg-white text-black"
           onChange={(e) => setFirstnameRegister(e.target.value)}
         />
         <input
           type="text"
           placeholder="Nom de famille"
-          className="input input-bordered my-4 input-primary w-full max-w-xs text-white"
+          className="input input-bordered my-4 input-primary w-full max-w-xs bg-white text-black"
           onChange={(e) => setLastnameRegister(e.target.value)}
         />
         <input
           type="email"
           placeholder="E-mail"
-          className="input input-bordered my-4 input-primary w-full max-w-xs text-white"
+          className="input input-bordered my-4 input-primary w-full max-w-xs bg-white text-black"
           onChange={(e) => setEmailRegister(e.target.value)}
           autoComplete="email"
         />
         <input
           type="password"
           placeholder="Mot de passe"
-          className="input input-bordered my-4 input-primary w-full max-w-xs text-white"
+          className="input input-bordered my-4 input-primary w-full max-w-xs bg-white text-black"
           onChange={(e) => validate(e.target.value)}
           autoComplete="current-password"
         />

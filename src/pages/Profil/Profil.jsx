@@ -93,7 +93,7 @@ export default function Profil() {
                 <label className="w-10 font-bold text-white">Prénom</label>
                 {isEditing ? (
                   <input
-                    className="input input-bordered input-primary w-80 max-w-xs self-center"
+                    className="input input-bordered input-primary w-80 max-w-xs self-center bg-white text-black"
                     name=""
                     defaultValue={dataUser?.firstname}
                     autoFocus
@@ -112,7 +112,7 @@ export default function Profil() {
                 <label className="w-10 font-bold text-white">Nom</label>
                 {isEditing ? (
                   <input
-                    className="input input-bordered input-primary w-80 max-w-xs self-center"
+                    className="input input-bordered input-primary w-80 max-w-xs self-center bg-white text-black"
                     name=""
                     defaultValue={dataUser?.lastname}
                     autoFocus
@@ -130,7 +130,7 @@ export default function Profil() {
                 <h4 className="w-10 font-bold text-white">Email</h4>
                 {isEditing ? (
                   <input
-                    className="input input-bordered input-primary w-80 max-w-xs self-center"
+                    className="input input-bordered input-primary w-80 max-w-xs self-center bg-white text-black"
                     name=""
                     defaultValue={dataUser?.mail}
                     autoFocus
@@ -222,7 +222,7 @@ export default function Profil() {
               id="my_modal_5"
               className="modal modal-bottom sm:modal-middle text-black"
             >
-              <form method="dialog" className="modal-box">
+              <form method="dialog" className="modal-box bg-white text-black">
                 <h3 className="font-bold text-lg">
                   Prend garde space voyager !
                 </h3>

@@ -62,7 +62,7 @@ export default function SearchHostel() {
           <div className="p-2 flex flex-col align-middle gap-5 lg:w-2/3 w-4/5 min-h-full text-base-content backdrop-blur-2xl bg-indigo-50/10 text-white">
             <div className="hero font-bold text-5xl">{modaldata.name}</div>
             <div className="lg:flex justify-center hidden">
-              <ThreeHostel />
+              <ThreeHostel hostelName={modaldata.name} />
             </div>
             <div className="flex flex-col m-4">
               <div>{modaldata.content}</div>

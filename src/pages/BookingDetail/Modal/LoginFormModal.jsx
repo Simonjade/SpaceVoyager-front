@@ -43,7 +43,7 @@ export default function LoginFormModal({ setLogged }) {
         <input
           type="text"
           placeholder="Email"
-          className="input input-bordered my-4 input-primary w-full max-w-xs"
+          className="input input-bordered my-4 input-primary w-full max-w-xs bg-white text-black"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           autoComplete="email"
@@ -51,7 +51,7 @@ export default function LoginFormModal({ setLogged }) {
         <input
           type="password"
           placeholder="Password"
-          className="input input-bordered my-4 input-primary w-full max-w-xs"
+          className="input input-bordered my-4 input-primary w-full max-w-xs bg-white text-black"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           autoComplete="current-password"
