@@ -19,6 +19,13 @@ export default function SearchForm() {
   const { state, dispatch } = useBooking(); //! KEZAKO
 
   useEffect(() => {
+    console.log("RESET");
+    // Afficher une modal qui précise à l'internaute qu'une session est en cours sur une précédente réservation
+    dispatch({ type: "RESET" });
+    //eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
     console.log("La valeur de startDate :", format(startDate, "yyyy-MM-dd"));
     console.log("La valeur de endtDate :", endDate);
     console.log("La valeur de startDate :", passengers);
@@ -47,9 +54,13 @@ export default function SearchForm() {
   const handleClick = (start, end, passengers) => {
     start = format(start, "yyyy-MM-dd");
     end = format(end, "yyyy-MM-dd");
-    navigate(
-      `/search?departureDate=${start}&comebackDate=${end}&person=${passengers}`
-    );
+
+    dispatch({ type: "SET_DEPARTURE", payload: start });
+    dispatch({ type: "SET_COMEBACK", payload: end });
+    dispatch({ type: "SET_PERSON", payload: passengers });
+    dispatch({ type: "SAVE" });
+
+    navigate("/search");
   };
 
   return (
