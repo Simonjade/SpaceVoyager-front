@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import CardHostel from "./CardHostel/CardHostel";
 import { useNavigate } from "react-router-dom";
-import ThreeHostel from "../ThreeScene/ThreeHostel"
+import ThreeHostel from "../ThreeScene/ThreeHostel";
 import { useBooking } from "../../contexts/BoonkingContext";
 
 // TOOLS
@@ -80,14 +80,6 @@ export default function SearchHostel({
     fetchSearchHostel();
   }, []);
 
-      // Utilisez dispatch pour enregistrer l'objet planet choisie
-      dispatch({ type: "SET_ROOM", payload: room });
-
-      navigate(
-        `/detail?departureDate=${start}&comebackDate=${end}&person=${passengers}&planet=${planet}&hostel=${hostel[0].name}`
-      );
-    }
-  };
   return (
     <>
       <div className="drawer drawer-end">
