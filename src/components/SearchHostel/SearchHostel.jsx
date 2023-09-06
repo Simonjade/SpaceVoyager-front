@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import CardHostel from "./CardHostel/CardHostel";
 import { useNavigate } from "react-router-dom";
-import ThreeHostel from "../ThreeScene/Views360"
+import ThreeHostel from "../ThreeScene/Views360";
 import { useBooking } from "../../contexts/BoonkingContext";
 
 export default function SearchHostel({
@@ -148,7 +148,8 @@ export default function SearchHostel({
           <div className="rounded-lg bg-indigo-50/10 backdrop-blur-sm">
             <div className="flex gap-3">
               <div className="w-1/2 p-2 text-white rounded-lg">
-                <h2 className="font-bold">Hotel selectionnée :</h2>
+                <h2 className="font-bold">Chambre selectionnée :</h2>
+                {room ? <span>{room.room_type}</span> : <span>_</span>}
                 {/* {setHostel.name ? <p>{setHostel.name}</p> : <p>_</p>} */}
               </div>
 
