@@ -51,7 +51,7 @@ const teamMembers = [
     lastName: "AIT-AYAD",
     role: "Lead dev front",
     description:
-      "Le ninja de warzazat ! Il a quitté la France pour coder dans l'ombre, il est rapide et ses visuels se vendent cher sur le marcher !",
+      "Le ninja de warzazat ! Il a quitté la France pour coder dans l'ombre, il est rapide et ses visuels se vendent cher sur le marché !",
     photo: (
       <img src={profilImg.tarek} alt="Tarek_image" className="rounded-full" />
     ),
