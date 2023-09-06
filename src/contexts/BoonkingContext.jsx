@@ -30,6 +30,8 @@ function reducer(state, action) {
       return { ...state, room: action.payload };
     case "SAVE":
       return { ...state, type: action.type };
+    case "RESET":
+      return { type: action.type };
     default:
       return state;
   }
@@ -56,11 +58,12 @@ export function BookingProvider({ children }) {
   }, []);
 
   useEffect(() => {
+    console.log("CHANGE STATE", state.type);
     if (state.type === "SAVE") {
-      console.log("newState", state);
-
       // Enregistrez le nouvel état dans le localStorage à chaque changement
       localStorage.setItem("bookingState", JSON.stringify(state));
+    } else if (state.type === "RESET") {
+      localStorage.removeItem("bookingState");
     }
   }, [state]);
 

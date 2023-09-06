@@ -1,8 +1,4 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import CardPlanet from "./CardPlanet/CardPlanet";
-import ThreePlanet from "../ThreeScene/ThreePlanet";
 
 //CONTEXT
 import { useBooking } from "../../contexts/BoonkingContext";
@@ -10,22 +6,22 @@ import { useBooking } from "../../contexts/BoonkingContext";
 // TOOLS
 import request from "../../tools/request";
 
-export default function SearchPlanet({
-  departureDate,
-  comebackDate,
-  person,
-  setPlanet,
-}) {
-  const [data, setData] = useState(null);
+// COMPONENTS
+import CardPlanet from "./CardPlanet/CardPlanet";
+import ThreePlanet from "../ThreeScene/ThreePlanet";
+
+export default function SearchPlanet({ setPlanet }) {
+  // STATES
+  const [data, setData] = useState([]);
   const [modaldata, setModalData] = useState([]);
   const [error, setError] = useState(null);
   const [cardSelected, setCardSelected] = useState([]);
-  const [sortType, setSortType] = useState(""); // État pour suivre le type de tri
+  const [sortType, setSortType] = useState("");
 
+  // CONTEXTS
   const { state, dispatch } = useBooking();
 
-  const navigate = useNavigate();
-
+  // FUNCTIONS
   const sortData = (criteria) => {
     const newData = [...data];
     newData.sort((a, b) => {
@@ -41,58 +37,59 @@ export default function SearchPlanet({
   };
 
   const fetchSearchPlanet = async () => {
-    try {
-      const response = await request
-        .generic()
-        .get(
-          `/booking/search?departureDate=${departureDate}&comebackDate=${comebackDate}&person=${person}`
+    if (state.departure) {
+      try {
+        const response = await request
+          .generic()
+          .get(
+            `/booking/search?departureDate=${state.departure}&comebackDate=${state.comeBack}&person=${state.person}`
+          );
+        setData(response.data);
+
+        setCardSelected(state?.planet ?? []);
+      } catch (error) {
+        console.error(
+          "Une erreur s'est produite lors de la récupération des données :",
+          error
         );
-      setData(response.data);
-    } catch (error) {
-      console.error(
-        "Une erreur s'est produite lors de la récupération des données :",
-        error
-      );
-      setError(error);
+        setError(error);
+      }
     }
   };
 
+  // HANDLES
   const handleSortChange = (e) => {
     setSortType(e.target.value);
     sortData(e.target.value);
   };
 
   const handleClick = (start, end, passengers, planet) => {
-    setPlanet(planet.name);
-
-    // Utilisez dispatch pour enregistrer l'objet planet choisie
     dispatch({ type: "SET_PLANET", payload: planet });
     dispatch({ type: "SAVE" });
 
-    navigate(
-      `/search?departureDate=${start}&comebackDate=${end}&person=${passengers}&planet=${planet.name}`
-    );
+    setPlanet(planet.name);
   };
 
+  // USE EFFECTS
   useEffect(() => {
-    // Utilisez dispatch pour mettre à jour la date de départ
-    dispatch({ type: "SET_DEPARTURE", payload: departureDate });
-
-    // Utilisez dispatch pour mettre à jour la date de fin
-    dispatch({ type: "SET_COMEBACK", payload: comebackDate });
-
-    // Utilisez dispatch pour mettre à jour le nombre de passagers
-    dispatch({ type: "SET_PERSON", payload: person });
-
-    // Convertissez le state en chaîne JSON
-    const stateJSON = JSON.stringify(state);
     fetchSearchPlanet();
+    //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
-    console.log("cardSelected", cardSelected);
+    if (state.departure) fetchSearchPlanet();
+    //eslint-disable-next-line
+  }, [state]);
+
+  useEffect(() => {
+    if (cardSelected?.name) {
+      dispatch({ type: "SET_PLANET", payload: cardSelected });
+      dispatch({ type: "SAVE" });
+    }
+    //eslint-disable-next-line
   }, [cardSelected]);
 
+  // RENDER
   return (
     <>
       <div>
@@ -142,17 +139,17 @@ export default function SearchPlanet({
             <div className="flex gap-3 mx-4">
               <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
                 <h2 className="font-bold inline">Aller : </h2>
-                <p className="text-center inline">{departureDate}</p>
+                <p className="text-center inline">{state?.departure}</p>
               </div>
               <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
                 <h2 className="font-bold inline ">Retour : </h2>
-                <p className="text-center inline">{comebackDate}</p>
+                <p className="text-center inline">{state?.comeBack}</p>
               </div>
             </div>
 
             <div className=" flex gap-3 bg-indigo-50/10 mx-4 p-2 backdrop-blur-sm text-white rounded-lg text-center">
               <h2 className="font-bold">Nombre de passager : </h2>
-              <p className="">{person}</p>
+              <p className="">{state?.person}</p>
             </div>
 
             <div className=" flex mb-4 justify-center">
@@ -198,7 +195,7 @@ export default function SearchPlanet({
               <div className="flex gap-3">
                 <div className="w-1/2 p-2 text-white rounded-lg">
                   <h2 className="font-bold">Planet selectionnée :</h2>
-                  {cardSelected.name ? <p>{cardSelected.name}</p> : <p>_</p>}
+                  {cardSelected?.name ? <p>{cardSelected?.name}</p> : <p>_</p>}
                 </div>
 
                 <div className="w-1/2 p-2 text-white rounded-lg">
@@ -206,7 +203,7 @@ export default function SearchPlanet({
                     Prix :{" "}
                     {cardSelected.name ? (
                       <span>
-                        {cardSelected.price}€ x {person}
+                        {cardSelected.price}€ x {state?.person}
                       </span>
                     ) : (
                       <span>0€</span>
@@ -215,7 +212,7 @@ export default function SearchPlanet({
                   <p className="font-bold">
                     Prix total :{" "}
                     {cardSelected.name ? (
-                      <span>{cardSelected.price * person}€</span>
+                      <span>{cardSelected.price * state?.person}€</span>
                     ) : (
                       <span>0€</span>
                     )}
@@ -225,14 +222,7 @@ export default function SearchPlanet({
               <div className="flex justify-center">
                 <button
                   className="btn-primary rounded-none rounded-b-lg w-full"
-                  onClick={() =>
-                    handleClick(
-                      departureDate,
-                      comebackDate,
-                      person,
-                      cardSelected
-                    )
-                  }
+                  onClick={() => handleClick(cardSelected)}
                 >
                   VALIDER
                 </button>

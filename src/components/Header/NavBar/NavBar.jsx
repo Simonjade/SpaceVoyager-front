@@ -1,24 +1,17 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
+import { Link } from "react-router-dom";
 import useIsAuthenticated from "../../../hooks/useIsAuthenticated";
 
 import { AuthContext } from "../../../contexts/AuthContext";
-import { StoreContext } from "../../../contexts/StoreContext";
 
 import LogoMini from "../../LogoMini/LogoMini";
 
 export default function NavBar() {
   const auth = useContext(AuthContext);
-  const store = useContext(StoreContext);
 
   const isAuthenticated = useIsAuthenticated();
-
-  useEffect(() => {}, [isAuthenticated]);
-
-  useEffect(() => {}, [auth]);
-
-  useEffect(() => {}, [store]);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -34,24 +27,24 @@ export default function NavBar() {
 
         <div>
           <div className="hidden lg:flex lg:gap-x-12">
-            <a
-              href="./"
+            <Link
+              to="/"
               className="text-sm text-white font-semibold leading-6 hover:text-secondary hover:transition-colors hover:duration-300 duration-500"
             >
               Accueil
-            </a>
-            <a
-              href="./destinations"
+            </Link>
+            <Link
+              to={"destinations"}
               className="text-sm text-white font-semibold leading-6 hover:text-secondary hover:transition-colors hover:duration-300 duration-500"
             >
               Destinations
-            </a>
-            <a
-              href="./about"
+            </Link>
+            <Link
+              to={"about"}
               className="text-sm text-white font-semibold leading-6 hover:text-secondary hover:transition-colors hover:duration-300 duration-500"
             >
               A propos
-            </a>
+            </Link>
             {isAuthenticated && (
               <a
                 href="./profil"
