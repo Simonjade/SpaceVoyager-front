@@ -63,7 +63,7 @@ export default function SearchPlanet({ setPlanet }) {
     sortData(e.target.value);
   };
 
-  const handleClick = (start, end, passengers, planet) => {
+  const handleClick = (planet) => {
     dispatch({ type: "SET_PLANET", payload: planet });
     dispatch({ type: "SAVE" });
 

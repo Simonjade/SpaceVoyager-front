@@ -44,7 +44,7 @@ export default function LoginForm() {
         <input
           type="email"
           placeholder="E-mail"
-          className="input input-bordered my-4 input-primary w-full max-w-xs text-white"
+          className="input input-bordered my-4 input-primary w-full max-w-xs bg-white text-black"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           autoComplete="email"
@@ -52,7 +52,7 @@ export default function LoginForm() {
         <input
           type="password"
           placeholder="Mot de passe"
-          className="input input-bordered my-4 input-primary w-full max-w-xs text-white"
+          className="input input-bordered my-4 input-primary w-full max-w-xs bg-white text-black"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           autoComplete="current-password"
