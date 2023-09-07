@@ -1,4 +1,5 @@
-import { useState, useContext } from "react";
+import * as React from 'react';
+import { useState, useContext} from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import { Link } from "react-router-dom";
@@ -46,32 +47,32 @@ export default function NavBar() {
               A propos
             </Link>
             {isAuthenticated && (
-              <a
-                href="./profil"
+              <Link
+                to={"profil"}
                 className="text-sm text-white font-semibold leading-6 hover:text-secondary hover:transition-colors hover:duration-300 duration-500"
               >
                 Profil
-              </a>
+              </Link>
             )}
           </div>
         </div>
         <div>
           <div className="hidden lg:flex lg:flex-1 w-52 text-end justify-end">
             {!isAuthenticated ? (
-              <a
-                href="./login"
+              <Link
+                to={"login"}
                 className="text-sm text-white font-semibold leading-6 hover:text-secondary hover:transition-colors hover:duration-300 duration-500"
               >
                 Connexion <span aria-hidden="true">&rarr;</span>
-              </a>
+              </Link>
             ) : (
-              <a
-                href="#"
+              <Link
+                to={"#"}
                 className="text-sm text-white font-semibold leading-6 hover:text-secondary hover:transition-colors hover:duration-300 duration-500"
                 onClick={() => auth.logout()}
               >
                 Deconnexion <span aria-hidden="true">&rarr;</span>
-              </a>
+              </Link>
             )}
           </div>
           <div>
@@ -103,48 +104,48 @@ export default function NavBar() {
             <span className="sr-only">Close menu</span>
             <XMarkIcon className="h-6 w-6" aria-hidden="true" />
           </button>
-          <a
-            href="./"
+          <Link
+            to={"/"}
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
           >
             Accueil
-          </a>
+          </Link>
 
-          <a
-            href="./destinations"
+          <Link
+            to={"destinations"}
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
           >
             Destinations
-          </a>
-          <a
-            href="./about"
+          </Link>
+          <Link
+            to={"about"}
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
           >
             A propos
-          </a>
+          </Link>
           {isAuthenticated && (
-            <a
-              href="./profil"
+            <Link
+              to={"profil"}
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               Profil
-            </a>
+            </Link>
           )}
           {!isAuthenticated ? (
-            <a
-              href="./login"
+            <Link
+              to={"login"}
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               Connexion
-            </a>
+            </Link>
           ) : (
-            <a
-              href="./profil"
+            <Link
+              to={"profil"}
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               onClick={() => auth.logout()}
             >
               Deconnexion
-            </a>
+            </Link>
           )}
         </div>
       </div>
