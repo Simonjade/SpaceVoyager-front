@@ -35,7 +35,12 @@ class ThreeHostel extends Component {
     );
     const renderer = new THREE.WebGLRenderer();
     const controls = new OrbitControls(camera, renderer.domElement);
-
+    controls.mouseButtons = {
+      LEFT: THREE.MOUSE.ROTATE,
+      // MIDDLE: THREE.MOUSE.DOLLY,
+      // RIGHT: THREE.MOUSE.PAN
+  }
+  controls.update();// reuse this 
     renderer.clear();
     renderer.setSize(this.mount.clientWidth, this.mount.clientHeight);
     this.mount.appendChild(renderer.domElement);

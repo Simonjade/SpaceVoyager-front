@@ -33,6 +33,12 @@ class ThreePlanet extends Component {
     );
     const renderer = new THREE.WebGLRenderer({ alpha: true });
     const controls = new OrbitControls(camera, renderer.domElement);
+    controls.mouseButtons = {
+      LEFT: THREE.MOUSE.ROTATE,
+      // MIDDLE: THREE.MOUSE.DOLLY,
+      // RIGHT: THREE.MOUSE.PAN
+  }
+  controls.update();// reuse this 
     renderer.clear();
     this.mount.appendChild(renderer.domElement);
 
