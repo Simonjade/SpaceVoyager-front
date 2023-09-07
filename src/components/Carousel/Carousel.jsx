@@ -20,7 +20,7 @@ export default function Carousel({ destinations }) {
             </div>
 
             {/* Planet infos */}
-            <div className="lg:w-1/2 sm:w-2/3 self-center bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary rounded-lg m-4">
+            <div className="lg:w-1/3 sm:w-2/3 self-center bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary rounded-lg m-4">
               <div className="bg-zinc-900 h-full rounded-lg p-4">
                 <h2 className="text-center text-white text-5xl border-b-2 border-b-primary pb-3 mb-3">
                   {destination.name}

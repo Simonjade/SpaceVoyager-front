@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { useState, useContext} from "react";
+import * as React from "react";
+import { useState, useContext } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import { Link } from "react-router-dom";
@@ -79,7 +79,7 @@ export default function NavBar() {
             <div className="flex lg:hidden">
               <button
                 type="button"
-                className="-m-2.5 inline-flex flex-row items-center justify-center rounded-md p-2.5 text-gray-700"
+                className="-m-2.5 inline-flex flex-row items-center justify-center rounded-md p-2.5 text-white"
                 onClick={() => setMobileMenuOpen(true)}
               >
                 <span className="sr-only">Open main menu</span>
@@ -91,14 +91,14 @@ export default function NavBar() {
       </nav>
 
       <div
-        className={`origin-top-right mr-4 absolute z-50 right-0 mt-2 w-52 rounded-md shadow-lg ${
+        className={`origin-top-right mr-4 absolute z-50 right-0 w-52 rounded-md shadow-lg ${
           mobileMenuOpen ? "block" : "hidden"
         }`}
       >
-        <div className="py-1 bg-white rounded-md shadow-xs">
+        <div className="py-1 shadow-black bg-indigo-50/10 backdrop-blur-lg rounded-md shadow-xs border-2 border-primary">
           <button
             type="button"
-            className="absolute right-2 top-2 -m-2.5 rounded-md p-2.5 text-gray-700"
+            className="absolute right-2 top-2 -m-2.5 rounded-md p-2.5 text-neutral"
             onClick={() => setMobileMenuOpen(false)}
           >
             <span className="sr-only">Close menu</span>
@@ -106,27 +106,31 @@ export default function NavBar() {
           </button>
           <Link
             to={"/"}
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            className="block px-4 py-2 text-sm text-neutral hover:backdrop-blur-xl group hover:transition-colors hover:duration-10 duration-10 hover:text-secondary"
+            onClick={() => setMobileMenuOpen(false)}
           >
             Accueil
           </Link>
 
           <Link
             to={"destinations"}
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            className="block px-4 py-2 text-sm text-neutral hover:backdrop-blur-xl group hover:transition-colors hover:duration-10 duration-10 hover:text-secondary"
+            onClick={() => setMobileMenuOpen(false)}
           >
             Destinations
           </Link>
           <Link
             to={"about"}
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            className="block px-4 py-2 text-sm text-neutral hover:backdrop-blur-xl group hover:transition-colors hover:duration-10 duration-10 hover:text-secondary"
+            onClick={() => setMobileMenuOpen(false)}
           >
             A propos
           </Link>
           {isAuthenticated && (
             <Link
               to={"profil"}
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="block px-4 py-2 text-sm text-neutral hover:backdrop-blur-xl group hover:transition-colors hover:duration-10 duration-10 hover:text-secondary"
+              onClick={() => setMobileMenuOpen(false)}
             >
               Profil
             </Link>
@@ -134,15 +138,16 @@ export default function NavBar() {
           {!isAuthenticated ? (
             <Link
               to={"login"}
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="block px-4 py-2 text-sm text-neutral hover:backdrop-blur-xl group hover:transition-colors hover:duration-10 duration-10 hover:text-secondary"
+              onClick={() => setMobileMenuOpen(false)}
             >
               Connexion
             </Link>
           ) : (
             <Link
               to={"profil"}
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              onClick={() => auth.logout()}
+              className="block px-4 py-2 text-sm text-neutral hover:backdrop-blur-xl group hover:transition-colors hover:duration-10 duration-10 hover:text-secondary"
+              onClick={() => auth.logout() & setMobileMenuOpen(false)}
             >
               Deconnexion
             </Link>
