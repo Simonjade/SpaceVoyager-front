@@ -18,17 +18,16 @@ export default function CardHostel({ hostelData, setRoom, setModalData }) {
     console.log(checkboxes);
   }, [checkboxes]);
 
-  const formattedImageName = hostelData.name.replace(/['\s]/g, '_');
+  const formattedImageName = hostelData.name.replace(/['\s]/g, "_");
 
   return (
     <div className="mx-8 mb-16 md:flex bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary rounded-lg">
       <div className="relative md:w-1/2">
-
-          <img
-            className="object-cover w-full h-full rounded-t-lg md:rounded-lg md:rounded-br-none md:rounded-tr-none"
-            src={hostelImg[formattedImageName]}
-            alt={hostelData.name}
-          />
+        <img
+          className="object-cover w-full h-full rounded-t-lg md:rounded-lg md:rounded-br-none md:rounded-tr-none"
+          src={hostelImg[formattedImageName]}
+          alt={hostelData.name}
+        />
 
         <label
           htmlFor="my-drawer-4"
