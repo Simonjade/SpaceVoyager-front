@@ -7,7 +7,7 @@ export default function CardPlanet({
 }) {
   // console.log(planetImg[planetData.name.toLowerCase()]);
   return (
-    <div className="m-8 md:flex bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary rounded-lg">
+    <div className="m-8 md:flex bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary rounded-lg hover:scale-105 transition duration-500">
       <div className="relative md:w-1/2">
         <img
           className="object-cover w-full h-full rounded-t-lg md:rounded-lg md:rounded-br-none md:rounded-tr-none"
