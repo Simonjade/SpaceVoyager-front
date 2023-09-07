@@ -62,10 +62,11 @@ export default function SearchHostel() {
   // RENDER
   return (
     <>
+    <div>
       {/* MODAL */}
       <ModalHostel modaldata={modaldata} />
       {/* MAIN PAGE */}
-      <div className="sm:flex sm:flex-col sm:justify-between h-screen lg:grid lg:grid-cols-3 lg:mx-48 lg:grid-rows-3 lg:gap-4">
+      <div className="sm:flex sm:flex-col sm:justify-between h-full lg:grid lg:grid-cols-3 2xl:mx-48 xl:mx-24 lg:mx-10 lg:grid-rows-3 lg:gap-4">
         <div className="flex gap-3 flex-col lg:col-start-3 lg:row-start-1">
           <div className="flex gap-3 mx-4">
             <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
@@ -91,27 +92,31 @@ export default function SearchHostel() {
             </ul>
           </div>
         </div>
-        {/* Planets list */}
-        <div className="overflow-y-auto no-scrollbar h-80 lg:h-[45rem] lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1">
-          {error ? (
-            <p>Une erreur s'est produite : {error.message}</p>
-          ) : hostel ? (
-            hostel.map((hostelData) => (
-              <CardHostel
-                key={hostelData.id}
-                hostelData={hostelData}
-                setRoom={setRoom}
-                setModalData={setModalData}
-              />
-            ))
-          ) : (
-            <p>Chargement en cours...</p>
-          )}
+        <div className="h-96 lg:h-[45rem] md:col-span-2 md:row-span-4 md:col-start-1 md:row-start-1">
+
+          {/* Planets list */}
+
+          <div className="overflow-y-auto no-scrollbar h-96 lg:h-[45rem] lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1">
+            {error ? (
+              <p>Une erreur s'est produite : {error.message}</p>
+            ) : hostel ? (
+              hostel.map((hostelData) => (
+                <CardHostel
+                  key={hostelData.id}
+                  hostelData={hostelData}
+                  setRoom={setRoom}
+                  setModalData={setModalData}
+                />
+              ))
+            ) : (
+              <p>Chargement en cours...</p>
+            )}
+          </div>
         </div>
-        <div className="flex flex-col justify-between mx-4 gap-3 lg:row-span-3 2xl:col-start-3 2xl:row-start-2 lg:row-start-3">
+        <div className="flex flex-col justify-between mx-4 gap-3 md:row-span-3 lg:row-start-2">
           <div className="rounded-lg bg-indigo-50/10 backdrop-blur-sm">
             <div className="flex gap-3">
-              <div className="w-1/2 p-2 text-white rounded-lg">
+              <div className=" p-2 text-white rounded-lg">
                 <h2 className="font-bold">Chambre selectionnée :</h2>
                 {room ? <span>{room?.room_type}</span> : <span>_</span>}
               </div>
@@ -126,6 +131,7 @@ export default function SearchHostel() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
   );

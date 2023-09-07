@@ -100,7 +100,7 @@ class ThreePlanet extends Component {
   render() {
     return (
       <div
-        className="flex justify-center relative lg:w-2/3 w-4/5 h-96"
+        className="flex justify-center relative h-96 w-full"
         ref={(ref) => (this.mount = ref)}
       />
     );
