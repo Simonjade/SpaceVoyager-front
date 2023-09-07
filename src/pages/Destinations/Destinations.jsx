@@ -14,6 +14,7 @@ export default function Destinations() {
     try {
       const response = await request.generic().get(`/planet`);
       setDestinations(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error(
         "Une erreur s'est produite lors de la récupération des données :",
