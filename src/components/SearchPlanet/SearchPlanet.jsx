@@ -125,12 +125,12 @@ export default function SearchPlanet({ setPlanet }) {
             </div>
           </div>
           <div className="h-96 lg:h-[45rem] md:col-span-2 md:row-span-4 md:col-start-1 md:row-start-1">
-            <div className="flex mx-8 lg:bg-indigo-50/10 lg:backdrop-blur-sm lg:rounded-lg lg:text-center lg:p-2">
+            <div className="flex mx-8 md:bg-indigo-50/10 md:backdrop-blur-sm md:rounded-lg md:text-center md:p-2">
               <p className=""> Trier par :</p>
               <select
                 onChange={handleSortChange}
                 value={sortType}
-                className="bg-black text-white border-2 border-primary"
+                className="bg-black ml-3 text-white border-2 border-primary"
               >
                 <option value="-"> -</option>
                 <option value="nom"> nom</option>
@@ -156,7 +156,7 @@ export default function SearchPlanet({ setPlanet }) {
               )}
             </div>
           </div>
-          <div className="flex flex-col justify-between mx-4 gap-3 md:row-span-3 2xl:col-start-3 2xl:row-start-2 lg:row-start-3">
+          <div className="flex flex-col justify-between mx-4 gap-3 md:row-span-3 lg:row-start-2">
             <div className="rounded-lg bg-indigo-50/10 backdrop-blur-sm">
               <div className="flex gap-3">
                 <div className="w-1/2 p-2 text-white rounded-lg">

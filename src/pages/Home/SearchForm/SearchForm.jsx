@@ -69,7 +69,7 @@ export default function SearchForm() {
         <h3 className="portait:text-1xl font-bold text-center self-center inline-block max-w-sm mb-1 w-1/3 landscape:w-full sm:w-full text-gray-500">
           Veuillez choisir vos dates de depart et de retour
         </h3>
-        <div className="flex justify-center join join-vertical lg:join-horizontal text-center w-3/5 self-center ">
+        <div className="flex justify-center join join-vertical lg:join-horizontal text-center w-3/5 self-center lg:rounded-tr-none">
           <DatePicker
             selected={startDate}
             onChange={(date) => setStartDate(date)}
@@ -105,7 +105,7 @@ export default function SearchForm() {
             </button>
             {passengers}
             <button
-              className=" ml-4 btn-primary btn-circle w-8 h-8 text-l text-black bg-white/80"
+              className=" ml-4 btn-primary btn-circle w-8 h-8 text-l text-black bg-white/80 "
               onClick={handlePlus}
             >
               {" "}
@@ -113,7 +113,7 @@ export default function SearchForm() {
             </button>
           </div>
           <button
-            className="btn join-item bg-gradient-to-r from-violet-600 to-indigo-600 text-white border-none"
+            className="btn join-item bg-gradient-to-r from-violet-600 to-indigo-600 text-white"
             onClick={() => handleClick(startDate, endDate, passengers)}
           >
             Explorer
