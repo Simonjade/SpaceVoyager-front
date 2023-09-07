@@ -11,6 +11,7 @@ const initialState = {
   planet: null,
   hostel: null,
   room: null,
+  sortPlanet: null,
 };
 
 // Étape 3 : Créez votre réducteur
@@ -28,6 +29,8 @@ function reducer(state, action) {
       return { ...state, hostel: action.payload };
     case "SET_ROOM":
       return { ...state, room: action.payload };
+    case "SET_SORT_PLANET":
+      return { ...state, sortPlanet: action.payload };
     case "SAVE":
       return { ...state, type: action.type };
     case "RESET":
@@ -54,6 +57,7 @@ export function BookingProvider({ children }) {
       dispatch({ type: "SET_PLANET", payload: storedState.planet });
       dispatch({ type: "SET_HOSTEL", payload: storedState.hostel });
       dispatch({ type: "SET_ROOM", payload: storedState.room });
+      dispatch({ type: "SET_SORT_PLANET", payload: storedState.sortPlanet });
     }
   }, []);
 

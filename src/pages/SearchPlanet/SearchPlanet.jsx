@@ -19,7 +19,7 @@ export default function SearchPlanet() {
   const [error, setError] = useState(null);
   const [cardSelected, setCardSelected] = useState([]);
   const [isMounted, setIsMounted] = useState(false); // État pour suivre l'état de montage
-  const [sortType, setSortType] = useState("");
+  const [sortType, setSortType] = useState("-");
   const navigate = useNavigate();
 
   // CONTEXTS
@@ -51,6 +51,8 @@ export default function SearchPlanet() {
         setData(response.data);
 
         setCardSelected(state?.planet ?? []);
+        // setSortType(state?.sortPlanet ?? "-");
+        // sortData(state?.sortPlanet ?? "-");
       } catch (error) {
         console.error(
           "Une erreur s'est produite lors de la récupération des données :",
@@ -68,8 +70,8 @@ export default function SearchPlanet() {
   };
 
   const handleClick = (planet) => {
-    dispatch({ type: "SET_PLANET", payload: planet });
-    dispatch({ type: "SAVE" });
+    // dispatch({ type: "SET_PLANET", payload: planet });
+    // dispatch({ type: "SAVE" });
 
     // setPlanet(planet.name);
     navigate("/searchHostel");
@@ -93,15 +95,7 @@ export default function SearchPlanet() {
     return () => {
       setIsMounted(false);
     };
-  }, [state, isMounted]);
-
-  //   useEffect(() => {
-  //     if (state.departure) {
-  //       console.log("WHAAAAAAAAAAATTTTTT");
-  //       fetchSearc//   setHostel(state?.hostel ?? []);hPlanet();
-  //     }
-  //     //eslint-disable-next-line
-  //   }, [state]);
+  }, [isMounted]);
 
   useEffect(() => {
     if (cardSelected?.name) {
@@ -110,6 +104,14 @@ export default function SearchPlanet() {
     }
     //eslint-disable-next-line
   }, [cardSelected]);
+
+  //   useEffect(() => {
+  //     if (sortType) {
+  //       console.log(sortType);
+  //       dispatch({ type: "SET_SORT_PLANET", payload: sortType });
+  //       dispatch({ type: "SAVE" });
+  //     }
+  //   }, [sortType]);
 
   // RENDER
   return (
