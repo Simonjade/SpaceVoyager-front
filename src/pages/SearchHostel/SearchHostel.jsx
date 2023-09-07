@@ -19,6 +19,7 @@ export default function SearchHostel() {
   const [error, setError] = useState(null);
   const [room, setRoom] = useState(null);
   const [modaldata, setModalData] = useState([]);
+  const [isMounted, setIsMounted] = useState(false); // État pour suivre l'état de montage
   const navigate = useNavigate();
 
   // CONTEXTS
@@ -34,7 +35,8 @@ export default function SearchHostel() {
           `/booking/search?departureDate=${state.departure}&comebackDate=${state.comeBack}&person=${state.person}&planet=${state.planet?.name}`
         );
       setData(response.data);
-      setRoom(state?.hostel ?? null);
+      setHostel(state?.hostel ?? null);
+      setRoom(state?.room ?? null);
     } catch (error) {
       console.error(
         "Une erreur s'est produite lors de la récupération des données :",
@@ -58,12 +60,23 @@ export default function SearchHostel() {
 
   // USE EFFECTS
   useEffect(() => {
-    fetchSearchHostel();
-    //eslint-disable-next-line
-    // else {
-    //   navigate("/");
-    // }
-  }, []);
+    setIsMounted(true); // Le composant est maintenant monté
+
+    // Vous pouvez effectuer la redirection si state.departure n'est pas défini
+    if (state.departure) {
+      fetchSearchHostel();
+    } else {
+      // Vérifiez si le composant est monté avant de déclencher la redirection
+      if (isMounted) {
+        navigate("/");
+      }
+    }
+
+    // Nettoyez l'état de montage lorsque le composant est démonté
+    return () => {
+      setIsMounted(false);
+    };
+  }, [isMounted]);
 
   useEffect(() => {
     if (hostel && room) {
@@ -72,7 +85,7 @@ export default function SearchHostel() {
       dispatch({ type: "SAVE" });
     }
     //eslint-disable-next-line
-  }, [room]);
+  }, [hostel, room]);
 
   useEffect(() => {
     console.log("room", room);

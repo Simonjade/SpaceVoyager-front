@@ -1,28 +1,38 @@
 import { useEffect, useState } from "react";
 import hostelImg from "../../../assets/hostel/HostelImg";
 
+// // CONTEXTS
+// const { state, dispatch } = useBooking();
+
 export default function CardHostel({
   hostelData,
   setHostel,
   setRoom,
   setModalData,
 }) {
-  // Créez un état pour gérer les cases à cocher
-  const [checkboxes, setCheckboxes] = useState([]);
+  const [isMounted, setIsMounted] = useState(false); // État pour suivre l'état de montage
 
-  // Gérez les modifications d'état de chaque case à cocher
-  const handleCheckboxChange = (roomSelected) => {
-    const updatedCheckboxes = [...checkboxes];
-    updatedCheckboxes[roomSelected.room_type] =
-      !updatedCheckboxes[roomSelected.room_type];
-    setCheckboxes(updatedCheckboxes);
+  // État pour suivre l'option sélectionnée
+  const [selectedOption, setSelectedOption] = useState("");
+
+  // Fonction pour gérer le changement de l'option sélectionnée
+  const handleOptionChange = (roomSelected) => {
+    setSelectedOption(roomSelected.room_type);
     setHostel(hostelData);
     setRoom(roomSelected);
   };
 
+  // USE EFFECTS
   useEffect(() => {
-    console.log(checkboxes);
-  }, [checkboxes]);
+    setIsMounted(true); // Le composant est maintenant monté
+    return () => {
+      setIsMounted(false);
+    };
+  }, [isMounted]);
+
+  useEffect(() => {
+    console.log(selectedOption);
+  }, [selectedOption]);
 
   const formattedImageName = hostelData.name.replace(/['\s]/g, "_");
 
@@ -58,8 +68,9 @@ export default function CardHostel({
               <input
                 type="radio"
                 className="mr-2"
-                checked={checkboxes[roomData.room_type] || false}
-                onChange={() => handleCheckboxChange(roomData)}
+                value={roomData.room_type}
+                checked={selectedOption === roomData.room_type}
+                onChange={() => handleOptionChange(roomData)}
               />
               {roomData.room_type} : {roomData.price}€
             </label>
