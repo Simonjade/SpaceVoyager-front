@@ -60,7 +60,8 @@ export default function SearchForm() {
     dispatch({ type: "SET_PERSON", payload: passengers });
     dispatch({ type: "SAVE" });
 
-    navigate("/search");
+    // navigate("/search");
+    navigate("/searchPlanet");
   };
 
   return (
