@@ -38,11 +38,11 @@ export default function LoginFormModal({ setLogged }) {
 
   return (
     <div>
-      <h2 className="grid justify-center my-4 font-bold">LOG IN</h2>
+      <h2 className="grid justify-center my-4 font-bold">SE CONNECTER</h2>
       <div className="flex items-center flex-col">
         <input
           type="text"
-          placeholder="Email"
+          placeholder="E-mail"
           className="input input-bordered my-4 input-primary w-full max-w-xs bg-white text-black"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -50,7 +50,7 @@ export default function LoginFormModal({ setLogged }) {
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Mot de passe"
           className="input input-bordered my-4 input-primary w-full max-w-xs bg-white text-black"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -60,7 +60,7 @@ export default function LoginFormModal({ setLogged }) {
           className="btn btn-primary btn-wide my-4 mb-15 sm:btn-sm md:btn-md lg:btn-lg"
           onClick={(event) => handleSubmitLogin(event)}
         >
-          SEND
+          SE CONNECTER
         </button>
       </div>
       {hasError && (

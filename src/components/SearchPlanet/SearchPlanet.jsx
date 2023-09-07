@@ -93,7 +93,7 @@ export default function SearchPlanet({ setPlanet }) {
   // RENDER
   return (
     <>
-      <div>
+      <div className="max-md:flex max-md:flex-col max-md:justify-start max-md:h-full">
 
         {/* MODAL */}
         <ModalPlanet modaldata={modaldata} />

@@ -62,7 +62,7 @@ export default function SearchHostel() {
   // RENDER
   return (
     <>
-    <div>
+    <div className="max-md:flex max-md:flex-col max-md:justify-start max-md:h-full">
       {/* MODAL */}
       <ModalHostel modaldata={modaldata} />
       {/* MAIN PAGE */}
