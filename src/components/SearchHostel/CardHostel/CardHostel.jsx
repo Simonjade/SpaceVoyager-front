@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import hostelImg from "../../../assets/hostel/HostelImg";
-
-// // CONTEXTS
-// const { state, dispatch } = useBooking();
+import { useBooking } from "../../../contexts/BoonkingContext";
 
 export default function CardHostel({
   hostelData,
@@ -15,6 +13,9 @@ export default function CardHostel({
   // État pour suivre l'option sélectionnée
   const [selectedOption, setSelectedOption] = useState("");
 
+  // CONTEXTS
+  const { state, dispatch } = useBooking();
+
   // Fonction pour gérer le changement de l'option sélectionnée
   const handleOptionChange = (roomSelected) => {
     setSelectedOption(roomSelected.room_type);
@@ -24,11 +25,17 @@ export default function CardHostel({
 
   // USE EFFECTS
   useEffect(() => {
-    setIsMounted(true); // Le composant est maintenant monté
-    return () => {
-      setIsMounted(false);
-    };
-  }, [isMounted]);
+    console.log("state.hostel.name", state.hostel.name);
+    console.log("hostelData.name", hostelData.name);
+    if (state.room && state.hostel.name === hostelData.name) {
+      setSelectedOption(state.room.room_type);
+      setHostel(hostelData);
+      setRoom(state.room);
+    } else {
+      setRoom(null);
+      console.log("room est null");
+    }
+  }, []);
 
   useEffect(() => {
     console.log(selectedOption);

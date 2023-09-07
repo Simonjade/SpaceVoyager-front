@@ -36,7 +36,7 @@ export default function SearchHostel() {
         );
       setData(response.data);
       setHostel(state?.hostel ?? null);
-      setRoom(state?.room ?? null);
+      // setRoom(state?.room ?? null);
     } catch (error) {
       console.error(
         "Une erreur s'est produite lors de la récupération des données :",
@@ -85,7 +85,7 @@ export default function SearchHostel() {
       dispatch({ type: "SAVE" });
     }
     //eslint-disable-next-line
-  }, [hostel, room]);
+  }, [hostel]);
 
   useEffect(() => {
     console.log("room", room);
