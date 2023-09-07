@@ -104,79 +104,88 @@ export default function BookingDetail() {
 
         <div className="flex justify-center ">
           <div className="flex flex-col gap-3 items-center w-10/12 lg:w-6/12">
-            <div className="bg-indigo-50/10 p-4 border-2 border-solid border-violet-900 backdrop-blur-sm text-white rounded-lg">
-              <h2 className="text-3xl text-center font-semibold mb-4">
-                Récapitulatif de votre voyage
-              </h2>
-              <div className="flex flex-col gap-3 lg:flex-row">
-                <img
-                  className="object-contain h-1/3 lg:w-2/4 w-full"
-                  // src={`../../../../public/planet/${state?.planet?.img}`}
-                  src={planetImg[state?.planet?.name.toLowerCase()]}
-                  alt={state?.planet?.name}
-                ></img>
-                <div className="flex flex-col justify-evenly ml-4 text-white">
-                  <p className="lg:text-xl font-semibold">
-                    Destination : {state?.planet?.name}
-                  </p>
-                  <p className="lg:text-xl font-semibold">
-                    Hotel : {state?.hostel?.name}
-                  </p>
-                  <p className="lg:text-xl font-semibold">
-                    Chambre : {state?.room?.room_type}
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-indigo-50/10 border-2 border-solid border-violet-900 flex flex-col p-4 backdrop-blur-sm text-white rounded-lg w-full">
-              <h2 className="text-2xl text-center font-semibold mb-4">
-                Récapitulatif du prix
-              </h2>
-
-              <div className="flex justify-evenly">
-                <div className="flex flex-col justify-center gap-6">
-                  <p className="text-xl">
-                    Date de départ :{" "}
-                    <span className="font-semibold">
-                      &ensp;{state?.departure}
-                    </span>
-                  </p>
-                  <p className="text-xl">
-                    Date de retour :{" "}
-                    <span className="font-semibold">
-                      &ensp;{state?.comeBack}
-                    </span>
-                  </p>
-                </div>
-
-                <div>
-                  <div className="mb-4">
-                    <h3 className="text-xl font-semibold">Prix par personne</h3>
-                    <div className="flex">
-                      <p className="text-secondary text-xl font-semibold">
-                        {state?.planet?.price + state?.room?.price} €
-                      </p>
-                      <p className="text-white-600 text-xl font-semibold">
-                        &ensp;x {state?.person}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="mb-4">
-                    <h3 className="text-xl font-semibold">Prix total</h3>
-                    <p className="text-secondary text-xl font-semibold">
-                      {(state?.planet?.price + state?.room?.price) *
-                        state?.person}{" "}
-                      €
+            <div className="bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary rounded-lg text-white rounded-lg">
+              <div className="p-4 bg-zinc-900 rounded-lg">
+                <h2 className="text-xl text-center font-semibold mb-4  pb-3 font-bold border-b-2 border-b-primary">
+                  Récapitulatif de votre voyage
+                </h2>
+                <div className="flex flex-col gap-3 lg:flex-row">
+                  <img
+                    className="object-contain h-1/3 lg:w-2/4 w-full rounded-lg"
+                    // src={`../../../../public/planet/${state?.planet?.img}`}
+                    src={planetImg[state?.planet?.name.toLowerCase()]}
+                    alt={state?.planet?.name}
+                  ></img>
+                  <div className="flex flex-col justify-evenly ml-4 text-white">
+                    <p className="lg:text-lg font-semibold">
+                      Destination : {state?.planet?.name}
+                    </p>
+                    <p className="lg:text-lg font-semibold">
+                      Hotel : {state?.hostel?.name}
+                    </p>
+                    <p className="lg:text-lg font-semibold">
+                      Chambre : {state?.room?.room_type}
                     </p>
                   </div>
                 </div>
               </div>
+            </div>
+            <div className="bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary rounded-lg w-full">
+              <div className="flex flex-col p-4 bg-zinc-900 rounded-lg">
+                <h2 className="text-xl text-center font-semibold mb-4  pb-3 font-bold border-b-2 border-b-primary">
+                  Récapitulatif du prix
+                </h2>
 
-              <button className="btn btn-primary" onClick={() => handleclick()}>
-                Confirmer la réservation
-              </button>
+                <div className="flex justify-evenly">
+                  <div className="flex flex-col justify-center gap-6">
+                    <p className="text-lg">
+                      Date de départ :{" "}
+                      <span className="font-semibold">
+                        &ensp;{state?.departure}
+                      </span>
+                    </p>
+                    <p className="text-lg">
+                      Date de retour :{" "}
+                      <span className="font-semibold">
+                        &ensp;{state?.comeBack}
+                      </span>
+                    </p>
+                  </div>
 
-              <Modal />
+                  <div>
+                    <div className="mb-4">
+                      <h3 className="text-lg font-semibold">
+                        Prix par personne
+                      </h3>
+                      <div className="flex">
+                        <p className="text-secondary text-lg font-semibold">
+                          {state?.planet?.price + state?.room?.price} €
+                        </p>
+                        <p className="text-white-600 text-lg font-semibold">
+                          &ensp;x {state?.person}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="mb-4">
+                      <h3 className="text-lg font-semibold">Prix total</h3>
+                      <p className="text-secondary text-lg font-semibold">
+                        {(state?.planet?.price + state?.room?.price) *
+                          state?.person}{" "}
+                        €
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  className="btn btn-primary"
+                  onClick={() => handleclick()}
+                >
+                  Confirmer la réservation
+                </button>
+
+                <Modal />
+              </div>
             </div>
           </div>
         </div>

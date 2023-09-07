@@ -83,17 +83,19 @@ export default function Profil() {
         <p>Une erreur s'est produite : {error.message}</p>
       ) : (
         <div className="flex flex-col items-center text-black lg:flex-row-reverse align-center">
-          <div className="card card-compact w-21 text-white p-5 lg:w-1/2 self-start">
-            <figure className="self-center rounded-full w-4/12 lg:w-3/12 lg:mb-6 mb-4">
-              <img src={profilImg.profil} alt="planet_image" className="" />
+          <div className="flex flex-col justify-center w-21 text-white lg:w-1/2 self-start">
+     
+            <figure className="self-center rounded-full w-4/12 lg:w-3/12 lg:mb-6 mb-4 bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary">
+              <img src={profilImg.profil} alt="planet_image" className="rounded-full" />
             </figure>
+            
 
-            <div className="flex flex-col gap-2 text-black self-center">
-              <div className="lg:flex lg:justify-center lg:gap-20">
+            <div className="flex flex-col gap-4 text-black self-center">
+              <div className="flex flex-col gap-2">
                 <label className="w-10 font-bold text-white">Prénom</label>
                 {isEditing ? (
                   <input
-                    className="input input-bordered input-primary w-80 max-w-xs self-center bg-white text-black"
+                    className="input input-bordered input-primary w-80 max-w-xs self-center bg-white text-black block"
                     name=""
                     defaultValue={dataUser?.firstname}
                     autoFocus
@@ -108,11 +110,11 @@ export default function Profil() {
                 )}
               </div>
 
-              <div className="lg:flex justify-center gap-20">
+              <div className="flex flex-col gap-2">
                 <label className="w-10 font-bold text-white">Nom</label>
                 {isEditing ? (
                   <input
-                    className="input input-bordered input-primary w-80 max-w-xs self-center bg-white text-black"
+                    className="input input-bordered input-primary w-80 max-w-xs self-center bg-white text-black block"
                     name=""
                     defaultValue={dataUser?.lastname}
                     autoFocus
@@ -126,11 +128,11 @@ export default function Profil() {
                   </div>
                 )}
               </div>
-              <div className="lg:flex justify-center gap-20">
+              <div className="flex flex-col gap-2">
                 <h4 className="w-10 font-bold text-white">Email</h4>
                 {isEditing ? (
                   <input
-                    className="input input-bordered input-primary w-80 max-w-xs self-center bg-white text-black"
+                    className="input input-bordered input-primary w-80 max-w-xs self-center bg-white text-black block"
                     name=""
                     defaultValue={dataUser?.mail}
                     autoFocus
@@ -145,7 +147,7 @@ export default function Profil() {
                 )}
               </div>
             </div>
-            <div className="flex gap-3 lg:ml-12 justify-center shadow-sm">
+            <div className="flex gap-3 justify-center shadow-sm">
               {isEditing ? (
                 <button
                   className="mt-4 btn-secondary inline-flex space-x-1 items-center"
