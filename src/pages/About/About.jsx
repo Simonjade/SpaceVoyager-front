@@ -43,7 +43,11 @@ const teamMembers = [
     description:
       "Nicolas il aime bien le nutela de 1kg, tout ce sucre lui a permi d'apprendre Github en une nuit. Un vrai de vrai !",
     photo: (
-      <img src={profilImg.reda} alt="Nicolas_image" className="rounded-full" />
+      <img
+        src={profilImg.nicolas}
+        alt="Nicolas_image"
+        className="rounded-full"
+      />
     ),
   },
   {
