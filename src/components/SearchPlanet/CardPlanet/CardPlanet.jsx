@@ -5,7 +5,7 @@ export default function CardPlanet({
   setCardSelected,
   setModalData,
 }) {
-  console.log(planetImg[planetData.name.toLowerCase()]);
+  // console.log(planetImg[planetData.name.toLowerCase()]);
   return (
     <div className="m-8 md:flex bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary rounded-lg">
       <div className="relative md:w-1/2">

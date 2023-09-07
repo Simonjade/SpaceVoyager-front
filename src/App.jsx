@@ -10,6 +10,8 @@ import Profil from "./pages/Profil/Profil";
 import Login from "./pages/Login/Login";
 import Search from "./pages/Search/Search";
 import BookingDetail from "./pages/BookingDetail/BookingDetail";
+import SearchPlanet from "./pages/SearchPlanet/SearchPlanet";
+import SearchHostel from "./pages/SearchHostel/SearchHostel";
 
 //COMPONENT IN COMMON FOR PAGES
 import Stars from "./components/Stars/Stars";
@@ -25,7 +27,9 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="search" element={<Search />} />
+          {/* <Route path="search" element={<Search />} /> */}
+          <Route path="SearchPlanet" element={<SearchPlanet />} />
+          <Route path="SearchHostel" element={<SearchHostel />} />
           <Route path="Profil" element={<Profil />} />
           <Route path="Login" element={<Login />} />
           <Route path="destinations" element={<Destinations />} />
