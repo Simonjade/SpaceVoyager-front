@@ -8,6 +8,7 @@ import request from "../../tools/request";
 
 // COMPONENTS
 import CardPlanet from "./CardPlanet/CardPlanet";
+import ModalPlanet from "./ModalPlanet/ModalPlanet";
 import ThreePlanet from "../ThreeScene/ThreePlanet";
 
 export default function SearchPlanet({ setPlanet }) {
@@ -93,49 +94,12 @@ export default function SearchPlanet({ setPlanet }) {
   return (
     <>
       <div>
-        <div className="drawer drawer-end">
-          <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-content"></div>
-          <div className="drawer-side z-50">
-            <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
-            <div className="p-2 flex flex-col align-middle gap-5 lg:w-2/3 w-4/5 min-h-full text-base-content backdrop-blur-2xl bg-indigo-50/10 text-white">
-              <div className="hero font-bold text-5xl">{modaldata.name}</div>
 
-              <div className="md:flex justify-center hidden">
-                <ThreePlanet planetName={modaldata.name} />
-              </div>
-
-              <div className="flex flex-col m-4">
-                <div className="">{modaldata.content}</div>
-                <br />
-                <div className="">
-                  Distance :{" "}
-                  <span className="font-bold">{modaldata.distance} km</span>
-                </div>
-                <div className="">
-                  Distance en années lumières :{" "}
-                  <span className="font-bold">
-                    {modaldata.distance_light_year}
-                  </span>
-                </div>
-                <div className="">
-                  Circonférence :{" "}
-                  <span className="font-bold">{modaldata.radius} km</span>
-                </div>
-                <div className="">
-                  Température minimale :{" "}
-                  <span className="font-bold">{modaldata.temp_min}</span>°
-                </div>
-                <div className="">
-                  Température maximale :{" "}
-                  <span className="font-bold">{modaldata.temp_max}</span>°
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="sm:flex sm:flex-col sm:justify-between h-full md:grid md:grid-cols-3 2xl:mx-48 xl:mx-24 lg:mx-10 md:grid-rows-3 md:gap-4">
-          <div className="flex gap-3 flex-col md:col-start-3 md:row-start-1">
+        {/* MODAL */}
+        <ModalPlanet modaldata={modaldata} />
+        {/* MAIN PAGE */}
+        <div className="sm:flex sm:flex-col sm:justify-between h-full lg:grid lg:grid-cols-3 2xl:mx-48 xl:mx-24 lg:mx-10 lg:grid-rows-3 lg:gap-4">
+          <div className="flex gap-3 flex-col lg:col-start-3 lg:row-start-1">
             <div className="flex gap-3 mx-4">
               <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
                 <h2 className="font-bold inline">Aller : </h2>
@@ -173,7 +137,9 @@ export default function SearchPlanet({ setPlanet }) {
                 <option value="prix"> prix</option>
               </select>
             </div>
-            <div className="overflow-y-auto no-scrollbar h-96 lg:h-[45rem] lg:col-span-2 lg:row-span-4 md:col-start-1 md:row-start-1">
+
+            {/* Planets list */}
+            <div className="overflow-y-auto no-scrollbar h-96 lg:h-[45rem] lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1">
               {error ? (
                 <p>Une erreur s'est produite : {error.message}</p>
               ) : data ? (

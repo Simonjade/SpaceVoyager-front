@@ -4,7 +4,7 @@ import validator from "validator";
 // TOOLS
 import request from "../../tools/request";
 
-export default function RegisterForm() {
+export default function RegisterFormModal() {
   const [emailRegister, setEmailRegister] = useState("");
   const [passwordRegister, setPasswordRegister] = useState("");
   const [firstnameRegister, setFirstnameRegister] = useState("");
