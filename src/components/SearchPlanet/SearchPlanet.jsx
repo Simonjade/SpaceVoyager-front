@@ -63,7 +63,7 @@ export default function SearchPlanet({ setPlanet }) {
     sortData(e.target.value);
   };
 
-  const handleClick = (start, end, passengers, planet) => {
+  const handleClick = (planet) => {
     dispatch({ type: "SET_PLANET", payload: planet });
     dispatch({ type: "SAVE" });
 
@@ -134,8 +134,8 @@ export default function SearchPlanet({ setPlanet }) {
             </div>
           </div>
         </div>
-        <div className="sm:flex sm:flex-col sm:justify-between h-full lg:grid lg:grid-cols-3 2xl:mx-48 xl:mx-24 lg:mx-10 lg:grid-rows-3 lg:gap-4">
-          <div className="flex gap-3 flex-col lg:col-start-3 lg:row-start-1">
+        <div className="sm:flex sm:flex-col sm:justify-between h-full md:grid md:grid-cols-3 2xl:mx-48 xl:mx-24 lg:mx-10 md:grid-rows-3 md:gap-4">
+          <div className="flex gap-3 flex-col md:col-start-3 md:row-start-1">
             <div className="flex gap-3 mx-4">
               <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
                 <h2 className="font-bold inline">Aller : </h2>
@@ -160,8 +160,8 @@ export default function SearchPlanet({ setPlanet }) {
               </ul>
             </div>
           </div>
-          <div className="h-96 lg:h-[45rem] lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1">
-            <div className="flex ml-6 mb-1 ">
+          <div className="h-96 lg:h-[45rem] md:col-span-2 md:row-span-4 md:col-start-1 md:row-start-1">
+            <div className="flex mx-8 lg:bg-indigo-50/10 lg:backdrop-blur-sm lg:rounded-lg lg:text-center lg:p-2">
               <p className=""> Trier par :</p>
               <select
                 onChange={handleSortChange}
@@ -173,7 +173,7 @@ export default function SearchPlanet({ setPlanet }) {
                 <option value="prix"> prix</option>
               </select>
             </div>
-            <div className="overflow-y-auto no-scrollbar h-96 lg:h-[45rem] lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1">
+            <div className="overflow-y-auto no-scrollbar h-96 lg:h-[45rem] lg:col-span-2 lg:row-span-4 md:col-start-1 md:row-start-1">
               {error ? (
                 <p>Une erreur s'est produite : {error.message}</p>
               ) : data ? (
@@ -190,7 +190,7 @@ export default function SearchPlanet({ setPlanet }) {
               )}
             </div>
           </div>
-          <div className="flex flex-col justify-between mx-4 gap-3 lg:row-span-3 2xl:col-start-3 2xl:row-start-2 lg:row-start-3">
+          <div className="flex flex-col justify-between mx-4 gap-3 md:row-span-3 2xl:col-start-3 2xl:row-start-2 lg:row-start-3">
             <div className="rounded-lg bg-indigo-50/10 backdrop-blur-sm">
               <div className="flex gap-3">
                 <div className="w-1/2 p-2 text-white rounded-lg">
