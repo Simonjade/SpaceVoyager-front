@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
 import hostelImg from "../../../assets/hostel/HostelImg";
 
-export default function CardHostel({ hostelData, setRoom, setModalData }) {
+export default function CardHostel({
+  hostelData,
+  setHostel,
+  setRoom,
+  setModalData,
+}) {
   // Créez un état pour gérer les cases à cocher
   const [checkboxes, setCheckboxes] = useState([]);
 
   // Gérez les modifications d'état de chaque case à cocher
-  const handleCheckboxChange = (room) => {
+  const handleCheckboxChange = (roomSelected) => {
     const updatedCheckboxes = [...checkboxes];
-    updatedCheckboxes[room.room_type] = !updatedCheckboxes[room.room_type];
+    updatedCheckboxes[roomSelected.room_type] =
+      !updatedCheckboxes[roomSelected.room_type];
     setCheckboxes(updatedCheckboxes);
-
-    setRoom(room);
+    setHostel(hostelData);
+    setRoom(roomSelected);
   };
 
   useEffect(() => {

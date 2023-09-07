@@ -14,6 +14,7 @@ import ModalHostel from "../../components/SearchHostel/ModalHostel/ModalHostel";
 
 export default function SearchHostel() {
   // STATES
+  const [data, setData] = useState([]);
   const [hostel, setHostel] = useState([]);
   const [error, setError] = useState(null);
   const [room, setRoom] = useState(null);
@@ -32,7 +33,7 @@ export default function SearchHostel() {
         .get(
           `/booking/search?departureDate=${state.departure}&comebackDate=${state.comeBack}&person=${state.person}&planet=${state.planet?.name}`
         );
-      setHostel(response.data);
+      setData(response.data);
       setRoom(state?.hostel ?? null);
     } catch (error) {
       console.error(
@@ -47,7 +48,7 @@ export default function SearchHostel() {
   const handleClick = () => {
     console.log("DEBUG", hostel, room);
     if (room && hostel) {
-      dispatch({ type: "SET_HOSTEL", payload: hostel[0] });
+      dispatch({ type: "SET_HOSTEL", payload: hostel });
       dispatch({ type: "SET_ROOM", payload: room });
       dispatch({ type: "SAVE" });
 
@@ -57,17 +58,16 @@ export default function SearchHostel() {
 
   // USE EFFECTS
   useEffect(() => {
-    if (state.planet) {
-      fetchSearchHostel();
-      //eslint-disable-next-line
-    } else {
-      navigate("/");
-    }
+    fetchSearchHostel();
+    //eslint-disable-next-line
+    // else {
+    //   navigate("/");
+    // }
   }, []);
 
   useEffect(() => {
     if (hostel && room) {
-      dispatch({ type: "SET_HOSTEL", payload: hostel[0] });
+      dispatch({ type: "SET_HOSTEL", payload: hostel });
       dispatch({ type: "SET_ROOM", payload: room });
       dispatch({ type: "SAVE" });
     }
@@ -123,11 +123,12 @@ export default function SearchHostel() {
             <div className="overflow-y-auto no-scrollbar h-96 lg:h-[45rem] lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1">
               {error ? (
                 <p>Une erreur s'est produite : {error.message}</p>
-              ) : hostel ? (
-                hostel.map((hostelData) => (
+              ) : data ? (
+                data.map((hostelData) => (
                   <CardHostel
                     key={hostelData.id}
                     hostelData={hostelData}
+                    setHostel={setHostel}
                     setRoom={setRoom}
                     setModalData={setModalData}
                   />
@@ -160,3 +161,5 @@ export default function SearchHostel() {
     </>
   );
 }
+
+// [{"id":2,"name":"Hotel le Venusia","content":"L'hotel du Venusia vous accueille sans restriction d'ouverture sur ses 243 jours par an, dans un bâtiment à la décoration des années 1930","adress":" 1 rue du Vénusuela","img":"hotelvenusie.webp","planet_id":2,"room":[{"id":3,"room_type":"Standard du Venusia","price":250},{"id":4,"room_type":"Haut standing du Venusia","price":400}]}]

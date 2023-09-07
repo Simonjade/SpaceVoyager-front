@@ -18,6 +18,7 @@ export default function SearchPlanet() {
   const [modaldata, setModalData] = useState([]);
   const [error, setError] = useState(null);
   const [cardSelected, setCardSelected] = useState([]);
+  const [isMounted, setIsMounted] = useState(false); // État pour suivre l'état de montage
   const [sortType, setSortType] = useState("");
   const navigate = useNavigate();
 
@@ -76,13 +77,23 @@ export default function SearchPlanet() {
 
   // USE EFFECTS
   useEffect(() => {
+    setIsMounted(true); // Le composant est maintenant monté
+
+    // Vous pouvez effectuer la redirection si state.departure n'est pas défini
     if (state.departure) {
       fetchSearchPlanet();
-      //eslint-disable-next-line
     } else {
-      navigate("/");
+      // Vérifiez si le composant est monté avant de déclencher la redirection
+      if (isMounted) {
+        navigate("/");
+      }
     }
-  }, []);
+
+    // Nettoyez l'état de montage lorsque le composant est démonté
+    return () => {
+      setIsMounted(false);
+    };
+  }, [state, isMounted]);
 
   //   useEffect(() => {
   //     if (state.departure) {
