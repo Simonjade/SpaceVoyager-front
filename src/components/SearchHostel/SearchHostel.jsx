@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import CardHostel from "./CardHostel/CardHostel";
 import { useNavigate } from "react-router-dom";
-import ThreeHostel from "../ThreeScene/ThreeHostel";
 
 //CONTEXT
 import { useBooking } from "../../contexts/BoonkingContext";
@@ -9,16 +8,21 @@ import { useBooking } from "../../contexts/BoonkingContext";
 // TOOLS
 import request from "../../tools/request";
 
+// COMPONENTS
+import ModalHostel from "./ModalHostel/ModalHostel";
+
 export default function SearchHostel() {
+  // STATES
   const [hostel, setHostel] = useState([]);
   const [error, setError] = useState(null);
   const [room, setRoom] = useState(null);
   const [modaldata, setModalData] = useState([]);
-
-  const { state, dispatch } = useBooking();
-
   const navigate = useNavigate();
 
+  // CONTEXTS
+  const { state, dispatch } = useBooking();
+
+  // FUNCTIONS
   const fetchSearchHostel = async () => {
     console.log("STATE => ", state);
     try {
@@ -37,6 +41,7 @@ export default function SearchHostel() {
     }
   };
 
+  // HANDLES
   const handleClick = () => {
     console.log("DEBUG", hostel, room);
     if (room && hostel) {
@@ -48,28 +53,18 @@ export default function SearchHostel() {
     }
   };
 
+  // USE EFFECTS
   useEffect(() => {
     fetchSearchHostel();
+    //eslint-disable-next-line
   }, []);
 
+  // RENDER
   return (
     <>
-      <div className="drawer drawer-end">
-        <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content"></div>
-        <div className="drawer-side z-50">
-          <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
-          <div className="p-2 flex flex-col align-middle gap-5 lg:w-2/3 w-4/5 min-h-full text-base-content backdrop-blur-2xl bg-indigo-50/10 text-white">
-            <div className="hero font-bold text-5xl">{modaldata.name}</div>
-            <div className="lg:flex justify-center hidden">
-              <ThreeHostel hostelName={modaldata.name} />
-            </div>
-            <div className="flex flex-col m-4">
-              <div>{modaldata.content}</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* MODAL */}
+      <ModalHostel modaldata={modaldata} />
+      {/* MAIN PAGE */}
       <div className="sm:flex sm:flex-col sm:justify-between h-screen lg:grid lg:grid-cols-3 lg:mx-48 lg:grid-rows-3 lg:gap-4">
         <div className="flex gap-3 flex-col lg:col-start-3 lg:row-start-1">
           <div className="flex gap-3 mx-4">
@@ -96,7 +91,7 @@ export default function SearchHostel() {
             </ul>
           </div>
         </div>
-
+        {/* Planets list */}
         <div className="overflow-y-auto no-scrollbar h-80 lg:h-[45rem] lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1">
           {error ? (
             <p>Une erreur s'est produite : {error.message}</p>
