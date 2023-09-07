@@ -104,7 +104,7 @@ class ThreeHostel extends Component {
   render() {
     return (
       <div
-        className="flex justify-center lg:w-full w-full h-[35rem] mx-4"
+        className="flex justify-center relative h-96 w-full"
         ref={(ref) => (this.mount = ref)}
       />
     );

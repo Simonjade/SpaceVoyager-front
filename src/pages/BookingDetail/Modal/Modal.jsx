@@ -24,14 +24,17 @@ export default function Modal(setOpenModal) {
   return (
     <>
       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-        <form method="dialog" className="modal-box backdrop-blur-sm bg-white ">
+        <form
+          method="dialog"
+          className="modal-box shadow-lg shadow-black bg-indigo-50/10 backdrop-blur-xl text-white"
+        >
           {/* if there is a button in form, it will close the modal */}
-          <button className="btn btn-sm btn-circle bg-white absolute right-2 top-2 text-black">
+          <button className="btn btn-sm btn-circle bg-neutral hover:bg-secondary hover:text-neutral absolute right-2 top-2 text-black">
             ✕
           </button>
           <div className="tabs">
             <a
-              className={`tab tab-lg tab-bordered ${
+              className={`tab tab-lg tab-bordered hover:text-secondary ${
                 activeTab === "login" && "tab-active"
               }`}
               onClick={() => handleTabClick("login")}
@@ -39,21 +42,21 @@ export default function Modal(setOpenModal) {
               Se connecter
             </a>
             <a
-              className={`tab tab-lg tab-bordered ${
+              className={`tab tab-lg tab-bordered hover:text-secondary ${
                 activeTab === "register" && "tab-active"
               }`}
               onClick={() => handleTabClick("register")}
             >
-              S'enregistrement
+              S'enregistrer
             </a>
           </div>
-          <h3 className="font-bold text-lg text-primary">Hello!</h3>
-          <p className="text-primary">
-            Veillez vous{" "}
+          <h3 className="font-bold text-lg text-neutral my-4">Hello Space voyager !</h3>
+          <p className="text-neutral">
+            Veuillez vous{" "}
             <strong>
               {activeTab === "login"
                 ? "connecter"
-                : `s'inscrire puis vous connecter`}{" "}
+                : `inscrire puis vous connecter`}{" "}
             </strong>
             avant de valider votre réservation
           </p>
