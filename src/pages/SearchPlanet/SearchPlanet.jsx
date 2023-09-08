@@ -116,24 +116,24 @@ export default function SearchPlanet() {
   // RENDER
   return (
     <>
-      <div>
+      <div className="max-md:flex max-md:flex-col max-md:justify-start max-md:h-full">
         {/* MODAL */}
         <ModalPlanet modaldata={modaldata} />
         {/* MAIN PAGE */}
         <div className="sm:flex sm:flex-col sm:justify-between h-full lg:grid lg:grid-cols-3 2xl:mx-48 xl:mx-24 lg:mx-10 lg:grid-rows-3 lg:gap-4">
           <div className="flex gap-3 flex-col lg:col-start-3 lg:row-start-1">
             <div className="flex gap-3 mx-4">
-              <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
+              <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg lg:pl-4">
                 <h2 className="font-bold inline">Aller : </h2>
                 <p className="text-center inline">{state?.departure}</p>
               </div>
-              <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg">
+              <div className="w-1/2 bg-indigo-50/10 p-2 backdrop-blur-sm text-white rounded-lg lg:pl-4">
                 <h2 className="font-bold inline ">Retour : </h2>
                 <p className="text-center inline">{state?.comeBack}</p>
               </div>
             </div>
 
-            <div className=" flex gap-3 bg-indigo-50/10 mx-4 p-2 backdrop-blur-sm text-white rounded-lg text-center">
+            <div className=" flex gap-3 bg-indigo-50/10 mx-4 p-2 backdrop-blur-sm text-white rounded-lg text-center lg:pl-4">
               <h2 className="font-bold">Nombre de passager : </h2>
               <p className="">{state?.person}</p>
             </div>
@@ -152,7 +152,7 @@ export default function SearchPlanet() {
               <select
                 onChange={handleSortChange}
                 value={sortType}
-                className="bg-black ml-3 text-white border-2 border-primary"
+                className="bg-black ml-3 text-white border-2 border-primary rounded-lg"
               >
                 <option value="-"> -</option>
                 <option value="nom"> nom</option>

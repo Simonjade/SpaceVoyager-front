@@ -1,8 +1,8 @@
+// IMPORT REACT & REACT ROUTER DOM
 import { useEffect, useState } from "react";
-
 import { useNavigate } from "react-router-dom";
 
-//CONTEXT
+// CONTEXT
 import { useBooking } from "../../contexts/BoonkingContext";
 
 // TOOLS
@@ -20,7 +20,7 @@ export default function SearchHostel() {
   const [error, setError] = useState(null);
   const [room, setRoom] = useState(null);
   const [modaldata, setModalData] = useState([]);
-  const [isMounted, setIsMounted] = useState(false); // État pour suivre l'état de montage
+  const [isMounted, setIsMounted] = useState(false);
   const navigate = useNavigate();
 
   // CONTEXTS
@@ -101,7 +101,7 @@ export default function SearchHostel() {
   // RENDER
   return (
     <>
-      <div>
+      <div className="max-md:flex max-md:flex-col max-md:justify-start max-md:h-full">
         {/* MODAL */}
         <ModalHostel modaldata={modaldata} />
         {/* MAIN PAGE */}
