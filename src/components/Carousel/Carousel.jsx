@@ -1,8 +1,5 @@
-import { useState } from "react";
+// COMPONENTS
 import ThreePlanet from "../ThreeScene/ThreePlanet";
-
-//IMPORT IMG
-import planetImg from "../../assets/planet/PlanetImg";
 
 export default function Carousel({ destinations }) {
   return (
@@ -48,14 +45,19 @@ export default function Carousel({ destinations }) {
               </div>
             </div>
             {/* Boutons */}
-            
-              <a href={`#slide${index - 1}`} className="absolute -translate-y-1/2 left-5 top-1/2 btn btn-circle">
-                ❮
-              </a>
-              <a href={`#slide${index + 1}`} className="absolute -translate-y-1/2 right-5 top-1/2 btn btn-circle start-left">
-                ❯
-              </a>
-            
+
+            <a
+              href={`#slide${index - 1}`}
+              className="absolute -translate-y-1/2 left-5 top-1/2 btn btn-circle"
+            >
+              ❮
+            </a>
+            <a
+              href={`#slide${index + 1}`}
+              className="absolute -translate-y-1/2 right-5 top-1/2 btn btn-circle start-left"
+            >
+              ❯
+            </a>
           </div>
         </div>
       ))}
