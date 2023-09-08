@@ -11,6 +11,7 @@ import request from "../../tools/request";
 // COMPONENTS
 import CardHostel from "../../components/SearchHostel/CardHostel/CardHostel";
 import ModalHostel from "../../components/SearchHostel/ModalHostel/ModalHostel";
+import Loading from "../../components/Loading";
 
 export default function SearchHostel() {
   // STATES
@@ -147,7 +148,8 @@ export default function SearchHostel() {
                   />
                 ))
               ) : (
-                <p>Chargement en cours...</p>
+                // <p>Chargement en cours...</p>
+                <Loading />
               )}
             </div>
           </div>

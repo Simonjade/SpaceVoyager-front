@@ -10,7 +10,7 @@ import request from "../../tools/request";
 // COMPONENTS
 import CardPlanet from "../../components/SearchPlanet/CardPlanet/CardPlanet";
 import ModalPlanet from "../../components/SearchPlanet/ModalPlanet/ModalPlanet";
-// import ThreePlanet from "../ThreeScene/ThreePlanet";
+import Loading from "../../components/Loading";
 
 export default function SearchPlanet() {
   // STATES
@@ -174,7 +174,8 @@ export default function SearchPlanet() {
                   />
                 ))
               ) : (
-                <p>Chargement en cours...</p>
+                // <p>Chargement en cours...</p>
+                <Loading />
               )}
             </div>
           </div>

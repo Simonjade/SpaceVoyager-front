@@ -25,7 +25,7 @@ export default function CardHostel({
 
   // USE EFFECTS
   useEffect(() => {
-    console.log("state.hostel.name", state.hostel.name);
+    console.log("state.hostel.name", state?.hostel?.name);
     console.log("hostelData.name", hostelData.name);
     if (state.room && state.hostel.name === hostelData.name) {
       setSelectedOption(state.room.room_type);

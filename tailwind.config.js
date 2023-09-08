@@ -26,6 +26,36 @@ export default {
       widest: ".25em",
     },
     extend: {},
+
+    extend: {
+      keyframes: {
+        fade: {
+          "0%": { opacity: "0.5" },
+          "100%": { opacity: "1" },
+        },
+        load: {
+          "0%": {
+            transform: "scaleX(0)",
+            "transform-origin": "0 0",
+          },
+          "50%": {
+            transform: "scaleX(1)",
+            "transform-origin": "0 0",
+          },
+          "51%": {
+            "transform-origin": "100% 0",
+          },
+          "100%": {
+            transform: "scaleX(0)",
+            "transform-origin": "100% 0",
+          },
+        },
+      },
+      animation: {
+        fade: "fade 0.75s infinite alternate",
+        load: "load 1.5s infinite",
+      },
+    },
   },
   daisyui: {
     themes: [
@@ -52,6 +82,5 @@ export default {
       },
     ],
   },
-
   plugins: [require("daisyui")],
 };
