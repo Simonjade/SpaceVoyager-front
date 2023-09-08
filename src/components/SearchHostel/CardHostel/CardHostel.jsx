@@ -1,22 +1,45 @@
 import { useEffect, useState } from "react";
 import hostelImg from "../../../assets/hostel/HostelImg";
+import { useBooking } from "../../../contexts/BoonkingContext";
 
-export default function CardHostel({ hostelData, setRoom, setModalData }) {
-  // Créez un état pour gérer les cases à cocher
-  const [checkboxes, setCheckboxes] = useState([]);
+export default function CardHostel({
+  hostelData,
+  setHostel,
+  setRoom,
+  setModalData,
+}) {
+  const [isMounted, setIsMounted] = useState(false); // État pour suivre l'état de montage
 
-  // Gérez les modifications d'état de chaque case à cocher
-  const handleCheckboxChange = (room) => {
-    const updatedCheckboxes = [...checkboxes];
-    updatedCheckboxes[room.room_type] = !updatedCheckboxes[room.room_type];
-    setCheckboxes(updatedCheckboxes);
+  // État pour suivre l'option sélectionnée
+  const [selectedOption, setSelectedOption] = useState("");
 
-    setRoom(room);
+  // CONTEXTS
+  const { state, dispatch } = useBooking();
+
+  // Fonction pour gérer le changement de l'option sélectionnée
+  const handleOptionChange = (roomSelected) => {
+    setSelectedOption(roomSelected.room_type);
+    setHostel(hostelData);
+    setRoom(roomSelected);
   };
 
+  // USE EFFECTS
   useEffect(() => {
-    console.log(checkboxes);
-  }, [checkboxes]);
+    console.log("state.hostel.name", state.hostel.name);
+    console.log("hostelData.name", hostelData.name);
+    if (state.room && state.hostel.name === hostelData.name) {
+      setSelectedOption(state.room.room_type);
+      setHostel(hostelData);
+      setRoom(state.room);
+    } else {
+      setRoom(null);
+      console.log("room est null");
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log(selectedOption);
+  }, [selectedOption]);
 
   const formattedImageName = hostelData.name.replace(/['\s]/g, "_");
 
@@ -52,8 +75,9 @@ export default function CardHostel({ hostelData, setRoom, setModalData }) {
               <input
                 type="radio"
                 className="mr-2"
-                checked={checkboxes[roomData.room_type] || false}
-                onChange={() => handleCheckboxChange(roomData)}
+                value={roomData.room_type}
+                checked={selectedOption === roomData.room_type}
+                onChange={() => handleOptionChange(roomData)}
               />
               {roomData.room_type} : {roomData.price}€
             </label>

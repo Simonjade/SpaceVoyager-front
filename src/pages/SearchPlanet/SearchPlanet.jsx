@@ -18,7 +18,8 @@ export default function SearchPlanet() {
   const [modaldata, setModalData] = useState([]);
   const [error, setError] = useState(null);
   const [cardSelected, setCardSelected] = useState([]);
-  const [sortType, setSortType] = useState("");
+  const [isMounted, setIsMounted] = useState(false); // État pour suivre l'état de montage
+  const [sortType, setSortType] = useState("-");
   const navigate = useNavigate();
 
   // CONTEXTS
@@ -50,6 +51,8 @@ export default function SearchPlanet() {
         setData(response.data);
 
         setCardSelected(state?.planet ?? []);
+        // setSortType(state?.sortPlanet ?? "-");
+        // sortData(state?.sortPlanet ?? "-");
       } catch (error) {
         console.error(
           "Une erreur s'est produite lors de la récupération des données :",
@@ -67,8 +70,8 @@ export default function SearchPlanet() {
   };
 
   const handleClick = (planet) => {
-    dispatch({ type: "SET_PLANET", payload: planet });
-    dispatch({ type: "SAVE" });
+    // dispatch({ type: "SET_PLANET", payload: planet });
+    // dispatch({ type: "SAVE" });
 
     // setPlanet(planet.name);
     navigate("/searchHostel");
@@ -76,21 +79,23 @@ export default function SearchPlanet() {
 
   // USE EFFECTS
   useEffect(() => {
+    setIsMounted(true); // Le composant est maintenant monté
+
+    // Vous pouvez effectuer la redirection si state.departure n'est pas défini
     if (state.departure) {
       fetchSearchPlanet();
-      //eslint-disable-next-line
     } else {
-      navigate("/");
+      // Vérifiez si le composant est monté avant de déclencher la redirection
+      if (isMounted) {
+        navigate("/");
+      }
     }
-  }, []);
 
-  //   useEffect(() => {
-  //     if (state.departure) {
-  //       console.log("WHAAAAAAAAAAATTTTTT");
-  //       fetchSearc//   setHostel(state?.hostel ?? []);hPlanet();
-  //     }
-  //     //eslint-disable-next-line
-  //   }, [state]);
+    // Nettoyez l'état de montage lorsque le composant est démonté
+    return () => {
+      setIsMounted(false);
+    };
+  }, [isMounted]);
 
   useEffect(() => {
     if (cardSelected?.name) {
@@ -99,6 +104,14 @@ export default function SearchPlanet() {
     }
     //eslint-disable-next-line
   }, [cardSelected]);
+
+  //   useEffect(() => {
+  //     if (sortType) {
+  //       console.log(sortType);
+  //       dispatch({ type: "SET_SORT_PLANET", payload: sortType });
+  //       dispatch({ type: "SAVE" });
+  //     }
+  //   }, [sortType]);
 
   // RENDER
   return (

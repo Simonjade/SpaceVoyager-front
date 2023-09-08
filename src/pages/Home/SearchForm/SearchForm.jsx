@@ -29,6 +29,9 @@ export default function SearchForm() {
     console.log("La valeur de startDate :", format(startDate, "yyyy-MM-dd"));
     console.log("La valeur de endtDate :", endDate);
     console.log("La valeur de startDate :", passengers);
+    dispatch({ type: "SET_DEPARTURE", payload: startDate });
+    dispatch({ type: "SET_COMEBACK", payload: endDate });
+    dispatch({ type: "SET_PERSON", payload: passengers });
   }, [startDate, endDate, passengers]);
 
   useEffect(() => {
@@ -51,12 +54,12 @@ export default function SearchForm() {
   };
 
   const navigate = useNavigate();
-  const handleClick = (start, end, passengers) => {
-    start = format(start, "yyyy-MM-dd");
-    end = format(end, "yyyy-MM-dd");
+  const handleClick = (startDate, endDate, passengers) => {
+    startDate = format(startDate, "yyyy-MM-dd");
+    endDate = format(endDate, "yyyy-MM-dd");
 
-    dispatch({ type: "SET_DEPARTURE", payload: start });
-    dispatch({ type: "SET_COMEBACK", payload: end });
+    dispatch({ type: "SET_DEPARTURE", payload: startDate });
+    dispatch({ type: "SET_COMEBACK", payload: endDate });
     dispatch({ type: "SET_PERSON", payload: passengers });
     dispatch({ type: "SAVE" });
 
