@@ -21,7 +21,7 @@ export default function CardHostel({ hostelData, setRoom, setModalData }) {
   const formattedImageName = hostelData.name.replace(/['\s]/g, "_");
 
   return (
-    <div className="mx-8 mb-16 md:flex bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary rounded-lg">
+    <div className="mx-8 mb-16 md:flex bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary rounded-lg hover:scale-105 transition duration-500 mt-2">
       <div className="relative md:w-1/2">
         <img
           className="object-cover w-full h-full rounded-t-lg md:rounded-lg md:rounded-br-none md:rounded-tr-none"

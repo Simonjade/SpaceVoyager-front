@@ -27,16 +27,18 @@ export default function ReservationCard({ reservation }) {
 
   return (
     <div className="">
-      <div className="m-8 md:flex bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary rounded-lg">
-      <div className="relative md:w-1/2">
+      <div className="m-8 md:flex bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary rounded-lg hover:scale-105 transition duration-500">
+        <div className="relative md:w-1/2">
           <img
             src={planetImg[reservation.planet_name.toLowerCase()]}
             alt={reservation.planet_name}
             className="object-cover w-full h-full rounded-t-lg md:rounded-lg md:rounded-br-none md:rounded-tr-none"
           />
-          </div>
+        </div>
         <div className="flex flex-col p-5 lg:flex-rows md:justify-between gap-3 md:w-1/2 text-white shadow-2xl bg-zinc-900 hover:bg-black/80 hover:backdrop-blur-xl group hover:transition-colors hover:duration-300 duration-500 rounded-b-lg md:rounded-r-lg md:rounded-bl-none">
-          <h2 className="card-title border-b-2 border-b-primary group-hover:border-b-white hover:transition-colors hover:duration-300 duration-500 pb-3">Voyage vers {reservation.planet_name}</h2>
+          <h2 className="card-title border-b-2 border-b-primary group-hover:border-b-white hover:transition-colors hover:duration-300 duration-500 pb-3">
+            Voyage vers {reservation.planet_name}
+          </h2>
           <div className="">
             <p>Date de départ : {reservation.departure_date}</p>
             <p>Date de retour : {reservation.comeback_date}</p>
@@ -51,7 +53,10 @@ export default function ReservationCard({ reservation }) {
             </p>
           </div>
           <div className="card-actions justify-end">
-            <button className="lg:w-1/2 btn-neutral" onClick={() => handleDelete()}>
+            <button
+              className="lg:w-1/2 btn-neutral"
+              onClick={() => handleDelete()}
+            >
               Annuler
             </button>
           </div>

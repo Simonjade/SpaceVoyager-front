@@ -1,67 +1,28 @@
 import { useState } from "react";
+import ThreePlanet from "../ThreeScene/ThreePlanet";
 
 //IMPORT IMG
 import planetImg from "../../assets/planet/PlanetImg";
 
 export default function Carousel({ destinations }) {
-  const [slide, setSlide] = useState(1);
-
-  const handlePrevSlide = () => {
-    setSlide((prevSlide) =>
-      prevSlide === 1 ? destinations.length : prevSlide - 1
-    );
-  };
-
-  const handleNextSlide = () => {
-    setSlide((prevSlide) =>
-      prevSlide === destinations.length ? 1 : prevSlide + 1
-    );
-  };
   return (
-    <div className="backdrop-blur-sm bg-indigo-50/20 shadow-xl">
-      <div className="h-max">
-        <div className="carousel flex flex-col lg:flex-row justify-start">
-          {destinations.map((destination, index) => (
-            <div
-              key={`slide${index + 1}`}
-              id={`slide${index + 1}`}
-              className={`carousel-image relative w-full ${
-                index + 1 === slide ? "" : "hidden"
-              }`}
-            >
-              <div>
-                <img
-                  className="w-full p-2" // Ajustez la classe CSS pour le dimensionnement de l'image
-                  src={planetImg[destination.name.toLowerCase()]}
-                  alt={destination.name}
-                />
-                <div className="absolute inset-0 flex justify-between items-center px-5">
-                  <button
-                    className="bg-white bg-opacity-50 text-gray-700 p-2 rounded-full"
-                    onClick={handlePrevSlide}
-                  >
-                    ❮
-                  </button>
-                  <button
-                    className="bg-white bg-opacity-50 text-gray-700 p-2 rounded-full"
-                    onClick={handleNextSlide}
-                  >
-                    ❯
-                  </button>
-                </div>
-              </div>
+    <div className="carousel">
+      {destinations.map((destination, index) => (
+        <div
+          id={`slide${index}`}
+          className="carousel-item relative w-full"
+          key={index}
+        >
+          {/* Planet ThreeJS */}
+          <div className="flex flex-col lg:flex-row  w-full">
+            <div className="lg:w-1/2">
+              <ThreePlanet planetName={destination.name} />
             </div>
-          ))}
-          {destinations.map((destination, index) => (
-            <div
-              key={`slide${index + 1}`}
-              id={`slide${index + 1}`}
-              className={`w-full ${
-                index + 1 === slide ? "" : "hidden"
-              } card-body`}
-            >
-              <div className="h-full">
-                <h2 className="card-title text-white text-5xl mb-3">
+
+            {/* Planet infos */}
+            <div className="lg:w-1/3 sm:w-2/3 self-center bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary rounded-lg m-4">
+              <div className="bg-zinc-900 h-full rounded-lg p-4">
+                <h2 className="text-center text-white text-5xl border-b-2 border-b-primary pb-3 mb-3">
                   {destination.name}
                 </h2>
                 <p className="text-white">
@@ -86,9 +47,18 @@ export default function Carousel({ destinations }) {
                 </p>
               </div>
             </div>
-          ))}
+            {/* Boutons */}
+            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+              <a href={`#slide${index - 1}`} className="btn btn-circle">
+                ❮
+              </a>
+              <a href={`#slide${index + 1}`} className="btn btn-circle">
+                ❯
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 }

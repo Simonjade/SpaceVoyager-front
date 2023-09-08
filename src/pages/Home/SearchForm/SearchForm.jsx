@@ -67,10 +67,10 @@ export default function SearchForm() {
   return (
     <>
       <div className="flex flex-col lg:mt-2">
-        <h3 className="portait:text-1xl font-bold text-center self-center inline-block max-w-sm mb-1 w-1/3 landscape:w-full sm:w-full text-gray-500">
+        <h3 className="portait:text-1xl font-bold text-center self-center inline-block max-w-sm mb-1 w-3/5 landscape:w-full sm:w-full text-gray-500">
           Veuillez choisir vos dates de depart et de retour
         </h3>
-        <div className="flex justify-center join join-vertical lg:join-horizontal text-center w-3/5 self-center lg:rounded-tr-none">
+        <div className="flex justify-center join join-vertical lg:join-horizontal text-center w-3/5 self-center lg:rounded-tr-none backdrop-blur-sm">
           <DatePicker
             selected={startDate}
             onChange={(date) => setStartDate(date)}
