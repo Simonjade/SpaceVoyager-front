@@ -64,13 +64,13 @@ const teamMembers = [
 
 export default function About() {
   return (
-    <div className="flex justify-center items-center lg:flex-wrap ml-3 mr-3 ">
-      <div className="lg:flex gap-10 ">
+    <div className="flex justify-center items-center lg:flex-wrap ml-3 mr-3">
+      <div className="lg:flex gap-10">
         {teamMembers.map((member, index) => (
           <div key={index} className=" lg:w-[30%] grid gap-3 mb-2 ">
             <div className=" hover:bg-white hover:text-black p-6 rounded-lg bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary hover:scale-105 transition duration-500">
               {/* Photo */}
-              <div className="bg-zinc-900 rounded-lg p-10 hover:bg-black/80 hover:backdrop-blur-xl group hover:transition-colors hover:duration-300 duration-500 hover:text-white">
+              <div className="bg-zinc-900 rounded-lg p-10 hover:bg-black/80 hover:backdrop-blur-xl group hover:transition-colors hover:duration-300 duration-500 hover:text-white h-full">
                 <div className="w-20 h-20 bg-purple-300 rounded-full mb-4 mx-auto">
                   {member.photo}
                 </div>
