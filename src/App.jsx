@@ -8,18 +8,18 @@ import About from "./pages/About/About";
 import NotFound from "./pages/NotFound/NotFound";
 import Profil from "./pages/Profil/Profil";
 import Login from "./pages/Login/Login";
-import Search from "./pages/Search/Search";
 import BookingDetail from "./pages/BookingDetail/BookingDetail";
 import SearchPlanet from "./pages/SearchPlanet/SearchPlanet";
 import SearchHostel from "./pages/SearchHostel/SearchHostel";
 
-//COMPONENT IN COMMON FOR PAGES
+//COMPONENT
 import Stars from "./components/Stars/Stars";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
 //APP AND ROUTING
 function App() {
+  // RENDER
   return (
     <>
       <Stars />
@@ -27,7 +27,6 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="search" element={<Search />} /> */}
           <Route path="SearchPlanet" element={<SearchPlanet />} />
           <Route path="SearchHostel" element={<SearchHostel />} />
           <Route path="Profil" element={<Profil />} />

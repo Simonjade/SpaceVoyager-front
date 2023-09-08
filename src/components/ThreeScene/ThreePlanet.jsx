@@ -1,6 +1,10 @@
 import { Component } from "react";
+
+// LIBS
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+
+// IMPORT TEXTURE
 import planetTexture from "../../assets/planetTexture/planetTexture";
 
 class ThreePlanet extends Component {
@@ -37,8 +41,8 @@ class ThreePlanet extends Component {
       LEFT: THREE.MOUSE.ROTATE,
       // MIDDLE: THREE.MOUSE.DOLLY,
       // RIGHT: THREE.MOUSE.PAN
-  }
-  controls.update();// reuse this 
+    };
+    controls.update(); // reuse this
     renderer.clear();
     this.mount.appendChild(renderer.domElement);
 
@@ -104,6 +108,7 @@ class ThreePlanet extends Component {
   }
 
   render() {
+    // RENDER
     return (
       <div
         className="flex justify-center relative h-96 w-full"

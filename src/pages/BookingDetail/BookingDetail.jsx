@@ -8,7 +8,6 @@ import { useBooking } from "../../contexts/BoonkingContext";
 import { AuthContext } from "../../contexts/AuthContext";
 
 // HOOKS
-
 import useIsAuthenticated from "../../hooks/useIsAuthenticated";
 
 //COMPONENT
@@ -18,27 +17,18 @@ import AlertConfirmation from "../../components/AlertConfirmation/AlertConfirmat
 import { useNavigate } from "react-router";
 
 export default function BookingDetail() {
-  const { state } = useBooking();
-
-  const auth = useContext(AuthContext);
-
+  // STATES
   const [isAuthenticated, SetIsAuthenticated] = useState(null);
   const [alert, setAlert] = useState(false);
+
+  // CONTEXTS
+  const { state } = useBooking();
+  const auth = useContext(AuthContext);
+
+  // USE EFFECTS
   useEffect(() => {
-    console.log("auth", auth.state); // state de auth
-    console.log("isAuthenticated", auth.state.authenticated); //si connécté ou pas
-    if (auth.state.data) {
-      console.log("profil user", auth.state.data.user); //info user
-    }
-    //console.log("postBookingData", postBookingData);
     SetIsAuthenticated(auth.state.authenticated);
   }, [auth.state]);
-
-  useEffect(() => {
-    if (auth.state.data) {
-      console.log("profil user", auth.state.data.user); //info user
-    }
-  }, [auth.state.data]);
 
   const navigate = useNavigate();
   const postBooking = async () => {
@@ -53,15 +43,11 @@ export default function BookingDetail() {
         planet_id: state.planet.id,
         user_id: auth.state.data.user.id,
       };
-      console.log("this is the postbooking data", postBookingData);
       const token = auth.getAccessToken();
-      console.log("this is token", token);
       const response = await request
         .protected(token)
         .post(`/booking`, postBookingData);
       // Si la requête réussit, vous pouvez traiter la réponse ici
-      console.log("Réponse de l'API :", response.data);
-      console.log("voyage réservé");
       setAlert(true);
 
       setTimeout(() => {
@@ -81,11 +67,8 @@ export default function BookingDetail() {
       window.my_modal_5.showModal();
     }
   };
-  useEffect(() => {
-    console.log(isAuthenticated);
-    console.log(auth);
-  }, [isAuthenticated]);
 
+  // RENDER
   return (
     <>
       {alert && (
@@ -101,7 +84,6 @@ export default function BookingDetail() {
             <li className="step step-primary">Confirmation</li>
           </ul>
         </div>
-
         <div className="flex justify-center ">
           <div className="flex flex-col gap-3 items-center w-10/12 lg:w-6/12">
             <div className="bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary rounded-lg text-white rounded-lg">
@@ -112,7 +94,6 @@ export default function BookingDetail() {
                 <div className="flex flex-col gap-3 lg:flex-row">
                   <img
                     className="object-contain h-1/3 lg:w-2/4 w-full rounded-lg"
-                    // src={`../../../../public/planet/${state?.planet?.img}`}
                     src={planetImg[state?.planet?.name.toLowerCase()]}
                     alt={state?.planet?.name}
                   ></img>
@@ -135,7 +116,6 @@ export default function BookingDetail() {
                 <h2 className="text-xl text-center font-semibold mb-4  pb-3 font-bold border-b-2 border-b-primary">
                   Récapitulatif du prix
                 </h2>
-
                 <div className="flex justify-evenly">
                   <div className="flex flex-col justify-center gap-6">
                     <p className="text-lg">
@@ -151,7 +131,6 @@ export default function BookingDetail() {
                       </span>
                     </p>
                   </div>
-
                   <div>
                     <div className="mb-4">
                       <h3 className="text-lg font-semibold">
@@ -176,14 +155,12 @@ export default function BookingDetail() {
                     </div>
                   </div>
                 </div>
-
                 <button
                   className="btn btn-primary"
                   onClick={() => handleclick()}
                 >
                   Confirmer la réservation
                 </button>
-
                 <Modal />
               </div>
             </div>

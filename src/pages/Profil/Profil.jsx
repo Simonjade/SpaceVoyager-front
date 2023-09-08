@@ -17,6 +17,7 @@ import ReservationCard from "../../components/ReservationCard/ReservationCard";
 import profilImg from "../../assets/profil/ProfilImg";
 
 export default function Profil() {
+  // STATES
   const [isEditing, setIsEditing] = useState(false);
   const [editLastname, setEditLastname] = useState("");
   const [editFirstname, setEditFirstname] = useState("");
@@ -24,10 +25,13 @@ export default function Profil() {
   const [dataUser, setDataUser] = useState({});
   const [error, setError] = useState(null);
 
+  // HOOKS
   const isAuthenticated = useIsAuthenticated();
 
+  // CONTEXTS
   const auth = useContext(AuthContext);
 
+  // FUNCTIONS
   const getUserProfil = async () => {
     try {
       const id = auth.state.data.user.id;
@@ -73,10 +77,12 @@ export default function Profil() {
     }
   };
 
+  // USE EFFECTS
   useEffect(() => {
     if (isAuthenticated) getUserProfil();
   }, [isAuthenticated]);
 
+  // RENDER
   return (
     <ProtectedZone to={"/login"}>
       {error ? (
@@ -84,11 +90,13 @@ export default function Profil() {
       ) : (
         <div className="flex flex-col items-center text-black lg:flex-row-reverse align-center">
           <div className="flex flex-col justify-center w-21 text-white lg:w-1/2 self-start">
-     
             <figure className="self-center rounded-full w-4/12 lg:w-3/12 lg:mb-6 mb-4 bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary">
-              <img src={profilImg.profil} alt="planet_image" className="rounded-full" />
+              <img
+                src={profilImg.profil}
+                alt="planet_image"
+                className="rounded-full"
+              />
             </figure>
-            
 
             <div className="flex flex-col gap-4 text-black self-center">
               <div className="flex flex-col gap-2">

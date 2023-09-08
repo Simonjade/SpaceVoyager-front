@@ -28,7 +28,6 @@ export default function SearchHostel() {
 
   // FUNCTIONS
   const fetchSearchHostel = async () => {
-    console.log("STATE => ", state);
     try {
       const response = await request
         .generic()
@@ -49,7 +48,6 @@ export default function SearchHostel() {
 
   // HANDLES
   const handleClick = () => {
-    console.log("DEBUG", hostel, room);
     if (room && hostel) {
       dispatch({ type: "SET_HOSTEL", payload: hostel });
       dispatch({ type: "SET_ROOM", payload: room });
@@ -85,16 +83,6 @@ export default function SearchHostel() {
       dispatch({ type: "SET_ROOM", payload: room });
       dispatch({ type: "SAVE" });
     }
-    //eslint-disable-next-line
-  }, [hostel]);
-
-  useEffect(() => {
-    console.log("room", room);
-    //eslint-disable-next-line
-  }, [room]);
-
-  useEffect(() => {
-    console.log("hostel", hostel);
     //eslint-disable-next-line
   }, [hostel]);
 
@@ -148,7 +136,6 @@ export default function SearchHostel() {
                   />
                 ))
               ) : (
-                // <p>Chargement en cours...</p>
                 <Loading />
               )}
             </div>
@@ -176,5 +163,3 @@ export default function SearchHostel() {
     </>
   );
 }
-
-// [{"id":2,"name":"Hotel le Venusia","content":"L'hotel du Venusia vous accueille sans restriction d'ouverture sur ses 243 jours par an, dans un bâtiment à la décoration des années 1930","adress":" 1 rue du Vénusuela","img":"hotelvenusie.webp","planet_id":2,"room":[{"id":3,"room_type":"Standard du Venusia","price":250},{"id":4,"room_type":"Haut standing du Venusia","price":400}]}]

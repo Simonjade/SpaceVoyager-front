@@ -1,5 +1,10 @@
-import logospacevoyager from "../../assets/logo/logo-space-voyager.svg";
+// LIBS
 import { Link } from "react-router-dom";
+
+// IMPORT IMG
+import logospacevoyager from "../../assets/logo/logo-space-voyager.svg";
+
+// RENDER
 export default function LogoMini() {
   return (
     <>

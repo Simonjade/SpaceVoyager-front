@@ -1,10 +1,13 @@
 import { useState } from "react";
+
+// LIBS
 import validator from "validator";
 
 // TOOLS
 import request from "../../tools/request";
 
 export default function RegisterFormModal() {
+  // STATES
   const [emailRegister, setEmailRegister] = useState("");
   const [passwordRegister, setPasswordRegister] = useState("");
   const [firstnameRegister, setFirstnameRegister] = useState("");
@@ -54,6 +57,7 @@ export default function RegisterFormModal() {
     }
   };
 
+  // RENDER
   return (
     <div>
       <h2 className="uppercase grid justify-center my-4 font-bold">

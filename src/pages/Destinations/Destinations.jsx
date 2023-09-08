@@ -8,13 +8,15 @@ import Carousel from "../../components/Carousel/Carousel";
 import request from "../../tools/request";
 
 export default function Destinations() {
+  // STATES
   const [destinations, setDestinations] = useState(null);
   const [error, setError] = useState(null);
+
+  // FUNCTIONS
   const fetchPlanets = async () => {
     try {
       const response = await request.generic().get(`/planet`);
       setDestinations(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error(
         "Une erreur s'est produite lors de la récupération des données :",
@@ -24,10 +26,12 @@ export default function Destinations() {
     }
   };
 
+  // USE EFFECTS
   useEffect(() => {
     fetchPlanets();
   }, []);
 
+  // RENDER
   return (
     <div>
       <div className="flex flex-col justify-center">

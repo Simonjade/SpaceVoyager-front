@@ -1,3 +1,4 @@
+// COMPONENTS
 import TitleMain from "../../components/Title/TitleMain";
 import SearchForm from "./SearchForm/SearchForm";
 

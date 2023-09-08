@@ -1,9 +1,9 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 
-// Étape 1 : Créez un contexte
+// Étape 1 : Crée un contexte
 const BookingContext = createContext();
 
-// Étape 3 : Définissez l'initial state
+// Étape 2 : Définis l'initial state
 const initialState = {
   departure: null,
   comeBack: null,
@@ -14,7 +14,7 @@ const initialState = {
   sortPlanet: null,
 };
 
-// Étape 3 : Créez votre réducteur
+// Étape 3 : Crée votre réducteur
 function reducer(state, action) {
   switch (action.type) {
     case "SET_DEPARTURE":
@@ -40,15 +40,15 @@ function reducer(state, action) {
   }
 }
 
-// Étape 4 : Créez un composant Provider qui enveloppe votre application
+// Étape 4 : Crée un composant Provider qui enveloppe votre application
 export function BookingProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    // Récupérer l'état stocké dans le localStorage (s'il existe)
+    // Récupére l'état stocké dans le localStorage (s'il existe)
     const storedState = JSON.parse(localStorage.getItem("bookingState"));
 
-    // Si un état a été précédemment stocké, utilisez-le
+    // Si un état a été précédemment stocké, on l'utilise
     if (storedState) {
       console.log("READ BOOKING STORAGE", storedState);
       dispatch({ type: "SET_DEPARTURE", payload: storedState.departure });
@@ -64,7 +64,7 @@ export function BookingProvider({ children }) {
   useEffect(() => {
     console.log("CHANGE STATE", state.type);
     if (state.type === "SAVE") {
-      // Enregistrez le nouvel état dans le localStorage à chaque changement
+      // Nouvel état dans le localStorage à chaque changement
       localStorage.setItem("bookingState", JSON.stringify(state));
     } else if (state.type === "RESET") {
       localStorage.removeItem("bookingState");
@@ -78,7 +78,7 @@ export function BookingProvider({ children }) {
   );
 }
 
-// Étape 5 : Créez un hook personnalisé pour utiliser le contexte
+// Étape 5 : Hook personnalisé pour utiliser le contexte
 export function useBooking() {
   const context = useContext(BookingContext);
   if (!context) {

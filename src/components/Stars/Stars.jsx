@@ -1,3 +1,4 @@
+// CSS
 import "./Stars.sass";
 
 export default function Stars() {

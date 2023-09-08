@@ -105,14 +105,6 @@ export default function SearchPlanet() {
     //eslint-disable-next-line
   }, [cardSelected]);
 
-  //   useEffect(() => {
-  //     if (sortType) {
-  //       console.log(sortType);
-  //       dispatch({ type: "SET_SORT_PLANET", payload: sortType });
-  //       dispatch({ type: "SAVE" });
-  //     }
-  //   }, [sortType]);
-
   // RENDER
   return (
     <>
@@ -174,7 +166,6 @@ export default function SearchPlanet() {
                   />
                 ))
               ) : (
-                // <p>Chargement en cours...</p>
                 <Loading />
               )}
             </div>

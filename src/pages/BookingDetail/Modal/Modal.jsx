@@ -1,8 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+
+// LIBS
 import LoginFormModal from "./LoginFormModal";
+
+// COMPONENT
 import RegisterFormModal from "../../../components/RegisterForm/RegisterForm";
 
+// eslint-disable-next-line
 export default function Modal(setOpenModal) {
+  // STATES
   const [logged, setLogged] = useState(null);
   const [activeTab, setActiveTab] = useState("login");
 
@@ -10,6 +16,7 @@ export default function Modal(setOpenModal) {
     setActiveTab(tabId);
   };
 
+  // USE EFFECTS
   useEffect(() => {
     console.log("logged", logged);
   }, [logged]);
@@ -21,6 +28,8 @@ export default function Modal(setOpenModal) {
   if (logged) {
     window.my_modal_5.close();
   }
+
+  // RENDER
   return (
     <>
       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
@@ -50,7 +59,9 @@ export default function Modal(setOpenModal) {
               S'enregistrer
             </a>
           </div>
-          <h3 className="font-bold text-lg text-neutral my-4">Hello Space voyager !</h3>
+          <h3 className="font-bold text-lg text-neutral my-4">
+            Hello Space voyager !
+          </h3>
           <p className="text-neutral">
             Veuillez vous{" "}
             <strong>
@@ -65,10 +76,6 @@ export default function Modal(setOpenModal) {
           ) : (
             <RegisterFormModal />
           )}
-          {/* <div className="modal-action text-black"> */}
-          {/* if there is a button in form, it will close the modal */}
-          {/* <button className="btn bg-white text-black">Close</button> */}
-          {/* </div> */}
         </form>
       </dialog>
     </>

@@ -1,3 +1,4 @@
+// IMPORT IMG
 import profilImg from "../../assets/profil/ProfilImg";
 
 const teamMembers = [
@@ -63,6 +64,7 @@ const teamMembers = [
 ];
 
 export default function About() {
+  //RENDER
   return (
     <div className="flex justify-center items-center lg:flex-wrap ml-3 mr-3">
       <div className="lg:flex gap-10">
