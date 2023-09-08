@@ -73,7 +73,7 @@ export default function SearchForm() {
         <h3 className="portait:text-1xl font-bold text-center self-center inline-block max-w-sm mb-1 w-3/5 landscape:w-full sm:w-full text-gray-500">
           Veuillez choisir vos dates de depart et de retour
         </h3>
-        <div className="flex justify-center join join-vertical lg:join-horizontal text-center w-3/5 self-center lg:rounded-tr-none backdrop-blur-sm">
+        <div className="flex justify-center join join-vertical lg:join-horizontal text-center w-3/5 self-center lg:rounded-tr-none">
           <DatePicker
             selected={startDate}
             onChange={(date) => setStartDate(date)}
@@ -83,7 +83,7 @@ export default function SearchForm() {
             startDate={startDate}
             endDate={endDate}
             minDate={startDate}
-            className=" w-full px-3 py-3 bg-indigo-50/10 focus:outline-none focus:ring focus:ring-blue-200 join-item lg:join-vertical text-white text-center"
+            className=" w-full px-3 py-3 bg-indigo-50/10 focus:outline-none focus:ring focus:ring-blue-200 join-item lg:join-vertical text-white text-center backdrop-blur-sm"
           />
           <DatePicker
             selected={endDate}
@@ -94,14 +94,14 @@ export default function SearchForm() {
             startDate={startDate}
             endDate={endDate}
             minDate={startDate}
-            className="w-full px-3 py-3 bg-indigo-50/10 focus:outline-none focus:ring focus:ring-blue-200 join-item text-white text-center"
+            className="w-full px-3 py-3 bg-indigo-50/10 focus:outline-none focus:ring focus:ring-blue-200 join-item text-white text-center backdrop-blur-sm"
           />
           <div
-            className="md:w-full lg:w-1/3 lg:max-w-2 xl:w-1/5 px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200 join-item bg-indigo-50/10 lg:tooltip tooltip-primary"
-            data-tip="2 maximum"
+            className="backdrop-blur-sm md:w-full lg:w-1/3 lg:max-w-2 xl:w-1/5 px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200 join-item bg-indigo-50/10 lg:tooltip tooltip-primary"
+            data-tip="2 maximum "
           >
             <button
-              className="  mr-4 btn-primary btn-circle w-8 h-8 text-l text-black bg-white/80"
+              className="  mr-4 btn-primary btn-circle w-8 h-8 text-l text-black bg-white/80 "
               onClick={handleMinus}
             >
               {" "}

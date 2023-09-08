@@ -48,14 +48,14 @@ export default function Carousel({ destinations }) {
               </div>
             </div>
             {/* Boutons */}
-            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-              <a href={`#slide${index - 1}`} className="btn btn-circle">
+            
+              <a href={`#slide${index - 1}`} className="absolute -translate-y-1/2 left-5 top-1/2 btn btn-circle">
                 ❮
               </a>
-              <a href={`#slide${index + 1}`} className="btn btn-circle">
+              <a href={`#slide${index + 1}`} className="absolute -translate-y-1/2 right-5 top-1/2 btn btn-circle start-left">
                 ❯
               </a>
-            </div>
+            
           </div>
         </div>
       ))}
