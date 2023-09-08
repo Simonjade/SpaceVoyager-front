@@ -1,7 +1,10 @@
 import { Component } from "react";
 
+// LIBS
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+
+// IMPORT TEXTURE
 import hostelTexture from "../../assets/hostelTexture/hostelTexture";
 
 class ThreeHostel extends Component {
@@ -17,14 +20,14 @@ class ThreeHostel extends Component {
       this.sceneInitialized = true;
     }
   }
-  
+
   componentDidUpdate(prevProps) {
     if (this.props.hostelName !== prevProps.hostelName) {
-      const formattedHostelName = this.props.hostelName.replace(/['\s]/g, '_'); // Remplace les espaces et les apostrophes par des underscores
+      const formattedHostelName = this.props.hostelName.replace(/['\s]/g, "_"); // Remplace les espaces et les apostrophes par des underscores
       this.updateTexture(formattedHostelName);
     }
   }
-  
+
   initializeScene() {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -39,8 +42,8 @@ class ThreeHostel extends Component {
       LEFT: THREE.MOUSE.ROTATE,
       // MIDDLE: THREE.MOUSE.DOLLY,
       // RIGHT: THREE.MOUSE.PAN
-  }
-  controls.update();// reuse this 
+    };
+    controls.update(); // reuse this
     renderer.clear();
     renderer.setSize(this.mount.clientWidth, this.mount.clientHeight);
     this.mount.appendChild(renderer.domElement);
@@ -51,7 +54,7 @@ class ThreeHostel extends Component {
     const textureLoader = new THREE.TextureLoader();
 
     const texture = textureLoader.load(hostelTexture[this.props.hostelName]);
-    
+
     texture.wrapS = THREE.RepeatWrapping;
     texture.repeat.x = -1;
     const material = new THREE.MeshBasicMaterial({
@@ -107,6 +110,7 @@ class ThreeHostel extends Component {
   }
 
   render() {
+    // RENDER
     return (
       <div
         className="flex justify-center relative h-96 w-full"

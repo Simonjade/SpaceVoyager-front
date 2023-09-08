@@ -1,4 +1,3 @@
-//IMPORT
 import { useContext, useState } from "react";
 
 // LIBS
@@ -8,13 +7,16 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 
 export default function LoginForm() {
+  // STATES
   const [hasError, setHasError] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // CONTEXTS
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
 
+  // FUNCTIONS
   const handleSubmitLogin = async (event) => {
     event.preventDefault();
     try {
@@ -35,6 +37,7 @@ export default function LoginForm() {
     }
   };
 
+  // RENDER
   return (
     <div>
       <h2 className="uppercase grid justify-center my-4 font-bold">

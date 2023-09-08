@@ -1,3 +1,4 @@
+// IMPORT IMG
 import planetImg from "../../../assets/planet/PlanetImg";
 
 export default function CardPlanet({
@@ -5,7 +6,7 @@ export default function CardPlanet({
   setCardSelected,
   setModalData,
 }) {
-  // console.log(planetImg[planetData.name.toLowerCase()]);
+  // RENDER
   return (
     <div className="m-8 md:flex bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary rounded-lg hover:scale-105 transition duration-500">
       <div className="relative md:w-1/2">

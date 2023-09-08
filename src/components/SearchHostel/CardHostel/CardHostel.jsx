@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
+
+// IMPORT IMG
 import hostelImg from "../../../assets/hostel/HostelImg";
+
+// CONTEXT
 import { useBooking } from "../../../contexts/BoonkingContext";
 
 export default function CardHostel({
@@ -8,9 +12,7 @@ export default function CardHostel({
   setRoom,
   setModalData,
 }) {
-  const [isMounted, setIsMounted] = useState(false); // État pour suivre l'état de montage
-
-  // État pour suivre l'option sélectionnée
+  // STATES
   const [selectedOption, setSelectedOption] = useState("");
 
   // CONTEXTS
@@ -25,24 +27,18 @@ export default function CardHostel({
 
   // USE EFFECTS
   useEffect(() => {
-    console.log("state.hostel.name", state?.hostel?.name);
-    console.log("hostelData.name", hostelData.name);
     if (state.room && state.hostel.name === hostelData.name) {
       setSelectedOption(state.room.room_type);
       setHostel(hostelData);
       setRoom(state.room);
     } else {
       setRoom(null);
-      console.log("room est null");
     }
   }, []);
 
-  useEffect(() => {
-    console.log(selectedOption);
-  }, [selectedOption]);
-
   const formattedImageName = hostelData.name.replace(/['\s]/g, "_");
 
+  // RENDER
   return (
     <div className="mx-8 mb-16 md:flex bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary rounded-lg hover:scale-105 transition duration-500 mt-2">
       <div className="relative md:w-1/2">

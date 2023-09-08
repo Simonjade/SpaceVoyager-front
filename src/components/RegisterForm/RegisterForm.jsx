@@ -1,10 +1,13 @@
 import { useState } from "react";
+
+// LIBS
 import validator from "validator";
 
 // TOOLS
 import request from "../../tools/request";
 
 export default function RegisterForm() {
+  // STATES
   const [emailRegister, setEmailRegister] = useState("");
   const [passwordRegister, setPasswordRegister] = useState("");
   const [firstnameRegister, setFirstnameRegister] = useState("");
@@ -12,6 +15,7 @@ export default function RegisterForm() {
   const [hasError, setHasError] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
+  // FUNCTIONS
   const handleSubmitRegister = async (event) => {
     event.preventDefault();
     const data = {
@@ -37,6 +41,7 @@ export default function RegisterForm() {
       setHasError("Une erreur s'est produite");
     }
   };
+
   const validate = (value) => {
     if (
       validator.isStrongPassword(value, {
@@ -54,6 +59,7 @@ export default function RegisterForm() {
     }
   };
 
+  // RENDER
   return (
     <div>
       <h2 className="uppercase grid justify-center my-4 font-bold">

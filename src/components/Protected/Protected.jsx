@@ -1,8 +1,10 @@
+// LIBS
 import { Navigate } from "react-router-dom";
 
 // HOOKS
 import useIsAuthenticated from "../../hooks/useIsAuthenticated";
 
+// FUNCTIONS
 const ProtectedZone = ({ to = "/", children }) => {
   const isAuthenticated = useIsAuthenticated();
 

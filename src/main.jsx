@@ -1,8 +1,14 @@
 import React from "react";
+
+// LIBS
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
-import "./index.css";
 import { BrowserRouter } from "react-router-dom";
+
+// APP
+import App from "./App.jsx";
+
+// CSS
+import "./index.css";
 
 // CONTEXTS
 import { AuthProvider } from "./contexts/AuthContext";

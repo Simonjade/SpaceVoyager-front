@@ -7,11 +7,13 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 
 export default function LoginFormModal({ setLogged }) {
-  const auth = useContext(AuthContext);
-  const [hasError, setHasError] = useState(false);
-
+  // STATES
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // CONTEXTS
+  const auth = useContext(AuthContext);
+  const [hasError, setHasError] = useState(false);
 
   const navigate = useNavigate();
 
@@ -36,6 +38,7 @@ export default function LoginFormModal({ setLogged }) {
     }
   };
 
+  // RENDER
   return (
     <div>
       <h2 className="grid justify-center my-4 font-bold">SE CONNECTER</h2>

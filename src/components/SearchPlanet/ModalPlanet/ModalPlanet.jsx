@@ -1,3 +1,4 @@
+// IMPORT IMG
 import ThreePlanet from "../../ThreeScene/ThreePlanet";
 
 export default function ModalPlanet({ modaldata }) {

@@ -1,3 +1,4 @@
+// CSS
 import "./notFound.css";
 
 export default function NotFound() {

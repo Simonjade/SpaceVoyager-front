@@ -1,4 +1,6 @@
 import { useContext } from "react";
+
+// LIBS
 import { useNavigate } from "react-router-dom";
 
 //TOOLS
@@ -9,22 +11,25 @@ import { AuthContext } from "../../contexts/AuthContext";
 import planetImg from "../../assets/planet/PlanetImg";
 
 export default function ReservationCard({ reservation }) {
+  // CONTEXTS
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
 
+  // FUNCTIONS
   const handleDelete = async () => {
     const token = auth.getAccessToken();
     try {
+      /* response is not used on front */
       const response = await request
         .protected(token)
         .delete(`/booking/${reservation.booking_id}`);
-      console.log(response);
       navigate(0);
     } catch (err) {
       console.log(err);
     }
   };
 
+  // RENDER
   return (
     <div className="">
       <div className="m-8 md:flex bg-gradient-to-r p-[3px] from-secondary via-purple-500 to-primary rounded-lg hover:scale-105 transition duration-500">

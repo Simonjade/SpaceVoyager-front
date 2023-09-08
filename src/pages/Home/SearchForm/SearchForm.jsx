@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+
+// LIBS
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import { registerLocale, setDefaultLocale } from "react-datepicker";
@@ -6,29 +8,29 @@ import frLocale from "date-fns/locale/fr";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 
-import { useBooking } from "../../../contexts/BoonkingContext"; //! KEZAKO
+// CONTEXT
+import { useBooking } from "../../../contexts/BoonkingContext";
 
 export default function SearchForm() {
   registerLocale("fr", frLocale);
   setDefaultLocale("fr");
 
+  // STATES
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [passengers, setPassengers] = useState(1);
 
-  const { state, dispatch } = useBooking(); //! KEZAKO
+  // CONTEXTS
+  const { state, dispatch } = useBooking();
 
+  // USE EFFECTS
   useEffect(() => {
-    console.log("RESET");
     // Afficher une modal qui précise à l'internaute qu'une session est en cours sur une précédente réservation
     dispatch({ type: "RESET" });
     //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
-    console.log("La valeur de startDate :", format(startDate, "yyyy-MM-dd"));
-    console.log("La valeur de endtDate :", endDate);
-    console.log("La valeur de startDate :", passengers);
     dispatch({ type: "SET_DEPARTURE", payload: startDate });
     dispatch({ type: "SET_COMEBACK", payload: endDate });
     dispatch({ type: "SET_PERSON", payload: passengers });
@@ -41,6 +43,7 @@ export default function SearchForm() {
     setEndDate(nextDay);
   }, [startDate]);
 
+  // FUNCTIONS
   const handlePlus = () => {
     if (passengers < 2) {
       setPassengers(passengers + 1);
@@ -67,6 +70,7 @@ export default function SearchForm() {
     navigate("/searchPlanet");
   };
 
+  // RENDER
   return (
     <>
       <div className="flex flex-col lg:mt-2">
