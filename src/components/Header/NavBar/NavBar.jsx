@@ -1,21 +1,27 @@
-import * as React from "react";
 import { useState, useContext } from "react";
+
+// LIBS
+import { Link } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-import { Link } from "react-router-dom";
+// HOOKS
 import useIsAuthenticated from "../../../hooks/useIsAuthenticated";
 
+// CONTEXT
 import { AuthContext } from "../../../contexts/AuthContext";
 
+// COMPONENTS
 import LogoMini from "../../LogoMini/LogoMini";
 
 export default function NavBar() {
-  const auth = useContext(AuthContext);
-
-  const isAuthenticated = useIsAuthenticated();
-
+  // STATES
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // CONTEXTS
+  const auth = useContext(AuthContext);
+  const isAuthenticated = useIsAuthenticated();
+
+  // RENDER
   return (
     <>
       <nav
