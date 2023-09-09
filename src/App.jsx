@@ -23,7 +23,7 @@ function App() {
   return (
     <>
       <Stars />
-      <div className="relative flex flex-col justify-between h-screen">
+      <div className="relative flex flex-col justify-between h-screen sm:h-[100dvh]">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
