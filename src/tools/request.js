@@ -6,7 +6,7 @@ const request = {
   //API CALL WITHOUT AUTHENTIFICATION TOKEN
   generic: () => {
     const generic = axios.create({
-      baseURL: "http://localhost:3000",
+      baseURL: "https://space-voyager-back.onrender.com",
     });
     generic.interceptors.response.use(
       (response) => response,
@@ -20,7 +20,7 @@ const request = {
   protected: (accessToken) => {
     //API CALL WITH AUTHENTIFICATION TOKEN
     const auth = axios.create({
-      baseURL: "http://localhost:3000",
+      baseURL: "https://space-voyager-back.onrender.com",
     });
     auth.interceptors.request.use(
       (config) => {
