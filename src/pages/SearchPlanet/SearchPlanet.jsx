@@ -73,8 +73,10 @@ export default function SearchPlanet() {
     // dispatch({ type: "SET_PLANET", payload: planet });
     // dispatch({ type: "SAVE" });
 
-    // setPlanet(planet.name);
-    navigate("/searchHostel");
+    if (cardSelected.name) {
+      // setPlanet(planet.name);
+      navigate("/searchHostel");
+    }
   };
 
   // USE EFFECTS
