@@ -58,7 +58,7 @@ class ThreePlanet extends Component {
 
     camera.position.set(0, 0, 150);
 
-    const geometry = new THREE.SphereGeometry(90, 52, 52);
+    const geometry = new THREE.SphereGeometry(90, 128, 128);
     const material = new THREE.MeshStandardMaterial({
       side: THREE.DoubleSide,
       transparent: true,
@@ -70,19 +70,32 @@ class ThreePlanet extends Component {
       this.updateSphereMaterial();
     }
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 2);
+    const ambientLight = new THREE.AmbientLight(0x202020);
     scene.add(ambientLight);
-
+    const light = new THREE.DirectionalLight(0xffffff);
+    light.castShadow = true;
+    scene.add(light);
+    
+    light.shadow.mapSize.width = 1024;
+    light.shadow.mapSize.height = 1024;
+    light.shadow.camera.near = 0.5;
+    light.shadow.camera.far = 500;
+    light.shadow.focus = 1;
+    light.position.set(100, 80, 20);
+    light.distance = 300;
     controls.enableZoom = false;
     controls.update();
 
+
+//! PROBLEME DE BLOOM JE REFLECHIS POUR TROUVER UN AUTRE EFFET DE REFLET LUMINEUX !\\
+
     const animate = () => {
       requestAnimationFrame(animate);
+      controls.update();
       renderer.render(scene, camera);
       this.sphere.rotation.x += 0; // Rotation
       this.sphere.rotation.y += 0.001; // Rotation
     };
-
     animate();
 
     window.addEventListener("resize", onResize);
@@ -102,6 +115,7 @@ class ThreePlanet extends Component {
 
   updateTexture(planetName) {
     this.texture = new THREE.TextureLoader().load(planetTexture[planetName]);
+    this.texture.generateMipmaps = true;
     this.texture.wrapS = THREE.RepeatWrapping;
     this.texture.repeat.x = -1;
     this.updateSphereMaterial();
