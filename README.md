@@ -28,10 +28,10 @@ L'objectif principal de ce projet est de développer une plateforme en ligne où
 
 - **Base de données** : Psql avec Datamapper
 - **Backend** : Node.js avec Express.js
-- **Authentification** : JWT (json web token) avec passport.js
-- **Sécurité** : (À considérer) helmet
+- **Authentification** : JWT (json web token)
+-  **Validation** : Joi
+- **Test** : Mocha, Chai et Supertest
 - **Frontend** : React avec Sass
-- **Intégration d'API** : Utilisation d'API de la Nasa pour des informations sur les planètes
 - **Visualisation 3D** : ThreeJS pour la modélisation des planètes et des hôtels en 3D, vue 360 de l'hôtel
 - **Intelligence Artificielle** : Midjourney, Skybox AI
 
@@ -80,7 +80,7 @@ npm install
 
 Afin de lancer le projet, dans le terminal, exécutez la commande suivante :
 
-En mode devellopement :
+En mode developpement :
 
 ```bash
 npm run dev
